@@ -1,12 +1,16 @@
 {
   "name": "mozek-package",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:mozek": "ng build mozek --configuration production",
+    "demo": "ng serve demo",
+    "pack": "npm run build:mozek && cd dist/mozek && npm pack",
+    "publish:mozek": "npm run build:mozek && cd dist/mozek && npm publish --access public"
   },
   "prettier": {
     "overrides": [

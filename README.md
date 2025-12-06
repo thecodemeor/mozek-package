@@ -1,59 +1,185 @@
-# MozekPackage
+<p align="center">
+  <img src="./banner-ui.png" width="850" alt="Mozek UI Banner"/>
+</p>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Development server
 
-To start a local development server, run:
+# Mozek
 
-```bash
-ng serve
+**Mozek** is my lightweight SCSS toolkit and UI library, designed to make styling fun, fast, and consistent.  
+
+I personally enjoy using clean, simple, and not over-engineered. Therefore every **Mozek** component and class is designed based on my own preferences for clarity, spacing, and feel.
+
+I built it for myself at first (because I got tired of rewriting spacing, colors, and typography),  
+but now *you* can enjoy it too.
+
+---
+
+# 🧩 Mozek UI
+
+Pair it with:
+
+- **Mozek Styles** (recommended)  
+- Angular apps (standalone-based)  
+- Any new Angular 18+ project  
+- Lightweight front-end environments that want clean, structured UI
+
+> **Make sure your global styles import Mozek Styles first:**
+>
+> ```scss
+> @use "mozek/styles" as moz;
+> ```
+
+---
+
+## 🧩 Components Available
+
+Below are the UI components currently packaged in **Mozek UI**.
+
+More components will be added over time as the design system grows.
+
+
+- **`<moz-button>`**
+- **`<moz-divider>`**
+- **`<moz-currency>`**
+- **`<moz-icon>`**
+- **`<moz-badge>`**
+- **`<moz-card>`**
+- **`<moz-checkbox-group>`**
+- **`<moz-checkbox>`**
+- **`<moz-radio-group>`**
+- **`<moz-radio>`**
+- **`<moz-input>`**
+- **`<moz-switch>`**
+- **`<moz-select>`**
+- **`<moz-option>`**
+- **`<moz-progress>`**
+- **`<moz-button-icon>`**
+- **`<moz-accordion>`**
+- **`<moz-accordion-item>`**
+- **`<moz-datepicker>`**
+- **`<moz-pagination>`**
+
+---
+
+# 🎨 Mozek Styles
+
+Use it with:
+
+- Mozek UI Components  
+- Angular / React / Vue projects  
+- Plain HTML + SCSS setups  
+- Any place where SCSS is allowed to shine
+
+> **Important:** before using any of the mixins or relying on the CSS variables,  
+> make sure you import the toolkit in your global SCSS:
+>
+> ```scss
+> @use "Mozek/styles" as moz;
+> ```
+
+I’ve listed all the main selectors and mixins I’ve prepared below,  
+so you can quickly see what’s available and how to use it.
+
+---
+
+
+## 🎨 **Color Palette List**
+These are the built-in palettes, each with shades **50 → 950**:
+- **red**
+- **rose**
+- **fuchsia**
+- **violet**
+- **malibu**
+- **teal**
+- **chartreuse**
+- **emerald**
+- **lemon**
+- **gold**
+- **amber**
+- **tangerine**
+- **silver**
+- **gray**
+
+
+## 🎨 **Class List**
+### **Spacing Utilities**
+| Selector | Declarations                             |
+|----------|------------------------------------------|
+| .m-$     | margin: $rem                             |
+| .mt-$    | margin-top: $rem                         |
+| .mb-$    | margin-bottom: $rem                      |
+| .ml-$    | margin-left: $rem                        |
+| .mr-$    | margin-right: $rem                       |
+| .mx-$    | margin-left: $rem, margin-right: $rem    |
+| .my-$    | margin-top: $rem, margin-bottom: $rem    |
+| .p-$     | padding: $rem                            |
+| .pt-$    | padding-top: $rem                        |
+| .pb-$    | padding-bottom: $rem                     |
+| .pl-$    | padding-left: $rem                       |
+| .pr-$    | padding-right: $rem                      |
+| .px-$    | padding-left: $rem, padding-right: $rem  |
+| .py-$    | padding-top: $rem, padding-bottom: $rem  |
+| .gap-$   | gap: $rem                                |
+| .corner-$| border-raidus: $rem                      |
+> You can replace **$** with numbers from **0 – 10** based on the spacing scale.
+
+### **Flexbox Utilities**
+| Selector           | Declarations                   |
+|--------------------|--------------------------------|
+| .flex              | display: flex                  |
+| .grid              | display: grid                  |
+| .flex-col          | flex-direction: column         |
+| .flex-row          | flex-direction: row            |
+| .flex-center       | center both axes               |
+| .flex-wrap         | flex-wrap: wrap                |
+| .justify-center    | justify-content: center        |
+| .justify-start     | justify-content: start         |
+| .justify-end       | justify-content: end           |
+| .justify-between   | justify-content: space-between |
+| .justify-evenly    | justify-content: space-evenly  |
+| .items-center      | align-items: center            |
+| .items-start       | align-items: start             |
+| .items-end         | align-items: end.              |
+
+### **Text Utilities**
+| Selector           | Declarations                   |
+|--------------------|--------------------------------|
+| .text-center       | text: center                   |
+| .text-left         | text: left                     |
+| .text-right        | text: right                    |
+| .text-uppercase    | text: uppercase                |
+| .text-capitalize   | text: capitalize               |
+| .text-oneline      | text: no wrap                  |
+| .text-ellipsis     | text: single-line & ellipsis   |
+| .primary           | text-color: primary            |
+
+---
+
+## 🎨 **Mixin Usage**
+On top of the utility classes, I also prepared a set of mixins so you can style your own components while still matching the **Mozek** look and feel.
+
+> Reminder: before using these, don’t forget:
+> ```scss
+> @use "mozek/styles" as moz;
+> ```
+```scss
+@include moz.moz-typography('title-lg');
+@include moz.moz-typography('title-md');
+@include moz.moz-typography('title-sm');
+@include moz.moz-typography('label-lg');
+@include moz.moz-typography('label-md');
+@include moz.moz-typography('label-sm');
+@include moz.moz-typography('default');
+@include moz.moz-typography('caption');
+@include moz.moz-typography('footer');
+
+@include moz.root-button();
+@include moz.root-border();
+@include moz.root-shadow(1);
+@include moz.root-shadow(2);
+@include moz.root-shadow(3);
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
