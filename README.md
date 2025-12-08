@@ -1,9 +1,7 @@
 <p align="center">
-  <img src="./img/png/mozek_logo.png" width="150" alt="Mozek UI Banner"/>
+    <img src="./img/png/mozek_logo_banner.png" width="250" alt="Mozek UI Banner"/>
+    [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 </p>
-
-[![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-
 
 # Mozek
 
@@ -11,8 +9,8 @@
 
 I personally enjoy using clean, simple, and not over-engineered. Therefore every **Mozek** component and class is designed based on my own preferences for clarity, spacing, and feel.
 
-I built it for myself at first (because I got tired of rewriting spacing, colors, and typography),  
-but now *you* can enjoy it too.
+<p>I built it for myself at first (because I got tired of rewriting spacing, colors, and typography),  
+but now *you* can enjoy it too.</p>
 ---
 
 Install **Mozek** from npm with the following command.
@@ -191,7 +189,6 @@ On top of the utility classes, I also prepared a set of mixins so you can style 
 
 # 🎨 License
 
-**Mozek** is available under the terms of the MIT license.
+**Mozek** is available under the terms of the ![MIT license](LICENSE).
 
 Whether you're building **Mozek** or building something with **Mozek** — have fun creating! 🥾
----
