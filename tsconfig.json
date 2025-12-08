@@ -1,12 +1,18 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "paths": {
+      "mozek": [
+        "./dist/mozek"
+      ]
+    },
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
@@ -22,5 +28,11 @@
     "typeCheckHostBindings": true,
     "strictTemplates": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    { "path": "./projects/mozek/tsconfig.lib.json"},
+    { "path": "./projects/mozek/tsconfig.spec.json"},
+    { "path": "./projects/demo/tsconfig.app.json"},
+    { "path": "./projects/demo/tsconfig.spec.json"}
+  ]
 }

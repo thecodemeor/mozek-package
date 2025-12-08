@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="./banner-ui.png" width="850" alt="Mozek UI Banner"/>
+  <img src="./img/png/mozek_logo.png" width="150" alt="Mozek UI Banner"/>
 </p>
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 
 # Mozek
@@ -13,24 +13,24 @@ I personally enjoy using clean, simple, and not over-engineered. Therefore every
 
 I built it for myself at first (because I got tired of rewriting spacing, colors, and typography),  
 but now *you* can enjoy it too.
+---
 
+Install **Mozek** from npm with the following command.
+
+> ```bash
+> npm install @shoelace-style/shoelace
+> ```
 ---
 
 # 🧩 Mozek UI
 
-Pair it with:
-
-- **Mozek Styles** (recommended)  
-- Angular apps (standalone-based)  
-- Any new Angular 18+ project  
-- Lightweight front-end environments that want clean, structured UI
+Once you have install,
 
 > **Make sure your global styles import Mozek Styles first:**
 >
 > ```scss
 > @use "mozek/styles" as moz;
 > ```
-
 ---
 
 ## 🧩 Components Available
@@ -60,12 +60,11 @@ More components will be added over time as the design system grows.
 - **`<moz-accordion-item>`**
 - **`<moz-datepicker>`**
 - **`<moz-pagination>`**
-
 ---
 
 # 🎨 Mozek Styles
 
-Use it with:
+For Mozek Styles, you can use it in:
 
 - Mozek UI Components  
 - Angular / React / Vue projects  
@@ -76,12 +75,11 @@ Use it with:
 > make sure you import the toolkit in your global SCSS:
 >
 > ```scss
-> @use "Mozek/styles" as moz;
+> @use "mozek/styles" as moz;
 > ```
 
 I’ve listed all the main selectors and mixins I’ve prepared below,  
 so you can quickly see what’s available and how to use it.
-
 ---
 
 
@@ -181,5 +179,19 @@ On top of the utility classes, I also prepared a set of mixins so you can style 
 @include moz.root-shadow(2);
 @include moz.root-shadow(3);
 ```
+---
 
+# Browser Support
+
+| ![Chrome](https://raw.github.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/main/src/safari/safari_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/main/src/edge/edge_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/main/src/opera/opera_48x48.png) |
+|----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| Latest ✔                                                                               | Latest ✔                                                                               | Latest ✔                                                                         | Latest ✔                                                                            |
+
+---
+
+# 🎨 License
+
+**Mozek** is available under the terms of the MIT license.
+
+Whether you're building **Mozek** or building something with **Mozek** — have fun creating! 🥾
 ---

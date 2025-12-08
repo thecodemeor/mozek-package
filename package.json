@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package",
   "name": "mozek-package",
   "version": "1.0.0",
   "scripts": {
@@ -7,10 +8,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:mozek": "ng build mozek --configuration production",
+    "new-[component]": "ng g component moz-[new component] --project=mozek --standalone --inline-template=false --inline-style=false",
+    "build-mozek": "ng build mozek --configuration production",
     "demo": "ng serve demo",
     "pack": "npm run build:mozek && cd dist/mozek && npm pack",
-    "publish:mozek": "npm run build:mozek && cd dist/mozek && npm publish --access public"
+    "publish-mozek": "npm run build:mozek && cd dist/mozek && npm publish --access public"
   },
   "prettier": {
     "overrides": [
@@ -43,6 +45,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^20.3.0",
     "typescript": "~5.8.2"
   }
 }

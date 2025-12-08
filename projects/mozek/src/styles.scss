@@ -1,0 +1,54 @@
+// ============================================================================
+// monzar Global Styles
+// ============================================================================
+// Main entry for global styles. Re-exports tokens & utilities and
+// emits base element styles.
+// -----------------------------------------------------------------------------
+// Author: thecodemeor
+// Version: 1.0
+// ============================================================================
+
+/* Re-export APIs (for @use "monzar-styles/styles" as mon;) */
+@forward "tokens";
+@forward "utilities";
+@forward "color-palette";
+
+/* Emit CSS side effects */
+@use "tokens";
+@use "utilities";
+@use "color-palette";
+
+// ---------------------------------------------
+// Global Resets / Base
+// ---------------------------------------------
+:root {
+    img, svg, video, canvas {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+    }
+
+    input, button, textarea, select {
+        font: inherit;
+    }
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--mon-color-background);
+    font-family: var(--mon-font-family);
+    font-size: var(--mon-font-size);
+    line-height: var(--mon-line-height);
+    color: var(--mon-color-text);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}

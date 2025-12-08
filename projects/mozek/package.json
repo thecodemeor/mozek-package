@@ -1,0 +1,21 @@
+{
+  "name": "mozek",
+  "version": "0.0.1","description": "mozek - lightweight Angular UI + SCSS design system.",
+  "author": "thecodemeor",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "ui-library",
+    "design-system",
+    "scss",
+    "mozek"
+  ],
+  "peerDependencies": {
+    "@angular/common": ">=18.0.0 <21.0.0",
+    "@angular/core": ">=18.0.0 <21.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
