@@ -1,7 +1,7 @@
 <p align="center">
-    <img src="./img/png/mozek_logo_banner.png" width="250" alt="Mozek UI Banner"/>
-    [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+    <img src="./img/png/mozek_logo_banner.png" width="300" alt="Mozek UI Banner"/>
 </p>
+[![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 # Mozek
 
