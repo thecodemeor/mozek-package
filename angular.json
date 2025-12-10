@@ -101,7 +101,7 @@
       "prefix": "moz",
       "architect": {
         "build": {
-          "builder": "@angular/build:ng-packagr",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "configurations": {
             "production": {
               "tsConfig": "projects/mozek/tsconfig.lib.prod.json"
@@ -109,6 +109,10 @@
             "development": {
               "tsConfig": "projects/mozek/tsconfig.lib.json"
             }
+          },
+          "options": {
+            "tsConfig": "projects/mozek/tsconfig.lib.json",
+            "project": "projects/mozek/ng-package.json"
           },
           "defaultConfiguration": "production"
         },

@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { MonButton } from 'mozek';
+import { MozButton } from 'mozek';
 
 @Component({
   selector: 'app-root',
-  imports: [MonButton],
+  imports: [MozButton],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

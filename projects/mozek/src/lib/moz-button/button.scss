@@ -1,0 +1,126 @@
+@use "styles" as mon;
+
+:host {
+    --mon-btn-border-size: 0.1rem;
+    
+    display: inline-block;
+}
+
+
+/* --------------------------
+   Button Base Styles
+-------------------------- */
+button.mon-btn {
+    @include mon.root-button();
+    position: relative;
+    width: 100%; height: fit-content;
+    min-width: 7.5rem; min-height: 2.5rem;
+    padding: var(--mon-space-1) var(--mon-space-2);
+    border-radius: var(--mon-radius-default);
+    font-weight: var(--mon-font-weight-semibold);
+    text-align: center;
+    transition: all var(--mon-duration) var(--mon-ease);
+    cursor: pointer;
+
+    &:focus-visible {
+        outline: solid 2px transparent;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, .35);
+    }
+    &:disabled {
+        opacity: 0.3;
+        filter: grayscale(1);
+        pointer-events: none;
+    }
+}
+
+
+/* ---------------------------
+   Model Styles
+--------------------------- */
+/* Fill */
+.mon-btn--fill {
+    background: var(--mon-btn-bg, var(--mon-color-primary));
+    color: white;
+    border: none;
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) 60%, white);}
+}
+
+/* Outline */
+.mon-btn--outline {
+    background: transparent;
+    color: var(--mon-btn-bg, var(--mon-color-primary));
+    border: solid var(--mon-btn-border-size) color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) var(--mon-fade-border), white);
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-hover), white);}
+}
+
+/* Tonal */
+.mon-btn--tonal {
+    background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) var(--mon-btn-line-contrast), white);
+    color: var(--mon-btn-bg, var(--mon-color-primary));
+    border: none;
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) 30%, white);}
+}
+
+/* Flavor */
+.mon-btn--flavor {
+    background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) var(--mon-btn-line-contrast), white);
+    color: var(--mon-color-text);
+    border: solid var(--mon-btn-border-size) color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-border), white);
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) 20%, white);}
+}
+
+/* Elevated */
+.mon-btn--elevated {
+    background: var(--mon-color-elevated);
+    color: var(--mon-btn-bg, var(--mon-color-primary));
+    border: none;
+    @include mon.root-shadow(1);
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-hover), white);}
+    &:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 0.5px 1px 0 rgba(60,64,67,.08);}
+}
+
+/* Glassmorphism */
+.mon-btn--glass {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur( 50px ); // frosted blur
+    -webkit-backdrop-filter: blur( 50px ); // for Safari
+    color: var(--mon-btn-bg, var(--mon-color-primary));
+    border: solid var(--mon-btn-border-size) var(--mon-color-border-glassmorphism);
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-hover), white);}
+}
+
+/* Text */
+.mon-btn--text {
+    background: transparent;
+    color: var(--mon-btn-bg, var(--mon-color-primary));
+    border: none;
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-hover), white);}
+}
+
+
+/* ---------------------------
+   Ripple Effect
+--------------------------- */
+.buttonRipple {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+}
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    opacity: .3;
+    transform: scale(0);
+    pointer-events: none;
+    z-index: 2;
+    animation: ripple .6s linear forwards;
+}
+@keyframes ripple { to { transform: scale(4); opacity: 0;}}
+
+@media (prefers-reduced-motion: reduce) {
+    .ripple { animation-duration: 0.001s;}
+    button.mon-button:active { transform: none;}
+}

@@ -1,0 +1,11 @@
+<button
+    [class]="hostClasses"
+    [style.--mon-btn-bg]="btnColor"
+    [style.--mon-btn-line-contrast]="btnLineContrast"
+    [style.--mon-button-width]="full ? '100%' : null"
+    [disabled]="disabled"
+    type="button"
+>
+    <ng-content></ng-content>
+    <span class="buttonRipple"></span>
+</button>

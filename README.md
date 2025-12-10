@@ -1,9 +1,10 @@
-<p align="center">
-    <img src="./img/png/mozek_logo_banner.png" width="300" alt="Mozek UI Banner"/>
-</p>
-[![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+<div align="center">
+    <img src="./img/png/mozek_banner.png" width="300" alt="Mozek Logo Banner"/>
 
 # Mozek
+
+[![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+</div>
 
 **Mozek** is my lightweight SCSS toolkit and UI library, designed to make styling fun, fast, and consistent.  
 
@@ -11,14 +12,18 @@ I personally enjoy using clean, simple, and not over-engineered. Therefore every
 
 <p>I built it for myself at first (because I got tired of rewriting spacing, colors, and typography),  
 but now *you* can enjoy it too.</p>
+
 ---
 
 Install **Mozek** from npm with the following command.
 
 > ```bash
-> npm install @shoelace-style/shoelace
+> npm install @mozek
 > ```
 ---
+
+
+<img src="./img/png/mozek_vector_red.png" width="100" alt="Mozek Logo" align="left"/>
 
 # 🧩 Mozek UI
 
@@ -59,6 +64,9 @@ More components will be added over time as the design system grows.
 - **`<moz-datepicker>`**
 - **`<moz-pagination>`**
 ---
+
+
+<img src="./img/png/mozek_vector_blue.png" width="100" alt="Mozek Logo" align="left"/>
 
 # 🎨 Mozek Styles
 
