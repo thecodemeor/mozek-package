@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./img/png/mozek_banner.png" width="300" alt="Mozek Logo Banner"/>
+    <img src="./img/png/mozek_banner.png" width="400" alt="Mozek Logo Banner"/>
 
 # Mozek
 
@@ -23,9 +23,9 @@ Install **Mozek** from npm with the following command.
 ---
 
 
-<img src="./img/png/mozek_vector_red.png" width="100" alt="Mozek Logo" align="left"/>
+<img src="./img/png/mozek_vector_red.png" width="45" alt="Mozek Logo" align="left"/>
 
-# 🧩 Mozek UI
+# Mozek UI
 
 Once you have install,
 
@@ -66,9 +66,9 @@ More components will be added over time as the design system grows.
 ---
 
 
-<img src="./img/png/mozek_vector_blue.png" width="100" alt="Mozek Logo" align="left"/>
+<img src="./img/png/mozek_vector_blue.png" width="45" alt="Mozek Logo" align="left"/>
 
-# 🎨 Mozek Styles
+# Mozek Styles
 
 For Mozek Styles, you can use it in:
 
