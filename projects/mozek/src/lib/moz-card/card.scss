@@ -1,0 +1,168 @@
+@use "styles" as moz;
+
+:host {
+    --moz-card-bg: var(--moz-color-surface, #fff);
+    --moz-card-corner: var(--moz-radius-lg);
+    --moz-card-border-size: 0.1rem;
+    --moz-color-border-glassmorphism: #e3e3e3;
+    --moz-card-gap: var(--moz-space-1);
+
+    display: flex;
+    min-width: 10rem; min-height: 5rem;
+    padding: 0;
+    border-radius: var(--moz-card-corner);
+    background: var(--moz-card-bg);
+    flex-direction: column;
+    overflow: hidden;
+    gap: 0;
+
+    ::-webkit-scrollbar { width: 3px; height: 80%;}
+    ::-webkit-scrollbar-track { background: transparent;}
+    ::-webkit-scrollbar-thumb { border-radius: 1.5px; background: #888;}
+    ::-webkit-scrollbar-thumb:hover { background: #555;}
+
+
+    /* Model Styles */
+    &.moz-card-fill {
+        border: none;
+        background: color-mix(in srgb, var(--moz-card-bg, var(--moz-color-primary)) 15%, white);
+    }
+    &.moz-card-outline {
+        border: solid var(--moz-card-border-size) color-mix(in srgb, var(--moz-card-bg, var(--moz-color-primary))  var(--moz-fade-border), white);
+        background: var(--moz-color-surface);
+    }
+    &.moz-card-elevated {
+        border: none;
+        background: var(--moz-color-surface);
+        @include moz.root-shadow(2)
+    }
+    &.moz-card-flavor {
+        border: solid var(--moz-card-border-size) color-mix(in srgb, var(--moz-card-bg, var(--moz-color-primary))  var(--moz-fade-border), white);
+        background: color-mix(in srgb, var(--moz-card-bg, var(--moz-color-primary)) var(--moz-card-bg-contrast), white);
+    }
+    &.moz-card-glass {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur( 50px ); // frosted blur
+        -webkit-backdrop-filter: blur( 50px ); // for Safari
+        border: solid var(--moz-button-border-size) var(--moz-color-border-glassmorphism);
+    }
+
+    &.moz-card-advancing {
+        padding: var(--moz-card-gap);
+        gap: var(--moz-card-gap);
+    }
+}
+
+/* ---------------------------
+   Card Content Styles
+--------------------------- */
+moz-card-media,
+moz-card-header,
+moz-card-body,
+moz-card-footer,
+moz-card-header-actions { display: contents; }
+
+.moz-card-media, .moz-card-media img, .moz-card-media video {
+    display: block;
+    width: 100%; height: auto;
+}
+
+.moz-card-header {
+    display: flex;
+    width: 100%; height: fit-content;
+    padding: var(--moz-space-2) var(--moz-space-2) var(--moz-space-1);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &--fill {
+        padding: var(--moz-space-1) var(--moz-space-2);
+        background: var(--moz-color-surface);
+        border-radius: var(--moz-radius-default) var(--moz-radius-default) var(--moz-radius-sm) var(--moz-radius-sm);
+    }
+    &--flavor {
+        padding: var(--moz-space-1) var(--moz-space-2);
+        background: var(--moz-color-surface);
+        border-radius: calc(var(--moz-card-corner) - var(--moz-card-gap)) calc(var(--moz-card-corner) - var(--moz-card-gap)) var(--moz-radius-default) var(--moz-radius-default);
+    }
+    
+    // Font Styles
+    @include moz.moz-typography('label-md');
+
+    .moz-card-header-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--moz-space-1);
+    }
+}
+.moz-card-body {
+    flex: 1 1 auto;
+    display: block;
+    width: 100%; height: auto;
+    padding: var(--moz-space-1) var(--moz-space-2);
+    overflow: auto;
+
+    &--fill {
+        background: var(--moz-color-surface);
+        border-radius: var(--moz-radius-sm);
+    }
+
+    &--flavor {
+        background: var(--moz-color-surface);
+        border-radius: var(--moz-radius-default);
+        box-shadow: 0 0 0 var(--moz-card-border-size) color-mix(in srgb, var(--moz-color-default) 10%, white);
+    }
+}
+.moz-card-content {
+    flex: 1 1 auto;
+    display: block;
+    width: 100%; height: auto;
+    padding: var(--moz-space-1) 0;
+}
+.moz-card-footer {
+    display: flex;
+    width: 100%; height: fit-content;
+    padding: var(--moz-space-1) var(--moz-space-2);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    // Font Styles
+    color: color-mix(in srgb, var(--moz-color-text) 60%, white);
+    @include moz.moz-typography('footer');
+
+    &--fill {
+        padding: var(--moz-space-1) var(--moz-space-2);
+        background: var(--moz-color-surface);
+        border-radius: var(--moz-radius-sm) var(--moz-radius-sm) var(--moz-radius-default) var(--moz-radius-default);
+    }
+}
+.moz-card-media:empty,
+.moz-card-header:empty,
+.moz-card-header:has(> .moz-card-header-actions:empty):not(:has(> *:not(.moz-card-header-actions))),
+.moz-card-body:empty,
+.moz-card-content:empty,
+.moz-card-footer:empty,
+.moz-card-footer:has(> .moz-card-footer-actions:empty):not(:has(> *:not(.moz-card-footer-actions))),
+.moz-card-badges:empty {
+    display: none !important;
+}
+
+/* ---------------------------
+   Skeleton Loading Styles
+--------------------------- */
+.moz-card-skeleton {
+    display: flex;
+    padding: var(--moz-space-2);
+    flex-direction: column;
+    gap: var(--moz-space-1);
+
+    .sk-line {
+        width: 100%; height: 1rem;
+        border-radius: var(--moz-radius-pill);
+        background: linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.02), rgba(0,0,0,.06));
+        background-size: 200% 100%; animation: sk 1.2s ease-in-out infinite;
+    }
+    .sk-title { width: 60%; height: 1.5rem;}
+    @keyframes sk { 0% { background-position: 200% 0; } 100% { background-position: -200% 0;}}
+}

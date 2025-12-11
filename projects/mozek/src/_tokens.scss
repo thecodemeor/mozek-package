@@ -1,5 +1,5 @@
 // ============================================================================
-// monzar Design Tokens
+// Mozek Design Tokens
 // ============================================================================
 // Base design decisions: colors, radius, shaping, spacing, typography.
 // -----------------------------------------------------------------------------
@@ -14,7 +14,7 @@
 // ---------------------------------------------
 // General
 // ---------------------------------------------
-@function mon-get-color($name, $shade) {
+@function moz-get-color($name, $shade) {
     $family: map.get(palette.$colors, $name);
     @if $family == null {
         @warn "Unknown color family `#{$name}`.";
@@ -31,8 +31,8 @@
 }
 
 // Brand families (can be overridden before import)
-$mon-brand-primary: malibu !default;
-$mon-brand-secondary: violet !default;
+$moz-theme-primary: malibu !default;
+$moz-theme-secondary: violet !default;
 
 // Spacing scale used to emit CSS vars
 $scale: (
@@ -52,59 +52,61 @@ $scale: (
 // ---------------------------------------------
 // Theme Mixins (Light / Dark)
 // ---------------------------------------------
-@mixin mon-theme-light() {
+@mixin moz-theme-light() {
     /* Main Palette (build-time brand choices) */
-    --mon-color-primary: #{mon-get-color($mon-brand-primary, 500)};
-    --mon-color-primary-lite: #{mon-get-color($mon-brand-primary, 200)};
-    --mon-color-primary-dark: #{mon-get-color($mon-brand-primary, 800)};
-    --mon-color-primary-mute: #{mon-get-color(silver, 400)};
+    --moz-theme-primary: $moz-theme-primary;
+    --moz-color-primary: #{moz-get-color($moz-theme-primary, 500)};
+    --moz-color-primary-lite: #{moz-get-color($moz-theme-primary, 200)};
+    --moz-color-primary-dark: #{moz-get-color($moz-theme-primary, 800)};
+    --moz-color-primary-mute: #{moz-get-color(silver, 400)};
 
-    --mon-color-secondary: #{mon-get-color($mon-brand-secondary, 500)};
-    --mon-color-secondary-lite: #{mon-get-color($mon-brand-secondary, 200)};
-    --mon-color-secondary-dark: #{mon-get-color($mon-brand-secondary, 800)};
+    --moz-theme-secondary: $moz-theme-secondary;
+    --moz-color-secondary: #{moz-get-color($moz-theme-secondary, 500)};
+    --moz-color-secondary-lite: #{moz-get-color($moz-theme-secondary, 200)};
+    --moz-color-secondary-dark: #{moz-get-color($moz-theme-secondary, 800)};
 
     /* Standard Colors */
-    --mon-color-background: #ffffff;
-    --mon-color-default: #000000;
-    --mon-color-surface: #fefefe;
-    --mon-color-text: #343434;
+    --moz-color-background: #ffffff;
+    --moz-color-default: #000000;
+    --moz-color-surface: #fefefe;
+    --moz-color-text: #343434;
 
     /* Feedback Colors */
-    --mon-color-success: #{mon-get-color(chartreuse, 600)};
-    --mon-color-warning: #{mon-get-color(amber, 500)};
-    --mon-color-danger:  #{mon-get-color(red, 700)};
+    --moz-color-success: #{moz-get-color(chartreuse, 600)};
+    --moz-color-warning: #{moz-get-color(amber, 500)};
+    --moz-color-danger:  #{moz-get-color(red, 700)};
 }
 
-@mixin mon-theme-dark() {
+@mixin moz-theme-dark() {
     /* You can tune these to taste */
-    --mon-color-primary: #{mon-get-color($mon-brand-primary, 300)};
-    --mon-color-primary-lite: #{mon-get-color($mon-brand-primary, 200)};
-    --mon-color-primary-dark: #{mon-get-color($mon-brand-primary, 500)};
-    --mon-color-primary-mute: #{mon-get-color(silver, 500)};
+    --moz-color-primary: #{moz-get-color($moz-theme-primary, 300)};
+    --moz-color-primary-lite: #{moz-get-color($moz-theme-primary, 200)};
+    --moz-color-primary-dark: #{moz-get-color($moz-theme-primary, 500)};
+    --moz-color-primary-mute: #{moz-get-color(silver, 500)};
 
-    --mon-color-secondary: #{mon-get-color($mon-brand-secondary, 400)};
-    --mon-color-secondary-lite: #{mon-get-color($mon-brand-secondary, 300)};
-    --mon-color-secondary-dark: #{mon-get-color($mon-brand-secondary, 600)};
+    --moz-color-secondary: #{moz-get-color($moz-theme-secondary, 400)};
+    --moz-color-secondary-lite: #{moz-get-color($moz-theme-secondary, 300)};
+    --moz-color-secondary-dark: #{moz-get-color($moz-theme-secondary, 600)};
 
-    --mon-color-background: #050816;
-    --mon-color-surface:    #0b1020;
-    --mon-color-text:       #f3f4f6;
-    --mon-color-default:    #ffffff;
-    --mon-color-border:     color-mix(in srgb, var(--mon-color-text) 15%, transparent);
+    --moz-color-background: #050816;
+    --moz-color-surface:    #0b1020;
+    --moz-color-text:       #f3f4f6;
+    --moz-color-default:    #ffffff;
+    --moz-color-border:     color-mix(in srgb, var(--moz-color-text) 15%, transparent);
 
-    --mon-color-success: #{mon-get-color(chartreuse, 400)};
-    --mon-color-warning: #{mon-get-color(amber, 400)};
-    --mon-color-danger:  #{mon-get-color(red, 400)};
+    --moz-color-success: #{moz-get-color(chartreuse, 400)};
+    --moz-color-warning: #{moz-get-color(amber, 400)};
+    --moz-color-danger:  #{moz-get-color(red, 400)};
 }
 
 :root[data-theme="light"], :root,
 body.light-theme,
 body {
-    @include mon-theme-light();
+    @include moz-theme-light();
 }
 :root[data-theme="dark"],
 body.dark-theme {
-    @include mon-theme-dark();
+    @include moz-theme-dark();
 }
 
 
@@ -114,45 +116,45 @@ body.dark-theme {
 :root {
     /* Spacing Scale ----------------------------------------------- */
     @each $pref, $val in $scale {
-        --mon-space-#{$pref}: #{$val};
+        --moz-space-#{$pref}: #{$val};
     }
 
     /* Radius ------------------------------------------------------ */
-    --mon-radius-sm: calc(1.25rem - var(--mon-space-1));
-    --mon-radius-default: 1.25rem;
-    --mon-radius-lg: calc(1.25rem + var(--mon-space-1));
-    --mon-radius-xl: calc(1.25rem + var(--mon-space-2));
-    --mon-radius-pill: 9999px;
+    --moz-radius-sm: calc(1.25rem - var(--moz-space-1));
+    --moz-radius-default: 1.25rem;
+    --moz-radius-lg: calc(1.25rem + var(--moz-space-1));
+    --moz-radius-xl: calc(1.25rem + var(--moz-space-2));
+    --moz-radius-pill: 9999px;
 
     /* Motion ------------------------------------------------------ */
-    --mon-duration-fast: 0.1s;
-    --mon-duration: 0.3s;
+    --moz-duration-fast: 0.1s;
+    --moz-duration: 0.3s;
     
     /* Color fade percent ------------------------------------------ */
-    --mon-fade-hover: 10%;
-    --mon-fade-border: 20%;
-    --mon-fade-hover-dark: 30%;
-    --mon-fade-outline: 50%;
-    --mon-fade-placeholder: 60%;
-    --mon-fade-border-dark: 80%
+    --moz-fade-hover: 10%;
+    --moz-fade-border: 20%;
+    --moz-fade-hover-dark: 30%;
+    --moz-fade-outline: 50%;
+    --moz-fade-placeholder: 60%;
+    --moz-fade-border-dark: 80%
 
     /* Typography -------------------------------------------------- */
-    --mon-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    --moz-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
         Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-    --mon-font-size: 1rem;
-    --mon-line-height: 1;
+    --moz-font-size: 1rem;
+    --moz-line-height: 1;
     
     /* Font weight ------------------------------------------------- */
-    --mon-font-weight-regular: 400;
-    --mon-font-weight-medium: 500;
-    --mon-font-weight-semibold: 600;
-    --mon-font-weight-bold: 700;
+    --moz-font-weight-regular: 400;
+    --moz-font-weight-medium: 500;
+    --moz-font-weight-semibold: 600;
+    --moz-font-weight-bold: 700;
 }
 
 // ---------------------------------------------
 // Typography Mixin
 // ---------------------------------------------
-@mixin mon-typography($style) {
+@mixin moz-typography($style) {
     // Mobile-first styles
     @if $style == 'title-lg' {
         font-size: 2rem;
@@ -250,20 +252,17 @@ body.dark-theme {
 @mixin root-border() {
     border-style: solid;
     border-width: 0.1rem;
-    border-color: color-mix(in srgb, var(--mon-color-text) var(--mon-fade-border), white);;
+    border-color: color-mix(in srgb, var(--moz-color-text) var(--moz-fade-border), white);;
 }
 
 /* Shadow / Elevation ------------------------------------------ */
 @mixin root-shadow($level) {
     @if $level == 1 {
-        box-shadow: 0 1px 2px 0 rgba(60,64,67,.08),
-        0 1px 3px 1px rgba(60,64,67,.03);
+        box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px, rgba(0, 0, 0, 0.12) 0px 1px 2px;
     } @else if $level == 2 {
-        box-shadow: 0 3px 4px 0 rgba(60,64,67,.08),
-        0 3px 6px 1px rgba(60,64,67,.03);
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 6px, rgba(0, 0, 0, 0.115) 0px 3px 6px;
     } @else if $level == 3 {
-        box-shadow: 0 5px 6px 0 rgba(60,64,67,.08),
-        0 5px 9px 1px rgba(60,64,67,.03);
+        box-shadow: rgba(0, 0, 0, 0.095) 0px 10px 20px, rgba(0, 0, 0, 0.115) 0px 6px 6px;
     } @else {
         @warn "Unknown shadow level: #{$level}";
     }

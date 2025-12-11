@@ -1,9 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { MozButton } from 'mozek';
+import {
+  MozButton,
+  MozCard, MonCardMedia, MonCardHeader, MonCardHeaderActions, MonCardBody, MonCardFooter, MonCardFooterActions
+} from 'mozek';
 
 @Component({
   selector: 'app-root',
-  imports: [MozButton],
+  imports: [
+    MozButton,
+    MozCard, MonCardMedia, MonCardHeader, MonCardHeaderActions, MonCardBody, MonCardFooter, MonCardFooterActions
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

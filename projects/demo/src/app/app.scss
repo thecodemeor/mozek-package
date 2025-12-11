@@ -1,7 +1,30 @@
+@use "../../../mozek/src/styles.scss" as moz;
+
 .demo-shell {
+  width: 100vw;
   padding: 2rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   h1 { margin-bottom: 1rem;}
   p { margin: 1rem 0 0.5rem;}
+}
+
+.box {
+  width: 150px;
+  aspect-ratio: 1 / 1;
+  background-color: white;
+  border-radius: 20px;
+
+
+  &:nth-child(1) { @include moz.root-shadow(1)}
+  &:nth-child(2) { @include moz.root-shadow(2)}
+  &:nth-child(3) { @include moz.root-shadow(3)}
+}
+
+.scroll-x {
+  width: 100%;
+  overflow-x: auto;
+}
+moz-card {
+  width: 300px;
 }

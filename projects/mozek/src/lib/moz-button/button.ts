@@ -1,12 +1,15 @@
 // ============================================================================
-// monzar Button Styles
+// Mozek Button Component
 // ============================================================================
 // Defines base and variant styles for the Button component in the
-// monzar Design System. Buttons are key interactive elements that
+// Mozek Design System. Buttons are key interactive elements that
 // trigger actions and guide user flow.
 //
-// Customizable Props:
-// - color, model, full (width), disabled
+// Customizable Inputs:
+// - color: semantic or custom hex color
+// - model: visual variant
+// - full : full-width button
+// - disabled: interaction lock
 //
 // -----------------------------------------------------------------------------
 // Author: thecodemeor
@@ -22,88 +25,131 @@ import {
     ElementRef,
     Renderer2,
     inject,
-    booleanAttribute
+    booleanAttribute,
 } from '@angular/core';
+import { MozColorName, isHexColor } from '../resource/export';
+
+type MozButtonModel =
+    | 'fill'
+    | 'outline'
+    | 'tonal'
+    | 'elevated'
+    | 'flavor'
+    | 'glass'
+    | 'text';
 
 @Component({
-  selector: 'mon-button',
-  templateUrl: './button.html',
-  styleUrls: ['./button.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'moz-button',
+    templateUrl: './button.html',
+    styleUrls: ['./button.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MonButton {
-    @Input() model: 'fill' | 'outline' | 'tonal' | 'elevated' | 'flavor' | 'glass' | 'text' = 'fill';
-    @Input() color: 'default' | 'primary' | 'secondary' | 'success' | 'warn' | 'danger' | string = 'default';
+export class MozButton {
+    @Input() model: MozButtonModel = 'fill';
+    @Input() color: MozColorName | string = 'default';
+
     @Input({ transform: booleanAttribute }) full = false;
     @Input({ transform: booleanAttribute }) disabled = false;
 
-    private el = inject(ElementRef<HTMLElement>);
-    private renderer = inject(Renderer2);
+    private readonly el = inject(ElementRef<HTMLElement>);
+    private readonly renderer = inject(Renderer2);
 
+    // ---------------------------------------------------------------------------
+    // Host bindings
+    // ---------------------------------------------------------------------------
+    @HostBinding('class')
     get hostClasses(): string {
-        return [
-            'mon-btn', `mon-btn--${this.model}`,
-        ].filter(Boolean).join(' ');
+        return ['moz-btn', `moz-btn--${this.model}`].join(' ');
     }
 
+    @HostBinding('style.width')
+    get hostWidth(): string {
+        return this.full ? '100%' : 'fit-content';
+    }
+
+    @HostBinding('attr.aria-disabled')
+    get ariaDisabled(): 'true' | null {
+        return this.disabled ? 'true' : null;
+    }
+
+    @HostBinding('style.--moz-btn-color')
+    get hostBtnColorVar(): string {
+        return this.btnColor;
+    }
+
+    @HostBinding('style.--moz-btn-line-contrast')
+    get hostBtnLineContrastVar(): string {
+        return this.btnLineContrast;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Computed properties
+    // ---------------------------------------------------------------------------
     get btnColor(): string {
-        if (typeof this.color === 'string' && /^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/.test(this.color)) {
-            return this.color;
+        // Allow custom hex colors like #fff or #ff00aa
+        if (isHexColor(this.color)) {
+            return this.color as string;
         }
 
         switch (this.color) {
-            case 'primary': return 'var(--mon-color-primary)';
-            case 'success': return 'var(--mon-color-success)';
-            case 'warn':    return 'var(--mon-color-warning)';
-            case 'danger':  return 'var(--mon-color-danger)';
+            case 'primary':
+                return 'var(--moz-color-primary)';
+            case 'secondary':
+                return 'var(--moz-color-secondary)';
+            case 'success':
+                return 'var(--moz-color-success)';
+            case 'warn':
+                return 'var(--moz-color-warning)';
+            case 'danger':
+                return 'var(--moz-color-danger)';
             default:
-                if(
+                // 'default' semantic logic based on model
+                if (
                     this.model === 'outline' ||
                     this.model === 'elevated' ||
                     this.model === 'glass' ||
-                    this.model === 'flavor' || 
+                    this.model === 'flavor' ||
                     this.model === 'tonal'
                 ) {
-                    return 'var(--mon-color-text)';
+                    return 'var(--moz-color-text)';
                 } else {
-                    return 'var(--mon-color-primary)';
+                    return 'var(--moz-color-primary)';
                 }
         }
     }
 
     get btnLineContrast(): string {
-        if(this.model === 'flavor') {
-            if(this.color === 'default') {
-                return '5%'
-            } else {
-                return '10%'
-            }
+        const isDefault = this.color === 'default';
+
+        if (this.model === 'flavor') {
+            return isDefault ? '5%' : '10%';
         } else {
-            if(this.color === 'default') {
-                return '10%'
-            } else {
-                return '20%'
-            }
+        return isDefault ? '10%' : '20%';
         }
     }
 
-    @HostBinding('style.width') get hostWidth() {
-        return this.full ? '100%' : null;
-    }
+    // ---------------------------------------------------------------------------
+    // Ripple effect
+    // ---------------------------------------------------------------------------
 
-
-    // Ripple effect ============================================================= //
     @HostListener('click', ['$event'])
-    onClick(e: MouseEvent) {
-        if (this.disabled) { e.preventDefault(); e.stopImmediatePropagation(); return; }
+    onClick(e: MouseEvent): void {
+        if (this.disabled) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return;
+        }
         this.spawnRipple(e);
     }
-    private spawnRipple(event: MouseEvent) {
-        const button = this.el.nativeElement.querySelector('.buttonRipple') as HTMLElement;
+
+    private spawnRipple(event: MouseEvent): void {
+        const button = this.el.nativeElement.querySelector('.buttonRipple') as HTMLElement | null;
         if (!button) return;
 
         // remove old ripples
-        button.querySelectorAll('.ripple').forEach(r => this.renderer.removeChild(button, r));
+        button
+        .querySelectorAll('.ripple')
+        .forEach((r) => this.renderer.removeChild(button, r));
 
         const rect = button.getBoundingClientRect();
         const x = event.clientX - rect.left;
@@ -133,4 +179,9 @@ export class MonButton {
             this.renderer.removeChild(button, ripple);
         });
     }
+
+    // ---------------------------------------------------------------------------
+    // Helpers
+    // ---------------------------------------------------------------------------
+    
 }

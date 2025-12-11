@@ -1,7 +1,7 @@
-@use "styles" as mon;
+@use "styles" as moz;
 
 :host {
-    --mon-btn-border-size: 0.1rem;
+    --moz-btn-border-size: 0.1rem;
     
     display: inline-block;
 }
@@ -10,16 +10,16 @@
 /* --------------------------
    Button Base Styles
 -------------------------- */
-button.mon-btn {
-    @include mon.root-button();
+button.moz-btn {
+    @include moz.root-button();
     position: relative;
     width: 100%; height: fit-content;
     min-width: 7.5rem; min-height: 2.5rem;
-    padding: var(--mon-space-1) var(--mon-space-2);
-    border-radius: var(--mon-radius-default);
-    font-weight: var(--mon-font-weight-semibold);
+    padding: var(--moz-space-1) var(--moz-space-2);
+    border-radius: var(--moz-radius-default);
+    font-weight: var(--moz-font-weight-semibold);
     text-align: center;
-    transition: all var(--mon-duration) var(--mon-ease);
+    transition: all var(--moz-duration) var(--moz-ease);
     cursor: pointer;
 
     &:focus-visible {
@@ -39,63 +39,63 @@ button.mon-btn {
    Model Styles
 --------------------------- */
 /* Fill */
-.mon-btn--fill {
-    background: var(--mon-btn-bg, var(--mon-color-primary));
+.moz-btn--fill {
+    background: var(--moz-btn-bg, var(--moz-color-primary));
     color: white;
     border: none;
-    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) 60%, white);}
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary)) 60%, white);}
 }
 
 /* Outline */
-.mon-btn--outline {
+.moz-btn--outline {
     background: transparent;
-    color: var(--mon-btn-bg, var(--mon-color-primary));
-    border: solid var(--mon-btn-border-size) color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) var(--mon-fade-border), white);
-    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-hover), white);}
+    color: var(--moz-btn-bg, var(--moz-color-primary));
+    border: solid var(--moz-btn-border-size) color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary)) var(--moz-fade-border), white);
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary))  var(--moz-fade-hover), white);}
 }
 
 /* Tonal */
-.mon-btn--tonal {
-    background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) var(--mon-btn-line-contrast), white);
-    color: var(--mon-btn-bg, var(--mon-color-primary));
+.moz-btn--tonal {
+    background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary)) var(--moz-btn-line-contrast), white);
+    color: var(--moz-btn-bg, var(--moz-color-primary));
     border: none;
-    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) 30%, white);}
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary)) 30%, white);}
 }
 
 /* Flavor */
-.mon-btn--flavor {
-    background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) var(--mon-btn-line-contrast), white);
-    color: var(--mon-color-text);
-    border: solid var(--mon-btn-border-size) color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-border), white);
-    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary)) 20%, white);}
+.moz-btn--flavor {
+    background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary)) var(--moz-btn-line-contrast), white);
+    color: var(--moz-color-text);
+    border: solid var(--moz-btn-border-size) color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary))  var(--moz-fade-border), white);
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary)) 20%, white);}
 }
 
 /* Elevated */
-.mon-btn--elevated {
-    background: var(--mon-color-elevated);
-    color: var(--mon-btn-bg, var(--mon-color-primary));
+.moz-btn--elevated {
+    background: var(--moz-color-elevated);
+    color: var(--moz-btn-bg, var(--moz-color-primary));
     border: none;
-    @include mon.root-shadow(1);
-    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-hover), white);}
+    @include moz.root-shadow(1);
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary))  var(--moz-fade-hover), white);}
     &:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 0.5px 1px 0 rgba(60,64,67,.08);}
 }
 
 /* Glassmorphism */
-.mon-btn--glass {
+.moz-btn--glass {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur( 50px ); // frosted blur
     -webkit-backdrop-filter: blur( 50px ); // for Safari
-    color: var(--mon-btn-bg, var(--mon-color-primary));
-    border: solid var(--mon-btn-border-size) var(--mon-color-border-glassmorphism);
-    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-hover), white);}
+    color: var(--moz-btn-bg, var(--moz-color-primary));
+    border: solid var(--moz-btn-border-size) var(--moz-color-border-glassmorphism);
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary))  var(--moz-fade-hover), white);}
 }
 
 /* Text */
-.mon-btn--text {
+.moz-btn--text {
     background: transparent;
-    color: var(--mon-btn-bg, var(--mon-color-primary));
+    color: var(--moz-btn-bg, var(--moz-color-primary));
     border: none;
-    &:hover:not(:disabled) { background: color-mix(in srgb, var(--mon-btn-bg, var(--mon-color-primary))  var(--mon-fade-hover), white);}
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary))  var(--moz-fade-hover), white);}
 }
 
 
@@ -122,5 +122,5 @@ button.mon-btn {
 
 @media (prefers-reduced-motion: reduce) {
     .ripple { animation-duration: 0.001s;}
-    button.mon-button:active { transform: none;}
+    button.moz-button:active { transform: none;}
 }

@@ -1,0 +1,41 @@
+<!-- Skeleton -->
+@if(loading) {
+    <div class="moz-card-skeleton">
+        <div class="sk-line sk-title"></div>
+        @for (item of [].constructor(2); track $index) {
+            <div class="sk-line"></div>
+        }
+    </div>
+}
+
+
+@else {
+    <!-- Media slot -->
+    <div class="moz-card-media">
+        <ng-content select="moz-card-media"></ng-content>
+    </div>
+
+    <!-- Header -->
+    <div class="moz-card-header" [class]="headerClasses">
+        <ng-content select="moz-card-header"></ng-content>
+        <div class="moz-card-header-actions">
+            <ng-content select="moz-card-header-actions"></ng-content>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="moz-card-body" [class]="bodyClasses">
+        <ng-content select="moz-card-body"></ng-content>
+    </div>
+    <div class="moz-card-content">
+        <ng-content></ng-content>
+    </div>
+
+    <!-- Footer -->
+    <div class="moz-card-footer" [class]="footerClasses">
+        <ng-content select="moz-card-footer"></ng-content>
+        <div class="moz-card-footer-actions">
+            <ng-content select="moz-card-footer-actions"></ng-content>
+        </div>
+    </div>
+}

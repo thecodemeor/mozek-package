@@ -1,5 +1,5 @@
 // ============================================================================
-// monzar Global Styles
+// Mozek Global Styles
 // ============================================================================
 // Main entry for global styles. Re-exports tokens & utilities and
 // emits base element styles.
@@ -8,7 +8,7 @@
 // Version: 1.0
 // ============================================================================
 
-/* Re-export APIs (for @use "monzar-styles/styles" as mon;) */
+/* Re-export APIs (for @use "mozek-styles/styles" as moz;) */
 @forward "tokens";
 @forward "utilities";
 @forward "color-palette";
@@ -40,11 +40,11 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: var(--mon-color-background);
-    font-family: var(--mon-font-family);
-    font-size: var(--mon-font-size);
-    line-height: var(--mon-line-height);
-    color: var(--mon-color-text);
+    background: var(--moz-color-background);
+    font-family: var(--moz-font-family);
+    font-size: var(--moz-font-size);
+    line-height: var(--moz-line-height);
+    color: var(--moz-color-text);
 }
 
 *,

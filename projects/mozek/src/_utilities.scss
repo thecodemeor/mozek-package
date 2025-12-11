@@ -1,5 +1,5 @@
 // ============================================================================
-// monzar Utility Classes
+// Mozek Utility Classes
 // ============================================================================
 // Low-level, single-purpose helper classes used directly in templates.
 // Tiny, opinionated utilities (spacing, flex, text).
@@ -8,7 +8,7 @@
 // Version: 1.0
 // ============================================================================
 
-@use "tokens" as mon;
+@use "tokens" as moz;
 
 // ---------------------------------------------
 // Spacing Utilities
@@ -130,7 +130,7 @@ $spacing : (
 .text-ellipsis      { @include ellipsis;}
 
 // Color utility
-.primary            { color: var(--mon-color-primary) !important; }
+.primary            { color: var(--moz-color-primary) !important; }
 
 // ---------------------------------------------
 // Typography Utilities for Tags
@@ -138,54 +138,54 @@ $spacing : (
 h1, h2, h3, h4, h5, h6,
 p, ul, ol, dl, figure,
 blockquote, li, dd, dt,
-figcaption, a {
+figcaption, a, text {
     margin: 0;
     padding: 0;
     hyphens: manual;
     overflow-wrap: anywhere;
-    color: var(--mon-color-text);
+    color: var(--moz-color-text);
 }
 
 h1 {
-    font-weight: var(--mon-font-weight-bold);
+    font-weight: var(--moz-font-weight-bold);
     letter-spacing: -0.01em;
-    @include mon.mon-typography('title-lg');
+    @include moz.moz-typography('title-lg');
 }
 
 h2 {
-    font-weight: var(--mon-font-weight-semibold);
+    font-weight: var(--moz-font-weight-semibold);
     letter-spacing: -0.005em;
-    @include mon.mon-typography('title-md');
+    @include moz.moz-typography('title-md');
 }
 
-h3, .mon-text-currency {
-    font-weight: var(--mon-font-weight-semibold);
-    @include mon.mon-typography('title-sm');
+h3, .moz-text-currency {
+    font-weight: var(--moz-font-weight-semibold);
+    @include moz.moz-typography('title-sm');
 }
 
 h4 {
-    font-weight: var(--mon-font-weight-medium);
-    @include mon.mon-typography('label-lg');
+    font-weight: var(--moz-font-weight-medium);
+    @include moz.moz-typography('label-lg');
 }
 
 h5 {
-    font-weight: var(--mon-font-weight-medium);
-    @include mon.mon-typography('label-md');
+    font-weight: var(--moz-font-weight-medium);
+    @include moz.moz-typography('label-md');
 }
 
 h6 {
-    font-weight: var(--mon-font-weight-medium);
+    font-weight: var(--moz-font-weight-medium);
     text-transform: none;
-    @include mon.mon-typography('label-sm');
+    @include moz.moz-typography('label-sm');
 }
 
 p, ul, ol, dl, figure,
 blockquote, li, dd, dt,
-figcaption, a {
+figcaption, a, text {
     line-height: 1.05rem;
-    font-weight: var(--mon-font-weight-regular);
-    color: var(--mon-color-text);
-    @include mon.mon-typography('default');
+    font-weight: var(--moz-font-weight-regular);
+    color: var(--moz-color-text);
+    @include moz.moz-typography('default');
 }
 
 // ---------------------------------------------
@@ -199,13 +199,15 @@ figcaption, a {
 .pointer { cursor: pointer;}
 
 .disabled {
+    opacity: 0.3;
+    filter: grayscale(1);
     cursor: default;
-
+    pointer-events: none;
 }
 
 @mixin disabled {
-    filter: grayscale(1);
     opacity: 0.3;
-    pointer-events: none;
+    filter: grayscale(1);
     cursor: default;
+    pointer-events: none;
 }

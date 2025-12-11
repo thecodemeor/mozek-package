@@ -86,6 +86,7 @@ For Mozek Styles, you can use it in:
 
 I’ve listed all the main selectors and mixins I’ve prepared below,  
 so you can quickly see what’s available and how to use it.
+
 ---
 
 
@@ -159,6 +160,8 @@ These are the built-in palettes, each with shades **50 → 950**:
 | .text-ellipsis     | text: single-line & ellipsis   |
 | .primary           | text-color: primary            |
 
+and many more...
+
 ---
 
 ## 🎨 **Mixin Usage**
@@ -187,6 +190,9 @@ On top of the utility classes, I also prepared a set of mixins so you can style 
 ```
 ---
 
+
+<img src="./img/png/mozek_vector_green.png" width="45" alt="Mozek Logo" align="left"/>
+
 # Browser Support
 
 | ![Chrome](https://raw.github.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/main/src/safari/safari_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/main/src/edge/edge_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/main/src/opera/opera_48x48.png) |
@@ -195,7 +201,10 @@ On top of the utility classes, I also prepared a set of mixins so you can style 
 
 ---
 
-# 🎨 License
+
+<img src="./img/png/mozek_vector_amber.png" width="45" alt="Mozek Logo" align="left"/>
+
+# License
 
 **Mozek** is available under the terms of the ![MIT license](LICENSE).
 
