@@ -4,8 +4,13 @@
 # Mozek
 
 [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![npm](https://img.shields.io/npm/dm/mozek-angular.svg)](https://www.npmjs.com/package/mozek-angular)
-[![update](https://img.shields.io/badge/Mozek_Angular-v_0.0.1-blue)](CHANGELOG)
+[![npm](https://img.shields.io/badge/Downloads-Mozek-blue.svg)](https://www.npmjs.com/package/mozek-angular)
+[![update](https://img.shields.io/badge/Mozek_Angular-v_0.0.1-blue.svg)](CHANGELOG)
+
+[![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=flat&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 
 </div>
@@ -44,9 +49,6 @@ Once you have install,
 
 Below are the UI components currently packaged in **Mozek UI**.
 
-More components will be added over time as the design system grows.
-
-
 - **`<moz-button>`**
 - **`<moz-divider>`**
 - **`<moz-currency>`**
@@ -67,6 +69,9 @@ More components will be added over time as the design system grows.
 - **`<moz-accordion-item>`**
 - **`<moz-datepicker>`**
 - **`<moz-pagination>`**
+
+More components will be added over time as the design system grows.
+
 ---
 
 
