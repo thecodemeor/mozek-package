@@ -1,0 +1,32 @@
+$min: 1.75rem;
+$max: 2.5rem;
+
+:host {
+    --moz-amount-font-size:
+    clamp(
+        #{$min},
+        calc(#{$min} + (#{($max - $min)} * ((100vw - 20rem) / (90rem - 20rem)))),
+        #{$max}
+    );
+    
+    display: flex;
+    align-items: start;
+    gap: 0.4rem;
+}
+.moz-currency {
+    --moz-currency-font-size: calc(var(--moz-amount-font-size) * 0.6);
+
+    position: relative;
+    height: var(--moz-currency-font-size);
+    font-size: var(--moz-currency-font-size);
+    font-weight: var(--moz-font-weight-medium);
+    line-height: var(--moz-currency-font-size);
+    font-variant-numeric: tabular-nums;
+}
+
+.moz-amount {
+    height: var(--moz-amount-font-size);
+    font-size: var(--moz-amount-font-size);
+    font-weight: var(--moz-font-weight-semibold);
+    line-height: calc(var(--moz-amount-font-size) * 0.9);
+}

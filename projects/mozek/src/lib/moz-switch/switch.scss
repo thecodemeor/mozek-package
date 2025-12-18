@@ -1,0 +1,81 @@
+@use "styles" as moz;
+
+:host {
+    display: inline-flex;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+}
+
+.moz-switch {
+    /* Geometry */
+    --moz-switch-w: 2.75rem;
+    --moz-switch-h: 1.5rem;
+    --moz-switch-thumb: calc(var(--moz-switch-h) - 0.4rem);
+    --moz-switch-pad: 0.2rem;
+    --moz-switch-ease: ease-in;
+
+    /* Motion + state */
+    --thumb-distance: calc(var(--moz-switch-w) - var(--moz-switch-thumb) - (var(--moz-switch-pad) * 2));
+    --thumb-x: 0;
+
+    position: relative;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    outline: none;
+    @include moz.root-button();
+
+    &__track {
+        position: relative;
+        display: flex;
+        width: var(--moz-switch-w);
+        height: var(--moz-switch-h);
+        border-radius: var(--moz-radius-pill);
+        background: color-mix(in srgb, var(--moz-color-text) 35%, white);
+        box-shadow: inset 0 0 0 0.1rem color-mix(in srgb, var(--moz-color-text) 50%, white);
+        align-items: center;
+        transition:
+        background var(--moz-duration-fast) var(--moz-switch-ease),
+        box-shadow var(--moz-duration-fast) var(--moz-switch-ease);
+    }
+
+    &__thumb {
+        position: absolute;
+        top: var(--moz-switch-pad);
+        left: var(--moz-switch-pad);
+        width: var(--moz-switch-thumb);
+        height: var(--moz-switch-thumb);
+        border-radius: 999px;
+        background: var(--moz-color-surface);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+        will-change: transform;
+        transform: translateX(var(--thumb-x)) scale(1);
+        transition:
+        transform var(--moz-duration-fast) var(--moz-switch-ease),
+        background var(--moz-duration-fast) var(--moz-switch-ease),
+        box-shadow var(--moz-duration-fast) var(--moz-switch-ease);
+    }
+
+    /* Subtle press feedback without layout shift */
+    &:active .moz-switch__thumb {
+        transform: translateX(var(--thumb-x)) scale(.96);
+    }
+
+    /* Checked state */
+    &[aria-checked="true"] {
+        --thumb-x: var(--thumb-distance);
+    }
+    &[aria-checked="true"] .moz-switch__track {
+        background: color-mix(in srgb, var(--moz-switch-color) 50%, white);
+        box-shadow: inset 0 0 0 0.1rem color-mix(in srgb, var(--moz-switch-color) 70%, white);
+    }
+
+    /* Focus ring */
+    &:focus-visible .moz-switch__track {
+        box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--moz-color-primary) 50%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, var(--moz-color-primary) 50%, white);
+    }
+}

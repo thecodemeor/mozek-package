@@ -1,0 +1,92 @@
+@if(model==='ring') {
+    <svg class="container ring" viewBox="0 0 40 40" height="40" width="40">
+        <circle class="track" cx="20" cy="20" r="17.5" pathlength="100" stroke-width="5px" fill="none" />
+        <circle class="car" cx="20" cy="20" r="17.5" pathlength="100" stroke-width="5px" fill="none" />
+    </svg>
+}
+
+@if(model==='line_spinner') {
+    <div class="container lspinner">
+        @for(line of [].constructor(12); track line) { <div class="line"></div>}
+    </div>
+}
+
+@if(model==='hourglass') {
+    <div class="container hourglass">
+        <div class="half"></div>
+        <div class="half"></div>
+    </div>
+}
+
+@if(model==='zoomies') {
+    <div class="container zoomies"></div>
+}
+
+@if(model==='line_wobble') {
+    <div class="container line_wobble"></div>
+}
+
+@if(model==='infinity') {
+    <svg
+        class="container infinity" 
+        x="0px" y="0px"
+        viewBox="0 0 55 23.1"
+        height="23.1"
+        width="55"
+        preserveAspectRatio='xMidYMid meet'
+    >
+        <path
+            class="track" 
+            fill="none" 
+            stroke-width="4" 
+            pathlength="100"
+            d="M26.7,12.2c3.5,3.4,7.4,7.8,12.7,7.8c5.5,0,9.6-4.4,9.6-9.5C49,5,45.1,1,39.8,1c-5.5,0-9.5,4.2-13.1,7.8l-3.4,3.3c-3.6,3.6-7.6,7.8-13.1,7.8C4.9,20,1,16,1,10.5C1,5.4,5.1,1,10.6,1c5.3,0,9.2,4.5,12.7,7.8L26.7,12.2z"
+        />
+        <path
+            class="car" 
+            fill="none" 
+            stroke-width="4" 
+            pathlength="100"
+            d="M26.7,12.2c3.5,3.4,7.4,7.8,12.7,7.8c5.5,0,9.6-4.4,9.6-9.5C49,5,45.1,1,39.8,1c-5.5,0-9.5,4.2-13.1,7.8l-3.4,3.3c-3.6,3.6-7.6,7.8-13.1,7.8C4.9,20,1,16,1,10.5C1,5.4,5.1,1,10.6,1c5.3,0,9.2,4.5,12.7,7.8L26.7,12.2z"
+        />
+    </svg>
+}
+
+@if(model==='cardio') {
+    <svg
+        class="container cardio"
+        x="0px" 
+        y="0px"
+        viewBox="0 0 50 31.25"
+        height="31.25"
+        width="50"
+        preserveAspectRatio='xMidYMid meet'
+    >
+        <path 
+            class="track"
+            stroke-width="4" 
+            fill="none" 
+            pathlength="100"
+            d="M0.625 21.5 h10.25 l3.75 -5.875 l7.375 15 l9.75 -30 l7.375 20.875 v0 h10.25"
+        />
+        <path 
+            class="car"
+            stroke-width="4" 
+            fill="none" 
+            pathlength="100"
+            d="M0.625 21.5 h10.25 l3.75 -5.875 l7.375 15 l9.75 -30 l7.375 20.875 v0 h10.25"
+        />
+    </svg>
+}
+
+@if(model==='helix') {
+    <div class="container helix">
+        @for(line of [].constructor(6); track line) { <div class="slice"></div>}
+    </div>
+}
+
+@if(model==='newton') {
+    <div class="container newton">
+        @for(line of [].constructor(4); track line) { <div class="dot"></div>}
+    </div>
+}

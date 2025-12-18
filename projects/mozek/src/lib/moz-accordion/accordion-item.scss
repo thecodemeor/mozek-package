@@ -1,0 +1,122 @@
+@use "styles" as moz;
+
+:host {
+    --moz-accordion-border-size: 0.1rem;
+    --moz-accordion-outline-size: 0.2rem;
+    --moz-ease: ease;
+
+    display: block;
+    margin: 0; padding: 0 var(--moz-space-1);
+    background: var(--moz-color-surface);
+    border-left: solid var(--moz-accordion-border-size) var(--moz-color-border);
+    border-right: solid var(--moz-accordion-border-size) var(--moz-color-border);
+    overflow: hidden;
+    transition: all var(--moz-duration);
+
+    /* Header button */
+    .moz-accordion-item__header {
+        display: flex;
+        width: 100%; height: 2.5rem;
+        padding: 0 var(--moz-space-1, 0.5rem) 0 var(--moz-space-2, 0.75rem);
+        background: transparent;
+        border: none;
+        border-radius: var(--moz-radius-default);
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--moz-space-2, 1rem);
+        cursor: pointer;
+        text-align: left;
+        font: inherit;
+        color: var(--moz-color-text);
+        outline: none;
+        transition: all var(--moz-duration-fast) var(--moz-ease);
+            
+        &:active:not(:disabled) {
+            background: color-mix(in srgb, var(--moz-color-primary) 30%, white);
+        }
+
+        .moz-accordion-item__header-label {
+            @include moz.moz-typography('label-sm');
+        }
+
+        .moz-accordion-item__header-chevron {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: all var(--moz-duration-fast) var(--moz-ease);
+            moz-icon { transform: rotate(0deg);}
+        }
+    }
+
+    /* Panel body */
+    .moz-accordion-item__panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: all var(--moz-duration);
+        opacity: 0;
+        transform: translateY(-4px);
+
+        .moz-accordion-item__panel-inner {
+            padding: var(--moz-space-2, 0.5rem) var(--moz-space-3, 0.75rem) var(--moz-space-3, 0.75rem);
+        }
+
+        &--expanded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    &:nth-child(1) {
+        padding-top: var(--moz-space-1);
+        border-top: solid var(--moz-accordion-border-size) var(--moz-color-border);
+        border-radius: var(--moz-radius-lg, 1.75rem) var(--moz-radius-lg, 1.75rem) 0 0;
+    }
+    &:nth-last-child(1) {
+        padding-bottom: var(--moz-space-1);
+        border-bottom: solid var(--moz-accordion-border-size) var(--moz-color-border);
+        border-radius: 0 0 var(--moz-radius-lg, 1.75rem) var(--moz-radius-lg, 1.75rem);
+    }
+    &:hover{
+        .moz-accordion-item__header:not(:disabled) {
+            background: color-mix(in srgb, var(--moz-color-primary) 10%, white);
+        }
+    }
+
+
+    &.moz-accordion-item--expanded {
+        margin: var(--moz-space-1) 0;
+        padding: var(--moz-space-1);
+        border-radius: var(--moz-radius-lg, 1.75rem);
+        border: solid var(--moz-accordion-border-size) var(--moz-color-primary);
+        outline: solid var(--moz-accordion-outline-size) color-mix(in srgb, var(--moz-color-primary) 60%, white);
+
+        /* Header button */
+        .moz-accordion-item__header {
+            height: 2.7rem;
+            background: color-mix(in srgb, var(--moz-card-bg, var(--moz-color-primary)) 10%, white);
+            transition: all var(--moz-duration-fast) var(--moz-ease);
+                
+            &:active:not(:disabled) {
+                background: color-mix(in srgb, var(--moz-color-primary) 30%, white);
+            }
+
+            .moz-accordion-item__header-chevron {
+                transition: all var(--moz-duration-fast) var(--moz-ease);
+                moz-icon { transform: rotate(180deg);}
+            }
+        }
+    }
+
+    &.moz-accordion-item--before-expanded {
+        padding-bottom: var(--moz-space-1);
+        border-bottom: solid var(--moz-accordion-border-size) var(--moz-color-border);
+        border-bottom-left-radius: var(--moz-radius-lg, 1.75rem);
+        border-bottom-right-radius: var(--moz-radius-lg, 1.75rem);
+    }
+    &.moz-accordion-item--after-expanded {
+        padding-top: var(--moz-space-1);
+        border-top: solid var(--moz-accordion-border-size) var(--moz-color-border);
+        border-top-left-radius: var(--moz-radius-lg, 1.75rem);
+        border-top-right-radius: var(--moz-radius-lg, 1.75rem);
+    }
+}

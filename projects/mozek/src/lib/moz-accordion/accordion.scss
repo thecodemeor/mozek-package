@@ -1,0 +1,11 @@
+@use "styles" as moz;
+
+:host {
+    display: block;
+}
+
+.moz-accordion {
+    display: flex;
+    padding: 0 0.2rem;
+    flex-direction: column;
+}

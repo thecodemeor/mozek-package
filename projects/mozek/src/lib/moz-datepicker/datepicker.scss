@@ -1,0 +1,209 @@
+@use "styles" as moz;
+
+:host {
+    --moz-datepicker-border-size: 0.1rem;
+    --moz-datepicker-outline-size: 0.2rem;
+    --moz-ease: ease-in;
+
+    display: inline-flex;
+    width: 15rem;
+    padding: 0 var(--moz-datepicker-outline-size);
+    flex-direction: column;
+}
+
+.moz-datepicker {
+    --moz-datepicker-gap: var(--moz-space-1);
+    --moz-datepicker-px: var(--moz-space-3);
+    --moz-datepicker-corner: var(--moz-radius-default);
+
+    position: relative;
+    width: 100%;
+
+    /* top label */
+    &__label {
+        margin: 0 0 .2rem var(--moz-space-3);
+        color: color-mix(in srgb, var(--moz-color-text) 80%, white);
+        @include moz.moz-typography('label-sm');
+    }
+
+    &__trigger {
+        @include moz.root-button();
+        @include moz.root-border();
+        position: relative;
+        display: flex;
+        width: 100%;
+        min-height: 2.5rem;
+        padding: 0 var(--moz-space-1) 0 var(--moz-space-3);
+        border-radius: var(--moz-datepicker-corner);
+        background: var(--moz-color-surface);
+        justify-content: space-between;
+        align-items: center;
+        transition: all var(--moz-duration-fast) var(--moz-ease);
+        
+        &.focus {
+            border-color: var(--moz-color-primary);
+            outline: solid var(--moz-datepicker-outline-size) color-mix(in srgb, var(--moz-color-primary)  var(--moz-fade-outline), white);
+        }
+        
+        moz-icon {
+            transition: all var(--moz-duration) var(--moz-ease);
+        }
+    }
+
+    &--fill .moz-datepicker__trigger {
+        border: none;
+        background: color-mix(in srgb, var(--moz-color-primary) 10%, white);
+    }
+
+    &__value {
+        color: var(--moz-color-text);
+        @include moz.moz-typography('default');
+    }
+
+    /* Calendar dropdown panel */
+    &__panel {
+        @include moz.root-shadow(2);
+        @include moz.root-border();
+        position: absolute;
+        left: 0;
+        display: flex;
+        margin-top: .5rem;
+        padding: var(--moz-space-1);
+        background: var(--moz-color-surface);
+        border-radius: var(--moz-datepicker-corner);
+        border-width: 1px;
+        overflow-y: auto;
+        z-index: 10;
+        transform-origin: 50% -5%;
+        transform: scaleY(0);
+        flex-direction: column;
+        gap: var(--moz-space-1);
+        transition: all var(--moz-duration-fast) var(--moz-ease);
+        &.dropdown { transform: scaleY(1);}
+    }
+
+    .moz-calendar {
+        display: flex;
+        width: 18rem;
+        flex-direction: column;
+        gap: var(--moz-space-2);
+
+        &-header {
+            --moz-calendar-header-gap: 0.2rem;
+
+            display: flex;
+            height: auto;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--moz-space-1);
+
+            &-pick_month {
+                height: 100%;
+                @include moz.moz-typography('label-md');
+            }
+            &-pick_year {
+                display: flex;
+                height: 3.5rem;
+                aspect-ratio: 1.2 / 1;
+                padding: var(--moz-calendar-header-gap);
+                border: solid 1px var(--moz-color-border);
+                border-radius: var(--moz-radius-sm);
+                background-color: var(--moz-color-surface);
+                box-shadow: rgba(255, 255, 255, 0.8) 2px 2px 0px -1px inset, rgba(192, 192, 192, 0.35) -2px -2px 4px 0px inset;
+                flex-direction: column;
+                align-items: center;
+                gap: var(--moz-calendar-header-gap);
+                transition: all 0.3s;
+                cursor: pointer;
+                @include moz.moz-typography('label-sm');
+
+                &:hover {
+                    scale: 1.01;
+                    &.moz-calendar-header-year_label { scale: 1.05;}
+                }
+            }
+            &-card {
+                flex: 1 1 0;
+                width: 100%;
+                border-radius:
+                    calc(var(--moz-radius-sm) -  var(--moz-calendar-header-gap))
+                    calc(var(--moz-radius-sm) -  var(--moz-calendar-header-gap))
+                    0.3rem 0.3rem;
+                background-color: var(--moz-color-primary);
+            }
+            &-year_label {
+                display: flex;
+                width: 100%; height: 1.8rem;
+                justify-content: center;
+                align-items: center;
+                font-weight: var(--moz-font-weight-medium);
+                color: var(--moz-color-text);
+                transition: all 0.3s;
+                @include moz.moz-typography('label-sm');
+            }
+        }
+
+        &-month_nav, &-year_nav {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--moz-space-2);
+
+            &-label {
+                font-weight: var(--moz-font-weight-semibold);
+            }
+        }
+
+        &-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            margin-top: var(--moz-space-1);
+            color: var(--moz-color-text-muted);
+            text-align: center;
+            gap: var(--moz-space-1);
+            @include moz.moz-typography('label-sm');
+        }
+
+        &-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: var(--moz-space-1);
+            @include moz.moz-typography('default');
+
+            &-cell {
+                position: relative;
+                display: inline-flex;
+                height: 2rem;
+                border: none;
+                color: var(--moz-color-text, #111827);
+                background: transparent;
+                border-radius: var(--moz-radius-sm);
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all var(--moz-duration);
+                @include moz.moz-typography('default');
+
+                &:hover:not(.moz-calendar-days-cell--selected) {
+                    background: color-mix(in srgb, var(--moz-color-primary)  var(--moz-fade-hover), white);
+                }
+
+                &--outside { color: color-mix(in srgb, var(--moz-color-text)  var(--moz-fade-placeholder), white);}
+                &--today {
+                    box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--moz-color-danger)  var(--moz-fade-border), white);
+                    border-radius: var(--moz-radius-sm);
+                }
+                &--selected {
+                    color: var(--moz-color-surface);
+                    background: var(--moz-color-primary);
+                }
+            }
+        }
+        &-months, &-years {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--moz-space-1);
+        }
+    }
+}

@@ -1,0 +1,137 @@
+@use "styles" as moz;
+
+:host {
+    --moz-select-border-size: 0.1rem;
+    --moz-select-outline-size: 0.2rem;
+    --moz-ease: ease-in;
+
+    display: inline-flex;
+    width: 15rem;
+    padding: 0 var(--moz-select-outline-size);
+    flex-direction: column;
+}
+
+.moz-select {
+    --moz-select-gap: var(--moz-space-1);
+    --moz-select-px: var(--moz-space-3);
+    --moz-select-corner: var(--moz-radius-default);
+
+    position: relative;
+    width: 100%;
+
+    /* top label */
+    &__label {
+        margin: 0 0 .2rem var(--moz-space-3);
+        color: color-mix(in srgb, var(--moz-color-text) 80%, white);
+        @include moz.moz-typography('label-sm');
+    }
+
+    &__trigger {
+        @include moz.root-button();
+        @include moz.root-border();
+        position: relative;
+        display: flex;
+        width: 100%;
+        min-height: 2.5rem;
+        padding: 0 var(--moz-space-1) 0 var(--moz-space-3);
+        border-radius: var(--moz-select-corner);
+        background: var(--moz-color-surface);
+        justify-content: space-between;
+        align-items: center;
+        transition: all var(--moz-duration-fast) var(--moz-ease);
+
+        &.focus {
+            border-color: var(--moz-color-primary);
+            outline: solid var(--moz-select-outline-size)
+                color-mix(in srgb, var(--moz-color-primary) var(--moz-fade-outline), white);
+        }
+
+        moz-icon {
+            transition: all var(--moz-duration-fast) var(--moz-ease);
+        }
+    }
+
+    &--fill .moz-select__trigger {
+        border: none;
+        background: color-mix(in srgb, var(--moz-color-primary) 10%, white);
+
+        &.placeholder {
+            color: color-mix(in srgb, var(--moz-color-primary) 80%, white);
+        }
+    }
+
+    &__value {
+        color: var(--moz-color-text);
+        @include moz.moz-typography('default');
+
+        &.placeholder {
+            color: color-mix(in srgb, var(--moz-color-primary) var(--moz-fade-placeholder), white);
+        }
+    }
+
+    &__help {
+        position: absolute;
+        bottom: calc((1rem + 0.2rem) * -1);
+        left: var(--moz-space-3);
+        color: color-mix(in srgb, var(--moz-color-text) 70%, white);
+        @include moz.moz-typography('footer');
+    }
+
+    &__panel {
+        @include moz.root-shadow(2);
+        @include moz.root-border();
+        position: absolute;
+        display: flex;
+        width: 100%;
+        max-height: 14rem;
+        margin-top: .5rem;
+        padding: var(--moz-space-1);
+        background: var(--moz-color-surface);
+        border-radius: var(--moz-select-corner);
+        border-width: 1px;
+        overflow-y: auto;
+        z-index: 10;
+        transform-origin: 50% -5%;
+        transform: scaleY(0);
+        flex-direction: column;
+        gap: var(--moz-space-1);
+        transition: all var(--moz-duration-fast) var(--moz-ease);
+
+        &.dropdown {
+            transform: scaleY(1);
+        }
+    }
+
+    &__option {
+        padding: .5rem .75rem;
+        border-radius: var(--moz-radius-sm);
+        transition: all var(--moz-duration);
+        cursor: pointer;
+        @include moz.moz-typography('default');
+
+        &:hover {
+            background: color-mix(in srgb, var(--moz-color-text) 6%, transparent);
+        }
+        &.is-selected {
+            color: var(--moz-color-primary);
+            font-weight: var(--moz-font-weight-semibold);
+        }
+        &.is-disabled {
+            opacity: .5;
+            background-color: var(--moz-color-surface) !important;
+            filter: grayscale(100);
+            cursor: unset;
+        }
+    }
+
+    &.is-errored .moz-select__trigger {
+        border: solid calc(var(--moz-select-border-size) + 0.05rem) var(--moz-color-danger);
+        outline: solid var(--moz-select-outline-size)
+        color-mix(in srgb, var(--moz-color-danger) 30%, white);
+        background: color-mix(in srgb, var(--moz-color-danger) 10%, white);
+
+        .placeholder {
+            color: color-mix(in srgb, var(--moz-color-danger) 80%, white);
+        }
+    }
+}

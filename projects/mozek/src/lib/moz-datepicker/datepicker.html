@@ -1,0 +1,150 @@
+<div class="moz-datepicker"
+    [ngClass]="modelClass"
+    [class.disabled]="disabled">
+
+    <!-- top label -->
+    @if (label) {
+        <div class="moz-datepicker__label">{{ label }}</div>
+    }
+
+    <!-- trigger -->
+    <button
+        #trigger
+        type="button"
+        class="moz-datepicker__trigger"
+        [class.focus]="open"
+        [attr.aria-expanded]="open"
+        [disabled]="disabled"
+        (click)="togglePanel($event)">
+        <span class="moz-datepicker__value">{{ displayValue ? (displayValue | date:'d MMM yyyy') : 'Choose a date' }}</span>
+        <moz-icon>calendar</moz-icon>
+    </button>
+
+    @if (open) {
+        <div class="moz-datepicker__backdrop"></div>
+    }
+
+    <!-- Dropdown calendar -->
+    <div
+        id="dropdown"
+        class="moz-datepicker__panel"
+        [class.dropdown]="open"
+        tabindex="-1">
+        <div class="moz-calendar">
+            <!-- Header (month / year pickers) -->
+            <header class="moz-calendar-header">
+                <moz-button
+                    class="moz-calendar-header-pick_month"
+                    model="text"
+                    (click)="setView('month')">
+                    {{ selectedMonth }}
+                </moz-button>
+
+                <div class="moz-calendar-header-pick_year"
+                    (click)="setView('year')"
+                    aria-label="Pick year">
+                    <div class="moz-calendar-header-card"></div>
+                    <span class="moz-calendar-header-year_label">{{ selectedYear }}</span>
+                </div>
+            </header>
+
+            @if (viewMode === 'date') {
+                <!-- Month navigation -->
+                <div class="moz-calendar-month_nav">
+                    <moz-button-icon (click)="prevMonth()" aria-label="Previous month">
+                        <moz-icon>arrow_chevron_left</moz-icon>
+                    </moz-button-icon>
+
+                    <div class="moz-calendar-month_nav-label">
+                        {{ selectedMonth }} {{ viewYear }}
+                    </div>
+
+                    <moz-button-icon (click)="nextMonth()" aria-label="Next month">
+                        <moz-icon>arrow_chevron_right</moz-icon>
+                    </moz-button-icon>
+                </div>
+
+                <!-- Weekday labels -->
+                <div class="moz-calendar-weekdays">
+                    @for (label of weekdayLabels; track $index) {
+                        <h6>{{ label }}</h6>
+                    }
+                </div>
+
+                <!-- Calendar grid (days) -->
+                <div class="moz-calendar-days">
+                    @for (cell of calendarCells; track $index) {
+                        <button
+                            type="button"
+                            class="moz-calendar-days-cell"
+                            [class.moz-calendar-days-cell--outside]="!cell.inCurrentMonth"
+                            [class.moz-calendar-days-cell--today]="cell.isToday"
+                            [class.moz-calendar-days-cell--selected]="cell.isSelected"
+                            [disabled]="cell.disabled"
+                            (click)="onSelectCell(cell)" >
+                            <span>{{ cell.date.getDate() }}</span>
+                        </button>
+                    }
+                </div>
+            } @else if (viewMode === 'month') {
+                <div class="moz-calendar-months">
+                    @for (m of monthCells; track $index) {
+                        <moz-button
+                            [model]="m.index === viewMonth ? 'fill' : 'tonal'"
+                            (click)="onMonthCellClick(m)"
+                            color="primary"
+                            full
+                        >
+                            {{ m.label }}
+                        </moz-button>
+                    }
+                </div>
+            } @else if (viewMode === 'year') {
+                <!-- <div class="moz-calendar-years">
+                    @for (y of yearCells; track $index) {
+                        <moz-button
+                            [model]="y.year === viewYear ? 'fill' : 'tonal'"
+                            (click)="onYearCellClick(y)"
+                            color="primary"
+                            full
+                        >
+                            {{ y.year }}
+                        </moz-button>
+                    }
+                </div> -->
+
+                <div class="moz-calendar-year_nav">
+                    <moz-button-icon
+                    (click)="prevYearPage()"
+                    aria-label="Previous years">
+                        <moz-icon>arrow_chevron_left</moz-icon>
+                    </moz-button-icon>
+
+                    <div class="moz-calendar-year_nav-label">
+                        {{ yearPageStart }} - {{ yearPageStart + yearPageSize - 1 }}
+                    </div>
+
+                    <moz-button-icon
+                    (click)="nextYearPage()"
+                    aria-label="Next years">
+                        <moz-icon>arrow_chevron_right</moz-icon>
+                    </moz-button-icon>
+                </div>
+
+                <div class="moz-calendar-years">
+                    @for (y of yearCells; track $index) {
+                        <moz-button
+                            [model]="y.year === viewYear ? 'fill' : 'tonal'"
+                            (click)="onYearCellClick(y)"
+                            color="primary"
+                            full
+                        >
+                            {{ y.year }}
+                        </moz-button>
+                    }
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<!-- Header button: uses projected [mozAccordionHeader] as label -->
+<button
+    type="button"
+    class="moz-accordion-item__header"
+    [class.disabled]="disabled"
+    [attr.aria-expanded]="expanded"
+    [attr.aria-controls]="panelId"
+    [disabled]="disabled"
+    (click)="onHeaderClick()"
+    (keydown)="onHeaderKeydown($event)"
+>
+    <span class="moz-accordion-item__header-label">
+        <!-- Any element with the mozAccordionHeader attribute -->
+        <ng-content select="[mozAccordionHeader]"></ng-content>
+    </span>
+
+    <span class="moz-accordion-item__header-chevron">
+        <moz-icon>arrow_chevron_down</moz-icon>
+    </span>
+</button>
+
+<!-- Panel body: everything that is NOT [mozAccordionHeader] -->
+<div
+    class="moz-accordion-item__panel"
+    [attr.id]="panelId"
+    [style.maxHeight]="expanded ? '1000px' : '0'"
+    [class.moz-accordion-item__panel--expanded]="expanded"
+>
+    <div class="moz-accordion-item__panel-inner">
+        <ng-content></ng-content>
+    </div>
+</div>

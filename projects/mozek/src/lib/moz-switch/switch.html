@@ -1,0 +1,19 @@
+<button
+    type="button"
+    class="moz-switch"
+    [attr.aria-checked]="checked"
+    [disabled]="disabled"
+    (click)="toggle()"
+    (blur)="onTouched()"
+    [style.--moz-switch-color]="
+        color === 'primary' ? 'var(--moz-color-primary)' :
+        color === 'secondary' ? 'var(--moz-color-secondary)' :
+        color === 'success' ? 'var(--moz-color-success)' :
+        color === 'warn'    ? 'var(--moz-color-warning)' :
+        color === 'danger'  ? 'var(--moz-color-danger)' :
+                            'var(--moz-color-text)'
+    ">
+    <span class="moz-switch__track">
+        <span class="moz-switch__thumb"></span>
+    </span>
+</button>

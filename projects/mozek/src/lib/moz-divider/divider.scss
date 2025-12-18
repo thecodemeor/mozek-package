@@ -1,0 +1,67 @@
+@use "styles" as moz;
+
+:host {
+    --moz-divider-color: color-mix(in srgb, var(--moz-color-text) var(--moz-fade-placeholder), white);
+    margin: var(--moz-space-1) 0;
+}
+
+.moz-divider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: var(--moz-font-weight-semibold);
+    color: var(--moz-divider-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    @include moz.moz-typography('caption');
+
+    &::before,
+    &::after {
+        content: "";
+        flex: 1;
+        border-top: var(--moz-divider-thickness) solid var(--moz-divider-color);
+        margin: 0;
+    }
+    &::before { margin-right: var(--moz-space-3);}
+    &::after { margin-left: var(--moz-space-3);}
+
+    /* When no label, just a plain line */
+    &:empty::before { margin: 0;}
+    &:empty::after { content: none;}
+
+    &--dashed::before,
+    &--dashed::after {
+        border-style: dashed;
+    }
+
+    &--pill::before,
+    &--pill::after {
+        border-radius: var(--moz-radius-pill);
+    }
+
+    /* alignment modifiers */
+    &--align-start {
+        justify-content: flex-start;
+        &::before { content: none;}
+    }
+    &--align-end {
+        justify-content: flex-end;
+        &::after { content: none;}
+    }
+
+    /* vertical orientation */
+    &--vertical {
+        width: auto;
+        height: 100%;
+        min-height: 1rem;
+        flex-direction: column;
+        &::before, &::after {
+            border-top: none;
+            border-left: var(--moz-divider-thickness) solid var(--moz-divider-color);
+            margin: var(--moz-space-2) 0;
+            flex: 1;
+        }
+    }
+}

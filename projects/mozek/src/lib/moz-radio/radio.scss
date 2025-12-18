@@ -1,0 +1,94 @@
+@use "styles" as moz;
+
+:host {
+    --moz-ease: ease;
+    display: inline-block;
+}
+
+.moz-radio {
+    --moz-radio-size: 1.15rem;
+    --moz-radio-color: var(--moz-color-text);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--moz-space-2);
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    transition: color var(--moz-duration) var(--moz-ease);
+
+    &--start {
+        flex-direction: row-reverse;
+    }
+}
+
+.moz-radio__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.moz-radio__control {
+    width: var(--moz-radio-size);
+    height: var(--moz-radio-size);
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+    position: relative;
+    transition: transform var(--moz-duration) var(--moz-ease);
+}
+
+.moz-radio__svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* SVG parts */
+.ring {
+    stroke: var(--moz-radio-color);
+    transition: stroke var(--moz-duration) var(--moz-ease);
+}
+
+.dot {
+    fill: transparent;
+    transform-origin: center;
+    transform: scale(0);
+    transition:
+        transform var(--moz-duration-slow, 400ms) var(--moz-ease),
+        fill var(--moz-duration) var(--moz-ease);
+}
+
+.moz-radio__input:focus-visible + .moz-radio__control {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
+}
+
+/* Checked state */
+.moz-radio__input:checked + .moz-radio__control .ring {
+    stroke: var(--moz-radio-color);
+}
+
+.moz-radio__input:checked + .moz-radio__control .dot {
+    fill: var(--moz-radio-color);
+    transform: scale(1);
+}
+
+/* Hover feedback */
+.moz-radio:not(.moz-radio--disabled):hover .ring {
+    // stroke: var(--moz-radio-color);
+    stroke: color-mix(in srgb, var(--moz-radio-color)  80%, black);
+}
+
+/* Label */
+.moz-radio__label {
+    color: var(--moz-color-text);
+    @include moz.moz-typography('default');
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .dot {
+        transition: none;
+    }
+}

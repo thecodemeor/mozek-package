@@ -1,0 +1,45 @@
+<label class="moz-checkbox"
+    [class.disabled]="disabled"
+    [class.moz-checkbox--end]="position === 'end'">
+
+    <input
+        #native
+        type="checkbox"
+        class="moz-checkbox__input"
+        [checked]="checked"
+        [indeterminate]="indeterminate"
+        [disabled]="disabled"
+        (change)="_onNativeChange($event)"
+        (focus)="focused = true"
+        (blur)="focused = false"
+        [attr.aria-checked]="indeterminate ? 'mixed' : (checked ? 'true' : 'false')"
+        role="checkbox"
+    />
+
+    <span class="moz-checkbox__box"
+            [style.--moz-checkbox-color]="checkboxColor">
+
+        <!-- Animated SVG icon -->
+        <svg class="moz-checkbox__svg" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- check path (draws from 0->1) -->
+            <path class="moz-checkbox__check"
+                    d="M6 12.5 L10 16.5 L18 8.5"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    pathLength="1" />
+            <!-- dash path (center minus) -->
+            <path class="moz-checkbox__dash"
+                    d="M6 12 H18"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    pathLength="1" />
+        </svg>
+    </span>
+
+    <span class="moz-checkbox__label"><ng-content></ng-content></span>
+</label>

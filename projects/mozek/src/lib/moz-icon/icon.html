@@ -1,0 +1,10 @@
+<span #slot style="display:none"><ng-content></ng-content></span>
+<!-- Hidden slot to capture projected text like: <moz-icon>home</moz-icon> -->
+
+<!-- Visible SVG container -->
+<span
+    class="moz-icon"
+    [style.--moz-icon-color]="colorVar"
+    [style.--moz-icon-size]="iconSize"
+    [innerHTML]="safeSvg">
+</span>

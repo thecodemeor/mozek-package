@@ -27,7 +27,7 @@ import {
     inject,
     booleanAttribute,
 } from '@angular/core';
-import { MozColorName, isHexColor } from '../resource/export';
+import { MozColorName, isHexColor } from '../helper/export';
 
 type MozButtonModel =
     | 'fill'
@@ -86,24 +86,17 @@ export class MozButton {
     // Computed properties
     // ---------------------------------------------------------------------------
     get btnColor(): string {
-        // Allow custom hex colors like #fff or #ff00aa
         if (isHexColor(this.color)) {
             return this.color as string;
         }
 
         switch (this.color) {
-            case 'primary':
-                return 'var(--moz-color-primary)';
-            case 'secondary':
-                return 'var(--moz-color-secondary)';
-            case 'success':
-                return 'var(--moz-color-success)';
-            case 'warn':
-                return 'var(--moz-color-warning)';
-            case 'danger':
-                return 'var(--moz-color-danger)';
+            case 'primary': return 'var(--moz-color-primary)';
+            case 'secondary': return 'var(--moz-color-secondary)';
+            case 'success': return 'var(--moz-color-success)';
+            case 'warn': return 'var(--moz-color-warning)';
+            case 'danger': return 'var(--moz-color-danger)';
             default:
-                // 'default' semantic logic based on model
                 if (
                     this.model === 'outline' ||
                     this.model === 'elevated' ||

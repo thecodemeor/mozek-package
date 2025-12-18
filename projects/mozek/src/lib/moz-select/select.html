@@ -1,0 +1,50 @@
+<div class="moz-select"
+    [ngClass]="modelClass"
+    [class.is-errored]="isErrored">
+
+    <!-- top label -->
+    @if (label) {
+        <div class="moz-select__label">{{ label }}</div>
+    }
+
+    <!-- trigger -->
+    <button
+        #trigger
+        type="button"
+        class="moz-select__trigger"
+        [class.focus]="open"
+        [attr.aria-expanded]="open"
+        [disabled]="disabled"
+        (click)="togglePanel()">
+        <span class="moz-select__value" [class.placeholder]="displayLabel === ''">
+            {{ displayLabel || placeholder }}
+        </span>
+        <moz-icon [style.rotate]="open ? '-180deg' : '0deg'">arrow_chevron_down</moz-icon>
+    </button>
+
+    <!-- helper / error -->
+    <div class="moz-select__help" [style.color]="isErrored ? 'var(--moz-color-danger)' : 'var(--moz-color-text)'">
+        @if (isErrored) { {{ error }} }
+        @else { {{ hint }} }
+    </div>
+
+    <!-- menu -->
+    <div
+        id="dropdown"
+        class="moz-select__panel"
+        [class.dropdown]="open"
+        tabindex="-1"
+        role="listbox">
+        @for (opt of options; track $index) {
+            <div class="moz-select__option"
+                [class.is-disabled]="opt.disabled"
+                [class.is-selected]="isSelected(opt)"
+                (click)="selectOption(opt)">
+                {{ opt.label }}
+            </div>
+        }
+        @if (!options.length) {
+            <div class="moz-select__option is-disabled">No options</div>
+        }
+    </div>
+</div>

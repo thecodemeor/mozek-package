@@ -4,6 +4,10 @@
 # Mozek
 
 [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![npm](https://img.shields.io/npm/dm/mozek-angular.svg)](https://www.npmjs.com/package/mozek-angular)
+[![update](https://img.shields.io/badge/Mozek_Angular-v_0.0.1-blue)](CHANGELOG)
+
+
 </div>
 
 **Mozek** is my lightweight SCSS toolkit and UI library, designed to make styling fun, fast, and consistent.  
@@ -11,7 +15,7 @@
 I personally enjoy using clean, simple, and not over-engineered. Therefore every **Mozek** component and class is designed based on my own preferences for clarity, spacing, and feel.
 
 <p>I built it for myself at first (because I got tired of rewriting spacing, colors, and typography),  
-but now *you* can enjoy it too.</p>
+but now **you** can enjoy it too.</p>
 
 ---
 
@@ -23,7 +27,7 @@ Install **Mozek** from npm with the following command.
 ---
 
 
-<img src="./img/png/mozek_vector_red.png" width="45" alt="Mozek Logo" align="left"/>
+<img src="./img/png/mozek_vector_red.png" width="40" alt="Mozek Logo" align="left"/>
 
 # Mozek UI
 
@@ -66,7 +70,7 @@ More components will be added over time as the design system grows.
 ---
 
 
-<img src="./img/png/mozek_vector_blue.png" width="45" alt="Mozek Logo" align="left"/>
+<img src="./img/png/mozek_vector_blue.png" width="40" alt="Mozek Logo" align="left"/>
 
 # Mozek Styles
 
@@ -191,7 +195,7 @@ On top of the utility classes, I also prepared a set of mixins so you can style 
 ---
 
 
-<img src="./img/png/mozek_vector_green.png" width="45" alt="Mozek Logo" align="left"/>
+<img src="./img/png/mozek_vector_green.png" width="40" alt="Mozek Logo" align="left"/>
 
 # Browser Support
 
@@ -202,10 +206,10 @@ On top of the utility classes, I also prepared a set of mixins so you can style 
 ---
 
 
-<img src="./img/png/mozek_vector_amber.png" width="45" alt="Mozek Logo" align="left"/>
+<img src="./img/png/mozek_vector_amber.png" width="40" alt="Mozek Logo" align="left"/>
 
 # License
 
-**Mozek** is available under the terms of the ![MIT license](LICENSE).
+**Mozek** is available under the terms of the [MIT license](LICENSE).
 
 Whether you're building **Mozek** or building something with **Mozek** — have fun creating! 🥾

@@ -22,7 +22,7 @@ import {
     HostBinding,
     Directive
 } from '@angular/core';
-import { MozColorName, isHexColor } from '../resource/export';
+import { MozColorName, isHexColor } from '../helper/export';
 
 type MozCardModel =
     | 'fill'

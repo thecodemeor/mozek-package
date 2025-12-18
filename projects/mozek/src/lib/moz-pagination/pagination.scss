@@ -1,0 +1,124 @@
+@use "styles" as moz;
+
+:host {
+    display: inline-flex;
+    width: 100%;
+    justify-content: flex-end;
+    font-family: inherit;
+}
+
+.moz-pagination {
+    display: inline-flex;
+    height: 2rem;
+    align-items: center;
+    gap: var(--moz-space-3);
+    padding: 0;
+    color: var(--moz-color-text);
+    @include moz.moz-typography('footer');
+
+    &__page-size {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--moz-space-1);
+    }
+
+    &__page-size-label {
+        color: color-mix(in srgb, var(--moz-color-text) 75%, white);
+    }
+
+    &__page-size-select {
+        min-width: 3.5rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: var(--moz-radius-sm);
+        border: solid 1px var(--moz-color-border);
+        background: var(--moz-color-surface);
+        color: var(--moz-color-text);
+        @include moz.moz-typography('footer');
+    }
+
+    &__controls {
+        display: inline-flex;
+        height: 100%;
+        align-items: center;
+        gap: var(--moz-space-1);
+    }
+
+    &__btn {
+        @include moz.root-button();
+        display: inline-flex;
+        width: 2rem;
+        height: 2rem;
+        border-radius: var(--moz-radius-pill);
+        border: none;
+        justify-content: center;
+        align-items: center;
+        background: color-mix(in srgb, var(--moz-color-text) var(--moz-fade-hover), white);
+        cursor: pointer;
+        transition: all var(--moz-duration);
+
+        moz-icon {
+            display: block;
+        }
+
+        &:hover:not(:disabled) {
+            background: var(--moz-pagination-color);
+            transition: all var(--moz-duration);
+            svg path {
+                stroke: var(--moz-color-surface);
+                transition: all var(--moz-duration);
+            }
+        }
+
+        &:disabled {
+            opacity: 0.35;
+            filter: grayscale(100);
+            cursor: default;
+        }
+    }
+
+    &__pages {
+        display: inline-flex;
+        height: 100%;
+        padding: 0.3rem;
+        border: color-mix(in srgb, var(--moz-color-text) var(--moz-fade-outline), white);
+        background: color-mix(in srgb, var(--moz-color-text) var(--moz-fade-hover), white);
+        border-radius: 1rem;
+        align-items: center;
+        gap: var(--moz-space-2);
+    }
+
+    &__page-btn {
+        @include moz.root-button();
+        display: flex;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        padding: 0 0.5rem;
+        color: var(--moz-color-text);
+        border: none;
+        background: transparent;
+        border-radius: var(--moz-radius-pill);
+        justify-content: center;
+        align-items: center;
+        transition: all var(--moz-duration);
+        cursor: pointer;
+        @include moz.moz-typography('footer');
+
+        &:hover { color: var(--moz-pagination-color);}
+
+        &--active {
+            background: var(--moz-pagination-color);
+            color: white;
+            font-weight: var(--moz-font-weight-semibold);
+
+            &:hover {
+                color: white;
+                background: color-mix(in srgb, var(--moz-pagination-color) 60%, white);
+            }
+        }
+    }
+
+    &__ellipsis {
+        padding: 0 0.4rem;
+        color: color-mix(in srgb, var(--moz-color-text) 60%, white);
+    }
+}

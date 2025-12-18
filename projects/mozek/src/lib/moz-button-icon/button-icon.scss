@@ -1,0 +1,52 @@
+@use "styles" as moz;
+
+:host {
+    --moz-btnIcon-ease: ease;
+
+    display: inline-block;
+}
+
+
+/* --------------------------
+   Button Base Styles
+-------------------------- */
+button.moz-btnIcon {
+    @include moz.root-button();
+    position: relative;
+    width: fit-content;
+    min-width: 1rem;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--moz-radius-pill);
+    font-weight: var(--moz-font-weight-semibold);
+    text-align: center;
+    transition: all var(--moz-duration) var(--moz-btnIcon-ease);
+    cursor: pointer;
+
+    &:active { transform: scale(0.95);}
+    &:focus-visible {
+        outline: solid 2px transparent;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, .35);
+    }
+}
+
+/* --------------------------
+    Model Styles
+-------------------------- */
+/* Tonal */
+.moz-btnIcon--tonal {
+    padding: var(--moz-btnIcon-padding);
+    background: color-mix(in srgb, var(--moz-btnIcon-bg, var(--moz-color-primary)) 20%, white);
+    color: var(--moz-btnIcon-bg, var(--moz-color-primary));
+    border: none;
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btnIcon-bg, var(--moz-color-primary)) 30%, white);}
+}
+
+/* Text */
+.moz-btnIcon--text {
+    padding: var(--moz-btnIcon-padding, var(--moz-padding-1));
+    background: transparent;
+    color: var(--moz-btnIcon-bg, var(--moz-color-primary));
+    border: none;
+    &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btnIcon-bg, var(--moz-color-primary))  var(--moz-fade-hover), white);}
+}

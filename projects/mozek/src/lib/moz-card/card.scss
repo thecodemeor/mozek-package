@@ -39,6 +39,12 @@
     &.moz-card-flavor {
         border: solid var(--moz-card-border-size) color-mix(in srgb, var(--moz-card-bg, var(--moz-color-primary))  var(--moz-fade-border), white);
         background: color-mix(in srgb, var(--moz-card-bg, var(--moz-color-primary)) var(--moz-card-bg-contrast), white);
+
+        &:not(.moz-card-advancing) {
+            .moz-card-media, .moz-card-media img, .moz-card-media image, .moz-card-media video {
+                margin-bottom: calc(var(--moz-radius-default) * -1);
+            }
+        }
     }
     &.moz-card-glass {
         background: rgba(255, 255, 255, 0.5);
@@ -47,9 +53,25 @@
         border: solid var(--moz-button-border-size) var(--moz-color-border-glassmorphism);
     }
 
+    .moz-advancing-container {
+        display: flex;
+        width: 100%; height: 100%;
+        flex-direction: column;
+    }
+
     &.moz-card-advancing {
         padding: var(--moz-card-gap);
-        gap: var(--moz-card-gap);
+
+        .moz-advancing-container {
+            border-radius:  calc(var(--moz-card-corner) - var(--moz-card-gap));
+            overflow: hidden;
+            gap: var(--moz-card-gap);
+        }
+
+        .moz-card-media, .moz-card-media img, .moz-card-media image, .moz-card-media video {
+            border-radius: var(--moz-radius-default) var(--moz-radius-default) var(--moz-radius-sm) var(--moz-radius-sm);
+            overflow: hidden;
+        }
     }
 }
 
@@ -62,7 +84,7 @@ moz-card-body,
 moz-card-footer,
 moz-card-header-actions { display: contents; }
 
-.moz-card-media, .moz-card-media img, .moz-card-media video {
+.moz-card-media, .moz-card-media img, .moz-card-media image, .moz-card-media video {
     display: block;
     width: 100%; height: auto;
 }
@@ -165,4 +187,11 @@ moz-card-header-actions { display: contents; }
     }
     .sk-title { width: 60%; height: 1.5rem;}
     @keyframes sk { 0% { background-position: 200% 0; } 100% { background-position: -200% 0;}}
+}
+
+
+.moz-card-body--fill {
+    &:not(:has(.moz-card-footer)) {
+        .moz-card-body--fill {  border-radius: var(--moz-radius-default) var(--moz-radius-default) calc(var(--moz-card-corner) - var(--moz-card-gap)) calc(var(--moz-card-corner) - var(--moz-card-gap))}
+    }
 }

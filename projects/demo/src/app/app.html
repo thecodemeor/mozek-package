@@ -1,6 +1,496 @@
 <main class="demo-shell">
   <h1>Mozek Demo</h1>
 
+  <h3>Radio</h3>
+  <div class="grid gap-2 w-full">
+    <moz-radio-group
+      orientation="vertical"
+      name="fruit"
+      (valueChange)="fruit = $event"
+    >
+      <moz-radio value="apple" color="primary" [checked]="fruit === 'apple'">Apple</moz-radio>
+      <moz-radio value="banana" color="success" [checked]="fruit === 'banana'">Banana</moz-radio>
+      <moz-radio value="mango" color="warn" [checked]="fruit === 'mango'">Mango</moz-radio>
+    </moz-radio-group>
+    <p>Selected: {{ fruit }}</p>
+
+    <moz-radio-group
+      orientation="horizontal"
+      name="food"
+      (valueChange)="food = $event"
+    >
+      <moz-radio value="pizza" color="primary" [checked]="food === 'pizza'">Pizza</moz-radio>
+      <moz-radio value="burger" color="success" [checked]="food === 'burger'">Burger</moz-radio>
+      <moz-radio value="kebab" color="warn" [checked]="food === 'kebab'">Kebab</moz-radio>
+    </moz-radio-group>
+    <p>Selected: {{ food }}</p>
+
+    <moz-radio-group
+      orientation="horizontal"
+      name="house"
+      (valueChange)="house = $event"
+      disabled
+    >
+      <moz-radio value="apartment" color="primary" [checked]="house === 'apartment'">Apartment</moz-radio>
+      <moz-radio value="house" color="success" [checked]="house === 'house'">House</moz-radio>
+      <moz-radio value="condo" color="warn" [checked]="house === 'condo'">Condo</moz-radio>
+    </moz-radio-group>
+    <moz-radio-group
+      orientation="horizontal"
+      name="house"
+      (valueChange)="house = $event"
+    >
+      <moz-radio value="engineer" color="primary" [checked]="career === 'engineer'">Engineer</moz-radio>
+      <moz-radio value="doctor" color="success" [checked]="career === 'doctor'">Doctor</moz-radio>
+      <moz-radio value="teacher" color="warn" [checked]="career === 'teacher'" disabled>Teacher</moz-radio>
+    </moz-radio-group>
+  </div>
+
+  <h3>Checkbox</h3>
+  <div class="grid gap-2 w-full">
+    <moz-checkbox [(checked)]="checked">Checkbox</moz-checkbox>
+    <moz-checkbox [(checked)]="checked" color="primary">Checkbox</moz-checkbox>
+    <moz-checkbox [(checked)]="checked" color="secondary">Checkbox</moz-checkbox>
+    <moz-checkbox [(checked)]="checked" color="success">Checkbox</moz-checkbox>
+    <moz-checkbox [(checked)]="checked" color="warn">Checkbox</moz-checkbox>
+    <moz-checkbox [(checked)]="checked" color="danger">Checkbox</moz-checkbox>
+    <moz-checkbox [(checked)]="checked" disabled>Checkbox</moz-checkbox>
+    <div class="flex w-full gap-2">
+      <moz-checkbox [(checked)]="checked" position="start">Start</moz-checkbox>
+    </div>
+    <div class="flex w-full gap-2">
+      <moz-checkbox [(checked)]="checked" position="end">End</moz-checkbox>
+    </div>
+    <moz-checkbox-group>
+      <moz-checkbox color="primary" [(checked)]="box1">Checkbox 1</moz-checkbox>
+      <moz-checkbox color="secondary" [(checked)]="box2">Checkbox 2</moz-checkbox>
+      <moz-checkbox color="success" [(checked)]="box3">Checkbox 3</moz-checkbox>
+    </moz-checkbox-group>
+    {{box1}} - {{box2}} - {{box3}}
+    <moz-checkbox-group orientation="horizontal">
+      <moz-checkbox color="primary">Checkbox 1</moz-checkbox>
+      <moz-checkbox color="secondary">Checkbox 2</moz-checkbox>
+      <moz-checkbox color="success">Checkbox 3</moz-checkbox>
+    </moz-checkbox-group>
+    <moz-checkbox-group orientation="horizontal" disabled>
+      <moz-checkbox color="primary">Checkbox 1</moz-checkbox>
+      <moz-checkbox color="secondary">Checkbox 2</moz-checkbox>
+      <moz-checkbox color="success">Checkbox 3</moz-checkbox>
+    </moz-checkbox-group>
+  </div>
+
+  <h3>Accordion</h3>
+  <div class="grid gap-2 w-full">
+    <moz-accordion>
+      @for (item of ['1','2','3']; track $index) {
+        <moz-accordion-item>
+          <div mozAccordionHeader>Header {{item}}</div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </moz-accordion-item>
+      }
+    </moz-accordion>
+    <moz-accordion [multi]="true">
+      <moz-accordion-item>
+        <div mozAccordionHeader>Header 1</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </moz-accordion-item>
+      <moz-accordion-item>
+        <div mozAccordionHeader>Header 2</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </moz-accordion-item>
+      <moz-accordion-item disabled>
+        <div mozAccordionHeader>Header 3</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </moz-accordion-item>
+    </moz-accordion>
+  </div>
+  
+  <h3>Select</h3>
+  <div class="grid gap-2 w-full">
+    <moz-select>
+      @for (item of ['1','2','3','4','5']; track $index) {
+        <moz-option [value]="item">{{item}}</moz-option>
+      }
+    </moz-select>
+    <div class="flex gap-2">
+      <moz-select model="outline">
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+      <moz-select model="fill">
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+      <moz-select model="outline" error="Error">
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+      <moz-select model="fill" error="Error">
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+    </div>
+    <div class="flex gap-2">
+      <moz-select label="Select">
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+      <moz-select label="Select">
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+      <moz-select label="Select"></moz-select>
+      <moz-select disabled>
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+    </div>
+    <div class="flex gap-2 mb-2">
+      <moz-select hint="Must">
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+      <moz-select placeholder="Anything">
+        @for (item of ['1','2','3','4','5']; track $index) {
+          <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+      <moz-select placeholder="Anything">
+        <moz-option value=""></moz-option>
+        <moz-option value="1">1</moz-option>
+        <moz-option value="2" disabled>2</moz-option>
+        <moz-option value="3">3</moz-option>
+      </moz-select>
+    </div>
+    <div class="flex gap-2 mb-2">
+      <moz-select placeholder="Full" full></moz-select>
+    </div>
+  </div>
+
+  <h3>Datepicker</h3>
+  <div class="grid gap-2 w-full">
+    <moz-datepicker></moz-datepicker>
+    <div class="flex gap-2">
+      <moz-datepicker model="outline"></moz-datepicker>
+      <moz-datepicker model="fill"></moz-datepicker>
+      <moz-datepicker label="Date Picker"></moz-datepicker>
+      <moz-datepicker disabled></moz-datepicker>
+    </div>
+  </div>
+
+  <h3>Button Icon</h3>
+  <div class="grid gap-2 w-full">
+    <div class="flex gap-2">
+      <moz-button-icon model="tonal">
+        <moz-icon>pen</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text">
+        <moz-icon>pen</moz-icon>
+      </moz-button-icon>
+    </div>
+    <div class="flex gap-2">
+      <moz-button-icon model="tonal" gap>
+        <moz-icon>pen</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text" gap>
+        <moz-icon>pen</moz-icon>
+      </moz-button-icon>
+    </div>
+    <div class="flex gap-2">
+      <moz-button-icon model="tonal" disabled>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text" disabled>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+    </div>
+    <div class="flex gap-2">
+      <moz-button-icon model="tonal" color="primary">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="tonal" color="secondary">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="tonal" color="success">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+            <moz-button-icon model="tonal" color="warn">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="tonal" color="danger">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+    </div>
+    <div class="flex gap-2">
+      <moz-button-icon model="text" color="primary">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text" color="secondary">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text" color="success">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+            <moz-button-icon model="text" color="warn">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text" color="danger">
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+    </div>
+
+    <div class="flex gap-2">
+      <moz-button-icon model="tonal" color="primary" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="tonal" color="secondary" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="tonal" color="success" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+            <moz-button-icon model="tonal" color="warn" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="tonal" color="danger" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+    </div>
+    <div class="flex gap-2">
+      <moz-button-icon model="text" color="primary" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text" color="secondary" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text" color="success" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+            <moz-button-icon model="text" color="warn" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+      <moz-button-icon model="text" color="danger" gap>
+        <moz-icon>home</moz-icon>
+      </moz-button-icon>
+    </div>
+  </div>
+
+  <h3>Switch</h3>
+  <div class="grid gap-2 w-full">
+    <moz-switch (changed)="checked = !checked"></moz-switch>
+    {{checked ? 'ON' : 'OFF'}}
+
+    <div class="flex gap-2">
+      <moz-switch color="primary"></moz-switch>
+      <moz-switch color="secondary"></moz-switch>
+      <moz-switch color="success"></moz-switch>
+      <moz-switch color="warn"></moz-switch>
+      <moz-switch color="danger"></moz-switch>
+      <moz-switch color="primary" disabled></moz-switch>
+    </div>
+  </div>
+
+  <h3>Progress</h3>
+  <div class="grid gap-2 w-full">
+    <moz-progress></moz-progress>
+    <moz-progress model="infinity"></moz-progress>
+    <div class="flex gap-2">
+      <moz-progress model="ring"></moz-progress>
+      <moz-progress model="line_spinner"></moz-progress>
+      <moz-progress model="hourglass"></moz-progress>
+      <moz-progress model="zoomies"></moz-progress>
+      <moz-progress model="line_wobble"></moz-progress>
+      <moz-progress model="infinity"></moz-progress>
+      <moz-progress model="cardio"></moz-progress>
+      <moz-progress model="helix"></moz-progress>
+      <moz-progress model="newton"></moz-progress>
+    </div>
+    <div class="flex gap-2">
+      <moz-progress model="line_spinner" color="primary" size="20"></moz-progress>
+      <moz-progress model="line_spinner" color="secondary" size="40"></moz-progress>
+      <moz-progress model="line_spinner" color="primary" size="60"></moz-progress>
+      <moz-progress model="line_spinner" color="primary" size="80"></moz-progress>
+      <moz-progress model="line_spinner" color="primary" size="100"></moz-progress>
+    </div>
+    <div class="flex gap-2">
+      <moz-progress model="cardio" color="primary" speed="0.5"></moz-progress>
+      <moz-progress model="cardio" color="primary" speed="1"></moz-progress>
+      <moz-progress model="cardio" color="primary" speed="1.5"></moz-progress>
+      <moz-progress model="cardio" color="primary" speed="2"></moz-progress>
+      <moz-progress model="cardio" color="primary" speed="4"></moz-progress>
+    </div>
+  </div>
+
+  <h3>Pagination</h3>
+  <div class="grid gap-2 w-full">
+    @for (item of pagedItems; track $index) {
+      <moz-card>{{item}}</moz-card>
+    }
+    <moz-pagination 
+      [length]="items.length"
+      [(pageIndex)]="pageIndex"
+      [pageSize]="pageSize"
+      (pageChange)="onPageChange($event)"
+    >
+    </moz-pagination>
+    <moz-pagination 
+      color="secondary"
+      [length]="items.length"
+      [(pageIndex)]="pageIndex"
+      [pageSize]="pageSize"
+      (pageChange)="onPageChange($event)"
+    >
+    </moz-pagination>
+  </div>
+
+  <h3>Icon</h3>
+  <div class="grid gap-2 w-full">
+    <moz-icon>home</moz-icon>
+    <div class="flex gap-2">
+      <moz-icon color="primary">settings</moz-icon>
+      <moz-icon color="secondary">atom</moz-icon>
+      <moz-icon color="success">file_text</moz-icon>
+      <moz-icon color="warn">exit</moz-icon>
+      <moz-icon color="danger">search</moz-icon>
+      <moz-icon color="#ff5dea">pin</moz-icon>
+    </div>
+    <div class="flex gap-2">
+      <moz-icon size="1">chat_dots_circle</moz-icon>
+      <moz-icon size="10">chat_dots_circle</moz-icon>
+      <moz-icon size="20">printer</moz-icon>
+      <moz-icon size="30">notebook</moz-icon>
+      <moz-icon size="40">train</moz-icon>
+      <moz-icon size="50">eye_closed</moz-icon>
+      <moz-icon size="100">check_read</moz-icon>
+      <moz-icon size="200">check_read</moz-icon>
+    </div>
+  </div>
+
+  <h3>Input</h3>
+  <div class="flex flex-col gap-2 w-full">
+    <moz-input></moz-input>
+    <div class="flex gap-2">
+      <moz-input model="outline"></moz-input>
+      <moz-input model="fill"></moz-input>
+      <moz-input model="outline" label="Input"></moz-input>
+      <moz-input model="fill" label="Input"></moz-input>
+    </div>
+    <div class="flex gap-2">
+      <moz-input model="outline" label="Input" placeholder="Input"></moz-input>
+      <moz-input model="fill" label="Input" placeholder="Input"></moz-input>
+      <moz-input model="outline" label="Input" placeholder="Input" helper="Key In"></moz-input>
+      <moz-input model="fill" label="Input" placeholder="Input" helper="Key In"></moz-input>
+    </div>
+    <div class="flex gap-2">
+      <moz-input model="outline" label="Input" placeholder="Input" error="Error"></moz-input>
+      <moz-input model="fill" label="Input" placeholder="Input" error="Error"></moz-input>
+      <moz-input model="outline" label="Input" placeholder="Input" clearable></moz-input>
+      <moz-input model="fill" label="Input" placeholder="Input" clearable></moz-input>
+    </div>
+    <div class="flex gap-2">
+      <moz-input model="outline" label="Input" placeholder="Input" disabled></moz-input>
+      <moz-input model="fill" label="Input" placeholder="Input" disabled></moz-input>
+      <moz-input model="outline" label="Input" placeholder="Input" readonly></moz-input>
+      <moz-input model="fill" label="Input" placeholder="Input" readonly></moz-input>
+    </div>
+    <div class="flex gap-2">
+      <moz-input model="outline" label="Input" placeholder="Input" full></moz-input>
+    </div>
+    <div class="flex gap-2">
+      <moz-input model="outline" label="Input" type="password" placeholder="Input" ></moz-input>
+    </div>
+  </div>
+
+  <h3>Divider</h3>
+  <div class="flex flex-col gap-2 w-full">
+    <moz-divider></moz-divider>
+    <moz-divider color="primary"></moz-divider>
+    <moz-divider color="secondary"></moz-divider>
+    <moz-divider color="success"></moz-divider>
+    <moz-divider color="warn"></moz-divider>
+    <moz-divider color="danger"></moz-divider>
+    ---
+    <moz-divider color="primary">Default</moz-divider>
+    <moz-divider color="primary" align="start">Start</moz-divider>
+    <moz-divider color="primary" align="center">Center</moz-divider>
+    <moz-divider color="primary" align="end">End</moz-divider>
+    <moz-divider color="primary" dashed>Dashed</moz-divider>
+    <moz-divider color="primary" pill>Pill</moz-divider>
+    ---
+    <moz-divider color="primary" depth="5" pill>20-Pill</moz-divider>
+    <moz-divider color="primary" depth="3">20</moz-divider>
+    <div style="height: 20rem;">
+      <moz-divider color="primary" depth="2" pill orientation="vertical" pill>Test</moz-divider>
+    </div>
+  </div>
+
+  <h3>Currency</h3>
+  <div class="flex flex-col gap-2 w-full">
+
+    <moz-currency>100</moz-currency>
+    <div class="flex gap-2 scroll-x">
+      <moz-currency currency="MYR">100</moz-currency>
+      <moz-currency currency="USD">100</moz-currency>
+      <moz-currency currency="EUR">100</moz-currency>
+      <moz-currency currency="MYR" symbol>100</moz-currency>
+      <moz-currency currency="USD" color="primary" symbol>100</moz-currency>
+      <moz-currency currency="EUR" style="color: red;" symbol>100</moz-currency>
+    </div>
+  </div>
+
+  <h3>Badge</h3>
+  <div class="flex flex-col gap-2 w-full">
+
+    <moz-badge>Default</moz-badge>
+    <div class="flex gap-2 scroll-x">
+      <moz-badge color="primary">Primary</moz-badge>
+      <moz-badge color="secondary">Secondary</moz-badge>
+      <moz-badge color="success">Success</moz-badge>
+      <moz-badge color="warn">Warn</moz-badge>
+      <moz-badge color="danger">Danger</moz-badge>
+    </div>
+    <div class="flex gap-2 scroll-x">
+      <moz-badge color="primary">1</moz-badge>
+      <moz-badge color="secondary">10</moz-badge>
+      <moz-badge color="success">100</moz-badge>
+      <moz-badge color="warn"></moz-badge>
+      <moz-badge color="danger">-1000</moz-badge>
+    </div>
+    <div class="flex gap-2 scroll-x">
+      <moz-badge color="primary" icon="check">Primary</moz-badge>
+      <moz-badge color="secondary" icon="cancel">Secondary</moz-badge>
+      <moz-badge color="success" icon="alert">Success</moz-badge>
+      <moz-badge color="warn" icon="pending">Warn</moz-badge>
+      <moz-badge color="danger" icon="check"></moz-badge>
+    </div>
+     <div class="flex gap-2 scroll-x">
+      <moz-badge color="primary" icon="check" dot>Primary</moz-badge>
+      <moz-badge color="secondary" pulse>1</moz-badge>
+      <moz-badge color="success" icon="alert"pulse>Success</moz-badge>
+      <moz-badge color="warn" icon="pending" pulse dot>Warn</moz-badge>
+      <moz-button>
+        Button
+        <moz-badge color="danger" notification pulse>10</moz-badge>
+      </moz-button>
+    </div>
+  </div>
+
   <h3>Card</h3>
   <div class="flex flex-col gap-2 w-full">
 
@@ -8,30 +498,15 @@
     <div class="flex gap-2 scroll-x">
       <moz-card model="fill" color="primary">
         <moz-card-media>
-          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" style="height: 60px; width: auto">
-            <defs>
-              <style>
-                .cls-1 {
-                  fill: #002a87;
-                }
-
-                .cls-1, .cls-2 {
-                  stroke-width: 0px;
-                }
-
-                .cls-2 {
-                  fill: #007acc;
-                }
-              </style>
-            </defs>
-            <path class="cls-1" d="m306.93,310.83c-83.06,34.75-185.68,50.31-241.81,56.65-22.23,2.51-41.55-15.23-40.95-37.6,1.24-46.07,4.46-90.59,9.31-130.58,8.74-72.05,63.76-129.55,135.26-141.9.12-.02.24-.04.35-.06,23.61-4.06,47.65,4.21,63.92,21.79,26.98,29.14,68.39,81.78,102.61,159.58,12.24,27.83-.65,60.39-28.71,72.13Z"/>
-            <path class="cls-2" d="m642.19,73.95c-9.22,29.21-31.78,79.59-87.02,151.63-10.46,13.64-23.9,24.79-39.44,32.16-20.08,9.54-45.9,15.25-86.26,16.98-17.6.75-34.53-6.98-45.49-20.78-61.59-77.54-96.18-138.09-113.83-173.63-8.54-17.19,2.75-37.65,21.86-39.55,107.62-10.72,221.13-12.55,325.73-3.36.11,0,.21.02.32.03,17.82,1.61,29.52,19.46,24.13,36.52Z"/>
-            <path class="cls-2" d="m744.4,440.07c-38.25-5.87-106-18.39-173.04-41.16-27.27-9.26-40.52-40.14-28.66-66.38,56.76-125.57,95.25-194.02,118.5-230.28,14.89-23.22,48.89-23.37,63.86-.2,7.73,11.96,13.74,25.21,17.67,39.45,20.05,72.83,31.83,171.26,33.12,271.2.22,16.88-14.76,29.94-31.45,27.38Z"/>
-            <path class="cls-1" d="m730.68,476.58c26.25,8.25,43.32,33.56,41.09,60.98-1.45,17.82-3.29,35.34-5.52,52.43-7.44,57-46.34,104.88-100.47,124.21-36.75,13.12-81.5,23.7-130.2,31.91-57.64,9.72-115.72-16.14-146.19-66.03-.34-.56-.68-1.12-1.02-1.69-8.71-14.61-10.37-32.37-4.65-48.39,19.98-55.92,57.44-122.53,85.43-166.05,17.13-26.63,48.81-40.16,79.9-34.13,71.83,13.93,139.5,33.5,181.64,46.75Z"/>
-            <path class="cls-2" d="m506.15,356.2c-12.79,41.45-42.68,90.45-117.03,196.75-23.37,33.42-71.37,37.38-99.88,8.22-46.81-47.88-71.25-74.84-95.42-106.17-25.5-33.07-11.48-81.41,27.76-95.7,123.01-44.79,180.3-61.26,234.73-65.48,34.09-2.64,59.92,29.7,49.83,62.38Z"/>
-            <path class="cls-2" d="m384.95,763.67c-16.96,1.23-33.91,2.23-50.72,3-9.35.43-16.13-8.76-13.03-17.59,4.03-11.47,10.44-26.39,19.7-38.87,6.57-8.86,19.07-10.79,28.12-4.49,13.51,9.42,22.97,21.44,29.31,31.94s-.59,25.09-13.39,26.02Z"/>
-            <path class="cls-2" d="m316.94,692.29c-.27.97-.55,1.93-.84,2.88-13.51,44.36-55.27,74.12-101.63,73.34-.16,0-.32,0-.48,0-74.92-1.32-140.42-51.73-160.46-123.94-15.75-56.7-24.72-126.94-28.22-199.4-.87-17.94,10.58-34.24,27.83-39.19.3-.09.6-.17.9-.26,23.28-6.52,48.31-1.62,67.47,13.13,79.28,61.01,131.4,134.43,187.33,221.8,9.81,15.32,12.96,34.12,8.09,51.65Z"/>
-          </svg>
+          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+        </moz-card-media>
+        <moz-card-body>
+          Mozek Card Content
+        </moz-card-body>
+      </moz-card>
+      <moz-card model="fill" color="primary" advance>
+        <moz-card-media>
+          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -78,30 +553,15 @@
     <div class="flex gap-2 scroll-x">
       <moz-card model="outline" color="primary">
         <moz-card-media>
-          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" style="height: 60px; width: auto">
-            <defs>
-              <style>
-                .cls-1 {
-                  fill: #002a87;
-                }
-
-                .cls-1, .cls-2 {
-                  stroke-width: 0px;
-                }
-
-                .cls-2 {
-                  fill: #007acc;
-                }
-              </style>
-            </defs>
-            <path class="cls-1" d="m306.93,310.83c-83.06,34.75-185.68,50.31-241.81,56.65-22.23,2.51-41.55-15.23-40.95-37.6,1.24-46.07,4.46-90.59,9.31-130.58,8.74-72.05,63.76-129.55,135.26-141.9.12-.02.24-.04.35-.06,23.61-4.06,47.65,4.21,63.92,21.79,26.98,29.14,68.39,81.78,102.61,159.58,12.24,27.83-.65,60.39-28.71,72.13Z"/>
-            <path class="cls-2" d="m642.19,73.95c-9.22,29.21-31.78,79.59-87.02,151.63-10.46,13.64-23.9,24.79-39.44,32.16-20.08,9.54-45.9,15.25-86.26,16.98-17.6.75-34.53-6.98-45.49-20.78-61.59-77.54-96.18-138.09-113.83-173.63-8.54-17.19,2.75-37.65,21.86-39.55,107.62-10.72,221.13-12.55,325.73-3.36.11,0,.21.02.32.03,17.82,1.61,29.52,19.46,24.13,36.52Z"/>
-            <path class="cls-2" d="m744.4,440.07c-38.25-5.87-106-18.39-173.04-41.16-27.27-9.26-40.52-40.14-28.66-66.38,56.76-125.57,95.25-194.02,118.5-230.28,14.89-23.22,48.89-23.37,63.86-.2,7.73,11.96,13.74,25.21,17.67,39.45,20.05,72.83,31.83,171.26,33.12,271.2.22,16.88-14.76,29.94-31.45,27.38Z"/>
-            <path class="cls-1" d="m730.68,476.58c26.25,8.25,43.32,33.56,41.09,60.98-1.45,17.82-3.29,35.34-5.52,52.43-7.44,57-46.34,104.88-100.47,124.21-36.75,13.12-81.5,23.7-130.2,31.91-57.64,9.72-115.72-16.14-146.19-66.03-.34-.56-.68-1.12-1.02-1.69-8.71-14.61-10.37-32.37-4.65-48.39,19.98-55.92,57.44-122.53,85.43-166.05,17.13-26.63,48.81-40.16,79.9-34.13,71.83,13.93,139.5,33.5,181.64,46.75Z"/>
-            <path class="cls-2" d="m506.15,356.2c-12.79,41.45-42.68,90.45-117.03,196.75-23.37,33.42-71.37,37.38-99.88,8.22-46.81-47.88-71.25-74.84-95.42-106.17-25.5-33.07-11.48-81.41,27.76-95.7,123.01-44.79,180.3-61.26,234.73-65.48,34.09-2.64,59.92,29.7,49.83,62.38Z"/>
-            <path class="cls-2" d="m384.95,763.67c-16.96,1.23-33.91,2.23-50.72,3-9.35.43-16.13-8.76-13.03-17.59,4.03-11.47,10.44-26.39,19.7-38.87,6.57-8.86,19.07-10.79,28.12-4.49,13.51,9.42,22.97,21.44,29.31,31.94s-.59,25.09-13.39,26.02Z"/>
-            <path class="cls-2" d="m316.94,692.29c-.27.97-.55,1.93-.84,2.88-13.51,44.36-55.27,74.12-101.63,73.34-.16,0-.32,0-.48,0-74.92-1.32-140.42-51.73-160.46-123.94-15.75-56.7-24.72-126.94-28.22-199.4-.87-17.94,10.58-34.24,27.83-39.19.3-.09.6-.17.9-.26,23.28-6.52,48.31-1.62,67.47,13.13,79.28,61.01,131.4,134.43,187.33,221.8,9.81,15.32,12.96,34.12,8.09,51.65Z"/>
-          </svg>
+          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+        </moz-card-media>
+        <moz-card-body>
+          Mozek Card Content
+        </moz-card-body>
+      </moz-card>
+      <moz-card model="outline" color="primary" advance>
+        <moz-card-media>
+          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -148,30 +608,15 @@
     <div class="flex gap-2 scroll-x">
       <moz-card model="elevated" color="primary">
         <moz-card-media>
-          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" style="height: 60px; width: auto">
-            <defs>
-              <style>
-                .cls-1 {
-                  fill: #002a87;
-                }
-
-                .cls-1, .cls-2 {
-                  stroke-width: 0px;
-                }
-
-                .cls-2 {
-                  fill: #007acc;
-                }
-              </style>
-            </defs>
-            <path class="cls-1" d="m306.93,310.83c-83.06,34.75-185.68,50.31-241.81,56.65-22.23,2.51-41.55-15.23-40.95-37.6,1.24-46.07,4.46-90.59,9.31-130.58,8.74-72.05,63.76-129.55,135.26-141.9.12-.02.24-.04.35-.06,23.61-4.06,47.65,4.21,63.92,21.79,26.98,29.14,68.39,81.78,102.61,159.58,12.24,27.83-.65,60.39-28.71,72.13Z"/>
-            <path class="cls-2" d="m642.19,73.95c-9.22,29.21-31.78,79.59-87.02,151.63-10.46,13.64-23.9,24.79-39.44,32.16-20.08,9.54-45.9,15.25-86.26,16.98-17.6.75-34.53-6.98-45.49-20.78-61.59-77.54-96.18-138.09-113.83-173.63-8.54-17.19,2.75-37.65,21.86-39.55,107.62-10.72,221.13-12.55,325.73-3.36.11,0,.21.02.32.03,17.82,1.61,29.52,19.46,24.13,36.52Z"/>
-            <path class="cls-2" d="m744.4,440.07c-38.25-5.87-106-18.39-173.04-41.16-27.27-9.26-40.52-40.14-28.66-66.38,56.76-125.57,95.25-194.02,118.5-230.28,14.89-23.22,48.89-23.37,63.86-.2,7.73,11.96,13.74,25.21,17.67,39.45,20.05,72.83,31.83,171.26,33.12,271.2.22,16.88-14.76,29.94-31.45,27.38Z"/>
-            <path class="cls-1" d="m730.68,476.58c26.25,8.25,43.32,33.56,41.09,60.98-1.45,17.82-3.29,35.34-5.52,52.43-7.44,57-46.34,104.88-100.47,124.21-36.75,13.12-81.5,23.7-130.2,31.91-57.64,9.72-115.72-16.14-146.19-66.03-.34-.56-.68-1.12-1.02-1.69-8.71-14.61-10.37-32.37-4.65-48.39,19.98-55.92,57.44-122.53,85.43-166.05,17.13-26.63,48.81-40.16,79.9-34.13,71.83,13.93,139.5,33.5,181.64,46.75Z"/>
-            <path class="cls-2" d="m506.15,356.2c-12.79,41.45-42.68,90.45-117.03,196.75-23.37,33.42-71.37,37.38-99.88,8.22-46.81-47.88-71.25-74.84-95.42-106.17-25.5-33.07-11.48-81.41,27.76-95.7,123.01-44.79,180.3-61.26,234.73-65.48,34.09-2.64,59.92,29.7,49.83,62.38Z"/>
-            <path class="cls-2" d="m384.95,763.67c-16.96,1.23-33.91,2.23-50.72,3-9.35.43-16.13-8.76-13.03-17.59,4.03-11.47,10.44-26.39,19.7-38.87,6.57-8.86,19.07-10.79,28.12-4.49,13.51,9.42,22.97,21.44,29.31,31.94s-.59,25.09-13.39,26.02Z"/>
-            <path class="cls-2" d="m316.94,692.29c-.27.97-.55,1.93-.84,2.88-13.51,44.36-55.27,74.12-101.63,73.34-.16,0-.32,0-.48,0-74.92-1.32-140.42-51.73-160.46-123.94-15.75-56.7-24.72-126.94-28.22-199.4-.87-17.94,10.58-34.24,27.83-39.19.3-.09.6-.17.9-.26,23.28-6.52,48.31-1.62,67.47,13.13,79.28,61.01,131.4,134.43,187.33,221.8,9.81,15.32,12.96,34.12,8.09,51.65Z"/>
-          </svg>
+          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+        </moz-card-media>
+        <moz-card-body>
+          Mozek Card Content
+        </moz-card-body>
+      </moz-card>
+      <moz-card model="elevated" color="primary" advance>
+        <moz-card-media>
+          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -218,30 +663,15 @@
     <div class="flex gap-2 scroll-x">
       <moz-card model="flavor" color="primary">
         <moz-card-media>
-          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" style="height: 60px; width: auto">
-            <defs>
-              <style>
-                .cls-1 {
-                  fill: #002a87;
-                }
-
-                .cls-1, .cls-2 {
-                  stroke-width: 0px;
-                }
-
-                .cls-2 {
-                  fill: #007acc;
-                }
-              </style>
-            </defs>
-            <path class="cls-1" d="m306.93,310.83c-83.06,34.75-185.68,50.31-241.81,56.65-22.23,2.51-41.55-15.23-40.95-37.6,1.24-46.07,4.46-90.59,9.31-130.58,8.74-72.05,63.76-129.55,135.26-141.9.12-.02.24-.04.35-.06,23.61-4.06,47.65,4.21,63.92,21.79,26.98,29.14,68.39,81.78,102.61,159.58,12.24,27.83-.65,60.39-28.71,72.13Z"/>
-            <path class="cls-2" d="m642.19,73.95c-9.22,29.21-31.78,79.59-87.02,151.63-10.46,13.64-23.9,24.79-39.44,32.16-20.08,9.54-45.9,15.25-86.26,16.98-17.6.75-34.53-6.98-45.49-20.78-61.59-77.54-96.18-138.09-113.83-173.63-8.54-17.19,2.75-37.65,21.86-39.55,107.62-10.72,221.13-12.55,325.73-3.36.11,0,.21.02.32.03,17.82,1.61,29.52,19.46,24.13,36.52Z"/>
-            <path class="cls-2" d="m744.4,440.07c-38.25-5.87-106-18.39-173.04-41.16-27.27-9.26-40.52-40.14-28.66-66.38,56.76-125.57,95.25-194.02,118.5-230.28,14.89-23.22,48.89-23.37,63.86-.2,7.73,11.96,13.74,25.21,17.67,39.45,20.05,72.83,31.83,171.26,33.12,271.2.22,16.88-14.76,29.94-31.45,27.38Z"/>
-            <path class="cls-1" d="m730.68,476.58c26.25,8.25,43.32,33.56,41.09,60.98-1.45,17.82-3.29,35.34-5.52,52.43-7.44,57-46.34,104.88-100.47,124.21-36.75,13.12-81.5,23.7-130.2,31.91-57.64,9.72-115.72-16.14-146.19-66.03-.34-.56-.68-1.12-1.02-1.69-8.71-14.61-10.37-32.37-4.65-48.39,19.98-55.92,57.44-122.53,85.43-166.05,17.13-26.63,48.81-40.16,79.9-34.13,71.83,13.93,139.5,33.5,181.64,46.75Z"/>
-            <path class="cls-2" d="m506.15,356.2c-12.79,41.45-42.68,90.45-117.03,196.75-23.37,33.42-71.37,37.38-99.88,8.22-46.81-47.88-71.25-74.84-95.42-106.17-25.5-33.07-11.48-81.41,27.76-95.7,123.01-44.79,180.3-61.26,234.73-65.48,34.09-2.64,59.92,29.7,49.83,62.38Z"/>
-            <path class="cls-2" d="m384.95,763.67c-16.96,1.23-33.91,2.23-50.72,3-9.35.43-16.13-8.76-13.03-17.59,4.03-11.47,10.44-26.39,19.7-38.87,6.57-8.86,19.07-10.79,28.12-4.49,13.51,9.42,22.97,21.44,29.31,31.94s-.59,25.09-13.39,26.02Z"/>
-            <path class="cls-2" d="m316.94,692.29c-.27.97-.55,1.93-.84,2.88-13.51,44.36-55.27,74.12-101.63,73.34-.16,0-.32,0-.48,0-74.92-1.32-140.42-51.73-160.46-123.94-15.75-56.7-24.72-126.94-28.22-199.4-.87-17.94,10.58-34.24,27.83-39.19.3-.09.6-.17.9-.26,23.28-6.52,48.31-1.62,67.47,13.13,79.28,61.01,131.4,134.43,187.33,221.8,9.81,15.32,12.96,34.12,8.09,51.65Z"/>
-          </svg>
+          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+        </moz-card-media>
+        <moz-card-body>
+          Mozek Card Content
+        </moz-card-body>
+      </moz-card>
+      <moz-card model="flavor" color="primary" advance>
+        <moz-card-media>
+          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -285,9 +715,6 @@
       <moz-card model="flavor" color="danger" loading></moz-card>
     </div>
   </div>
-
-
-
 
   <h3>Button</h3>
   <div class="flex flex-col gap-2">
@@ -372,7 +799,7 @@
     <moz-button full>Full Width</moz-button>
     <div class="flex gap-2">
       <moz-button></moz-button>
-      <moz-button >I used to work without hesitation</moz-button>
+      <moz-button>I used to work without hesitation</moz-button>
     </div>
     <div class="flex gap-2">
       <moz-button>1 line</moz-button>

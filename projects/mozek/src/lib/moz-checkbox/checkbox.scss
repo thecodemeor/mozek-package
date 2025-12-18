@@ -1,0 +1,112 @@
+@use "styles" as moz;
+
+:host {
+    --moz-ease: ease;
+
+    display: inline-block;
+}
+
+.moz-checkbox {
+    --moz-checkbox-size: 1.15rem;
+    --moz-checkbox-border-size: 2px;
+    --moz-checkbox-color: var(--moz-color-text);
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--moz-space-1);
+    cursor: pointer;
+    user-select: none;
+
+    &--end { flex-direction: row-reverse;}
+}
+
+/* Hidden native input */
+input.moz-checkbox__input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* Box */
+.moz-checkbox__box {
+    position: relative;
+    display: inline-flex;
+    width: var(--moz-checkbox-size);
+    height: var(--moz-checkbox-size);
+    border-radius: calc(var(--moz-checkbox-size) * 0.40);
+    border: solid var(--moz-checkbox-border-size) color-mix(in srgb, var(--moz-checkbox-color)  80%, white);
+    background: var(--moz-color-surface);
+    justify-content: center;
+    align-items: center;
+    transition: all var(--moz-duration-fast) var(--moz-ease);
+    box-sizing: border-box;
+    outline: none;
+    
+    .moz-checkbox__svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+}
+
+/* Animated strokes */
+.moz-checkbox__check,
+.moz-checkbox__dash {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1; /* hidden */
+    transform-origin: center;
+    transition:
+        stroke-dashoffset var(--moz-duration, 400ms) var(--moz-ease),
+        transform var(--moz-duration, 400ms) var(--moz-ease),
+        opacity var(--moz-duration, 400ms) var(--moz-ease);
+    opacity: 0;
+}
+
+/* Focus ring */
+.moz-checkbox__input:focus-visible + .moz-checkbox__box {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .35);
+}
+
+/* Checked */
+.moz-checkbox__input:checked + .moz-checkbox__box {
+    background: var(--moz-checkbox-color);
+    border-color: var(--moz-checkbox-color);
+}
+.moz-checkbox__input:checked + .moz-checkbox__box .moz-checkbox__check {
+    stroke-dashoffset: 0; /* draw */
+    transform: scale(1);
+    opacity: 1;
+}
+.moz-checkbox__input:checked + .moz-checkbox__box .moz-checkbox__dash {
+    opacity: 0;
+}
+
+/* Indeterminate */
+.moz-checkbox__input:indeterminate + .moz-checkbox__box {
+    background: var(--moz-checkbox-color);
+    border-color: var(--moz-checkbox-color);
+}
+.moz-checkbox__input:indeterminate + .moz-checkbox__box .moz-checkbox__dash {
+    stroke-dashoffset: 0; /* draw */
+    transform: scale(1);
+    opacity: 1;
+}
+.moz-checkbox__input:indeterminate + .moz-checkbox__box .moz-checkbox__check {
+    opacity: 0;
+}
+
+/* Label */
+.moz-checkbox__label {
+    color: var(--moz-color-text);
+    @include moz.moz-typography('default');
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .moz-checkbox__check,
+    .moz-checkbox__dash {
+        transition: none;
+    }
+}

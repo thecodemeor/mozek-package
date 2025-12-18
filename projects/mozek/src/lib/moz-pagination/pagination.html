@@ -1,0 +1,57 @@
+<nav class="moz-pagination" [attr.aria-label]="ariaLabel">
+    <!-- Page size (optional) -->
+    @if (showPageSizeOptions && pageSizeOptions.length) {
+        <div class="moz-pagination__page-size">
+            <span class="moz-pagination__page-size-label">Rows per page</span>
+            <select
+                class="moz-pagination__page-size-select"
+                [ngModel]="pageSize"
+                (ngModelChange)="onPageSizeChange($event)">
+                @for (size of pageSizeOptions; track size) {
+                    <option [value]="size">{{ size }}</option>
+                }
+            </select>
+        </div>
+    }
+
+    <!-- Controls -->
+    <div class="moz-pagination__controls">
+
+        <button
+            type="button"
+            class="moz-pagination__btn"
+            [disabled]="isFirstPage || totalPages === 0"
+            (click)="goToPrevious()">
+            <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 6L9.21261 11.7874V11.7874C9.09519 11.9048 9.09519 12.0952 9.21261 12.2126V12.2126L15 18" stroke="var(--moz-color-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <!-- Page buttons -->
+        <div class="moz-pagination__pages">
+            @for (item of viewItems; track $index) {
+                @if (item.type === 'ellipsis') {
+                    <span class="moz-pagination__ellipsis">{{ item.label }}</span>
+                } @else {
+                    <button
+                        type="button"
+                        class="moz-pagination__page-btn"
+                        [class.moz-pagination__page-btn--active]="item.selected"
+                        (click)="onPageItemClick(item)">
+                        {{ item.label }}
+                    </button>
+                }
+            }
+        </div>
+
+        <button
+            type="button"
+            class="moz-pagination__btn"
+            [disabled]="isLastPage || totalPages === 0"
+            (click)="goToNext()">
+            <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L14.7874 12.2126V12.2126C14.9048 12.0952 14.9048 11.9048 14.7874 11.7874V11.7874L9 6" stroke="var(--moz-color-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+</nav>

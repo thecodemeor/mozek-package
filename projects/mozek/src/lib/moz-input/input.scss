@@ -1,0 +1,146 @@
+@use "styles" as moz;
+
+:host {
+    --moz-input-border-size: 0.1rem;
+    --moz-input-outline-size: 0.2rem;
+
+    display: inline-flex;
+    width: 15rem;
+    padding: 0 var(--moz-input-outline-size);
+    flex-direction: column;
+    &.readonly { pointer-events: none;}
+}
+
+/* Root */
+.moz-input {
+    --moz-input-gap: var(--moz-space-1);
+    --moz-input-px: var(--moz-space-3);
+    --moz-input-corner: var(--moz-radius-default);
+
+    position: relative;
+    width: 100%;
+
+    /* top label */
+    &__label {
+        margin: 0 0 0.2rem var(--moz-space-3);
+        font-weight: var(--moz-font-weight-medium);
+        color: color-mix(in srgb, var(--moz-color-text) 80%, white);
+        @include moz.moz-typography('label-sm');
+    }
+
+    /* control row */
+    &__control {
+        position: relative;
+        display: grid;
+        min-height: 2.5rem;
+        padding: 0 0.3rem 0 var(--moz-input-px);
+        border-radius: var(--moz-input-corner);
+        background: var(--moz-color-surface);
+
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: var(--moz-input-gap);
+        transition: all var(--moz-duration) var(--moz-ease);
+
+        &[data-disabled="true"] {
+            opacity: .5;
+            filter: grayscale(100);
+            cursor: unset;
+        }
+    }
+
+    /* model */
+    &.moz-input--fill {
+        .moz-input__native::placeholder {
+            color: color-mix(in srgb, var(--moz-color-primary) 80%, white);
+            opacity: 0.8;
+        }
+        .moz-input__control {
+            border: none !important;
+            background: color-mix(in srgb, var(--moz-color-primary) 10%, white);
+        }
+    }
+    &.moz-input--outline {
+        .moz-input__native::placeholder {
+            color: color-mix(in srgb, var(--moz-color-text)  var(--moz-fade-placeholder), white);
+            opacity: 0.8;
+        }
+        .moz-input__control {
+            @include moz.root-border();
+            background: var(--moz-color-surface);
+        }
+    }
+
+    &.is-errored .moz-input__control {
+        border: solid calc(var(--moz-input-border-size) + 0.05rem) var(--moz-color-danger);
+        outline: solid var(--moz-input-outline-size) color-mix(in srgb, var(--moz-color-danger) 30%, white);
+        background: color-mix(in srgb, var(--moz-color-danger) 10%, white);
+    }
+
+    /* focus ring */
+    &__native:focus-visible + .moz-input__clear,
+    &__native:focus-visible ~ .moz-input__toggle { visibility: visible;}
+    &__native:focus-visible {
+        visibility: visible;
+    }
+    &__control:focus-within {
+        border: solid var(--moz-input-border-size) var(--moz-color-primary) !important;
+        outline: solid var(--moz-input-outline-size) color-mix(in srgb, var(--moz-color-primary)  var(--moz-fade-outline), white);
+    }
+
+    /* input */
+    &__native {
+        width: 100%;
+        padding: 0.3rem 0;
+        border: none;
+        background: transparent;
+        color: var(--moz-color-text);
+        outline: none;
+        @include moz.moz-typography(default);
+    }
+
+    /* prefix / suffix slots */
+    &__prefix,
+    &__suffix {
+        display: inline-flex;
+        align-items: center;
+        color: var(--moz-color-text);
+    }
+
+    /* action buttons */
+    &__clear,
+    &__toggle {
+        border: 0;
+        background: transparent;
+        padding: .15rem;
+        border-radius: calc(var(--moz-input-corner) - .4rem);
+        @include moz.root-button();
+
+        svg {
+            width: 1.25rem; height: 1.25rem;
+            max-width: unset;
+        }
+    }
+    &__clear:hover,
+    &__toggle:hover {
+        background: color-mix(in srgb, var(--moz-color-text) 8%, transparent);
+    }
+
+    /* helper line */
+    &__help {
+        position: absolute;
+        bottom: calc((1rem + 0.2rem) * -1); left: var(--moz-space-3);
+        min-height: 1rem;
+        color: color-mix(in srgb, var(--moz-color-text) 70%, white);
+        @include moz.moz-typography('footer');
+    }
+    &.is-errored {
+        &__help { color: var(--moz-color-danger);}
+
+        &.moz-input--fill {
+            .moz-input__native::placeholder {
+                color: color-mix(in srgb, var(--moz-color-danger) 80%, white);
+            }
+        }
+    }
+}
