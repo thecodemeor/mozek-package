@@ -75,13 +75,13 @@
         }
     </div>
 
-  <!-- Helper / Error -->
+  <!-- Hint / Error -->
     <div class="moz-input__help" [id]="describedBy">
-        @if (!isErrored && helper) {
-            <ng-container>{{ helper }}</ng-container>
+        @if (!isErrored && hint) {
+            <ng-container>{{ hint }}</ng-container>
         }
         @if (isErrored) {
-            <ng-container> {{ error || helper }}</ng-container>
+            <ng-container> {{ error || hint }}</ng-container>
         }
     </div>
 </label>

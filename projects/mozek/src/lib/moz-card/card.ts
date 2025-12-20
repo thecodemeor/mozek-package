@@ -106,19 +106,19 @@ export class MozCard {
 }
 
 @Directive({ selector: 'moz-card-header', standalone: true })
-export class MonCardHeader {}
+export class MozCardHeader {}
 
 @Directive({ selector: 'moz-card-body', standalone: true })
-export class MonCardBody{}
+export class MozCardBody{}
 
 @Directive({ selector: 'moz-card-footer', standalone: true })
-export class MonCardFooter {}
+export class MozCardFooter {}
 
 @Directive({ selector: 'moz-card-media', standalone: true })
-export class MonCardMedia {}
+export class MozCardMedia {}
 
 @Directive({ selector: 'moz-card-header-actions', standalone: true })
-export class MonCardHeaderActions {}
+export class MozCardHeaderActions {}
 
 @Directive({ selector: 'moz-card-footer-actions', standalone: true })
-export class MonCardFooterActions {}
+export class MozCardFooterActions {}

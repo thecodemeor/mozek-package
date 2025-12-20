@@ -4,11 +4,12 @@
 # Mozek
 
 [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![npm](https://img.shields.io/badge/Downloads-Mozek-blue.svg)](https://www.npmjs.com/package/mozek-angular)
+[![npm](https://img.shields.io/badge/Downloads-Mozek_Angular-blue.svg)](https://www.npmjs.com/package/mozek-angular)
 [![update](https://img.shields.io/badge/Mozek_Angular-v_0.0.1-blue.svg)](CHANGELOG)
 
 [![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=flat&logo=sass&logoColor=white)](https://sass-lang.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
@@ -19,15 +20,15 @@
 
 I personally enjoy using clean, simple, and not over-engineered. Therefore every **Mozek** component and class is designed based on my own preferences for clarity, spacing, and feel.
 
-<p>I built it for myself at first (because I got tired of rewriting spacing, colors, and typography),  
-but now **you** can enjoy it too.</p>
+I built it for myself at first (because I got tired of rewriting spacing, colors, and typography),  
+but now **you** can enjoy it too.
 
 ---
 
 Install **Mozek** from npm with the following command.
 
 > ```bash
-> npm install @mozek
+> npm install @mozek-angular
 > ```
 ---
 

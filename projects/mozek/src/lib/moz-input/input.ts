@@ -7,7 +7,7 @@
 //
 // Customizable Props:
 // - type, color, model, disabled, placeholder, icon, full (width),
-//   readonly, clearable, helper, label, error
+//   readonly, clearable, hint, label, error
 //
 // -----------------------------------------------------------------------------
 // Author: thecodemeor
@@ -65,7 +65,7 @@ export class MozInput implements ControlValueAccessor, AfterViewInit, OnDestroy 
     @Input() type: MozCardType = 'text';
     @Input() label?: string;
     @Input() placeholder?: string;
-    @Input() helper?: string;
+    @Input() hint?: string;
     @Input() error?: string;
     @Input({ transform: booleanAttribute }) clearable = false;
     @Input({ transform: booleanAttribute }) showPasswordToggle = true;
