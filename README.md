@@ -42,7 +42,7 @@ Once you have install,
 > **Make sure your global styles import Mozek Styles first:**
 >
 > ```scss
-> @use "mozek/styles" as moz;
+> @use "mozek-angular/src/styles" as moz;
 > ```
 ---
 

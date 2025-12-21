@@ -1,9 +1,5 @@
 # Mozek Angular
 
-<div align="left">
-    <img src="../../img/png/mozek_banner.png" width="400" alt="Mozek Logo Banner"/>
-</div>
-
 Mozek is a lightweight Angular UI library and SCSS design system that I built to make interface development feel clearer, lighter, and more enjoyable. I created it as a hands on way to explore design tokens, standalone Angular components, and practical SCSS patterns without the complexity of heavier frameworks.
 
 Mozek reflects how I like to work with UI: simple, understandable, and flexible enough to grow with real projects.
@@ -41,7 +37,7 @@ npm install -D sass
 In your global styles or component SCSS:
 
 ```bash
-@use "mozek/styles" as moz;
+@use "mozek-angular/src/styles" as moz;
 ```
 
 ---
