@@ -49,7 +49,7 @@ Import Mozek components directly where needed.
 Example:
 
 ```bash
-import { MozButtonComponent } from 'mozek-angular';
+import { MozButton } from 'mozek-angular';
 ```
 ---
 

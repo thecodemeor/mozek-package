@@ -37,7 +37,7 @@
         border-radius: var(--moz-input-corner);
         background: var(--moz-color-surface);
 
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: 1fr auto;
         align-items: center;
         gap: var(--moz-input-gap);
         transition: all var(--moz-duration) var(--moz-ease);

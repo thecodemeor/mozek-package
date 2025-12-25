@@ -91,7 +91,7 @@ For Mozek Styles, you can use it in:
 > make sure you import the toolkit in your global SCSS:
 >
 > ```scss
-> @use "mozek/styles" as moz;
+> @use "mozek-angular/src/styles" as moz;
 > ```
 
 I’ve listed all the main selectors and mixins I’ve prepared below,  
@@ -179,7 +179,7 @@ On top of the utility classes, I also prepared a set of mixins so you can style 
 
 > Reminder: before using these, don’t forget:
 > ```scss
-> @use "mozek/styles" as moz;
+> @use "mozek-angular/src/styles" as moz;
 > ```
 ```scss
 @include moz.moz-typography('title-lg');

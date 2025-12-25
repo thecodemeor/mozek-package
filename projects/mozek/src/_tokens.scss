@@ -14,6 +14,25 @@
 // ---------------------------------------------
 // General
 // ---------------------------------------------
+
+// Spacing scale used to emit CSS vars
+$scale: (
+    0: 0,
+    1: 0.5rem,
+    2: 1rem,
+    3: 1.5rem,
+    4: 2rem,
+    5: 2.5rem,
+    6: 3rem,
+    7: 3.5rem,
+    8: 4rem,
+    9: 4.5rem,
+    10: 5rem
+);
+
+// ---------------------------------------------
+// Color Retrieval Function
+// ---------------------------------------------
 @function moz-get-color($name, $shade) {
     $family: map.get(palette.$colors, $name);
     @if $family == null {
@@ -33,21 +52,6 @@
 // Brand families (can be overridden before import)
 $moz-theme-primary: malibu !default;
 $moz-theme-secondary: violet !default;
-
-// Spacing scale used to emit CSS vars
-$scale: (
-    0: 0,
-    1: 0.5rem,
-    2: 1rem,
-    3: 1.5rem,
-    4: 2rem,
-    5: 2.5rem,
-    6: 3rem,
-    7: 3.5rem,
-    8: 4rem,
-    9: 4.5rem,
-    10: 5rem
-);
 
 // ---------------------------------------------
 // Theme Mixins (Light / Dark)
