@@ -32,11 +32,11 @@ import {
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-type MozCardModel =
+type MozInputModel =
     | 'outline'
     | 'fill'
 
-type MozCardType =
+type MozInputType =
     | 'text'
     | 'email'
     | 'number'
@@ -61,8 +61,8 @@ let uid = 0;
     }]
 })
 export class MozInput implements ControlValueAccessor, AfterViewInit, OnDestroy {
-    @Input() model: MozCardModel = 'outline';
-    @Input() type: MozCardType = 'text';
+    @Input() model: MozInputModel = 'outline';
+    @Input() type: MozInputType = 'text';
     @Input() label?: string;
     @Input() placeholder?: string;
     @Input() hint?: string;

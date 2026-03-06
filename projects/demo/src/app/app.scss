@@ -30,3 +30,19 @@ moz-card {
   width: 200px;
   flex-shrink: 0;
 }
+
+.demo {
+  display: flex;
+  width: 30rem;
+  padding: 7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+
+  .item {
+    display: flex;
+    width: auto; height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+}

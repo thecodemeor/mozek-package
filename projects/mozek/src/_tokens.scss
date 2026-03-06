@@ -73,7 +73,8 @@ $moz-theme-secondary: violet !default;
     --moz-color-background: #ffffff;
     --moz-color-default: #000000;
     --moz-color-surface: #fefefe;
-    --moz-color-text: #343434;
+    --moz-color-text: #1b1813;
+    --moz-color-border: color-mix(in srgb, var(--moz-color-text) 15%, transparent);
 
     /* Feedback Colors */
     --moz-color-success: #{moz-get-color(chartreuse, 600)};

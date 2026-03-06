@@ -16,6 +16,8 @@
 
 </div>
 
+<p align="center">https://thecodemeor.github.io/mozek-website</p>
+
 **Mozek** is my lightweight SCSS toolkit and UI library, designed to make styling fun, fast, and consistent.  
 
 I personally enjoy using clean, simple, and not over-engineered. Therefore every **Mozek** component and class is designed based on my own preferences for clarity, spacing, and feel.
