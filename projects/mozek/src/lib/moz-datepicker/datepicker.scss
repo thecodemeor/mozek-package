@@ -66,8 +66,8 @@
         @include moz.root-border();
         position: absolute;
         left: 0;
+        top: calc(100% + .5rem);
         display: flex;
-        margin-top: .5rem;
         padding: var(--moz-space-1);
         background: var(--moz-color-surface);
         border-radius: var(--moz-datepicker-corner);
@@ -78,8 +78,20 @@
         transform: scaleY(0);
         flex-direction: column;
         gap: var(--moz-space-1);
-        transition: all var(--moz-duration-fast) var(--moz-ease);
+        transition: transform var(--moz-duration-fast) var(--moz-ease);
         &.dropdown { transform: scaleY(1);}
+
+        &--top {
+            top: auto;
+            bottom: calc(100% + .5rem);
+            transform-origin: 50% 105%;
+        }
+
+        &--bottom {
+            top: calc(100% + .5rem);
+            bottom: auto;
+            transform-origin: 50% -5%;
+        }
     }
 
     .moz-calendar {

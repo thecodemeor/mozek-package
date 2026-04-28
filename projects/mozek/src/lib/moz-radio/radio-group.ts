@@ -26,11 +26,14 @@ import {
     forwardRef,
     HostBinding,
     ChangeDetectorRef,
-    inject
+    inject,
+    DestroyRef,
+    OnDestroy
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MozRadio } from './radio';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'moz-radio-group',
@@ -85,6 +88,7 @@ export class MozRadioGroup implements AfterContentInit, ControlValueAccessor {
     // Store each radio's original disabled state
     private _originalDisabled = new WeakMap<MozRadio, boolean>();
     private _cdr = inject(ChangeDetectorRef);
+    private destroyRef = inject(DestroyRef);
 
     writeValue(v: any): void {
         this._value = v;
@@ -108,14 +112,16 @@ export class MozRadioGroup implements AfterContentInit, ControlValueAccessor {
         this._syncFromValue();
         this._syncDisabled();
 
-        this.radios.changes.subscribe(() => {
-            this._subs.unsubscribe();
-            this._subs = new Subscription();
-            this._wireChildren();
-            this._syncFromValue();
-            this._syncDisabled();
-            this._cdr.markForCheck();
-        });
+        this.radios.changes
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                this._subs.unsubscribe();
+                this._subs = new Subscription();
+                this._wireChildren();
+                this._syncFromValue();
+                this._syncDisabled();
+                this._cdr.markForCheck();
+            });
     }
 
     // keyboard roving: left/up prev, right/down next

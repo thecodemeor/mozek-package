@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import {
   MozButton,
-  MozCard, MozCardMedia, MozCardHeader, MozCardHeaderActions, MozCardBody, MozCardFooter, MozCardFooterActions,
+  MozCard, MozCardMedia, MozCardHeader, MozCardBody, MozCardFooter,
   MozBadge,
   MozCurrency,
   MozDivider,
@@ -22,7 +22,7 @@ import {
   selector: 'app-root',
   imports: [
     MozButton,
-    MozCard, MozCardMedia, MozCardHeader, MozCardHeaderActions, MozCardBody, MozCardFooter, MozCardFooterActions,
+    MozCard, MozCardMedia, MozCardHeader, MozCardBody, MozCardFooter,
     MozBadge,
     MozCurrency,
     MozDivider,

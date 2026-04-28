@@ -31,14 +31,17 @@ import {
     forwardRef,
     ChangeDetectorRef,
     OnDestroy,
-    inject
+    inject,
+    DestroyRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MozCheckbox } from './checkbox';
 import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'moz-checkbox-group',
+    standalone: true,
     templateUrl: './checkbox-group.html',
     styleUrls: ['./checkbox-group.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -79,6 +82,7 @@ export class MozCheckboxGroup implements AfterContentInit, ControlValueAccessor,
     onTouched: () => void = () => {};
 
     private _cdr = inject(ChangeDetectorRef);
+    private destroyRef = inject(DestroyRef);
 
     get value(): any[] {
         return this._value;
@@ -115,12 +119,14 @@ export class MozCheckboxGroup implements AfterContentInit, ControlValueAccessor,
         this._syncDisabled();
 
         // React to dynamic additions/removals
-        this.boxes.changes.subscribe(() => {
-        this._wire();
-        this._syncFromValue();
-        this._syncDisabled();
-        this._cdr.markForCheck();
-        });
+        this.boxes.changes
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                this._wire();
+                this._syncFromValue();
+                this._syncDisabled();
+                this._cdr.markForCheck();
+            });
     }
 
     ngOnDestroy(): void {

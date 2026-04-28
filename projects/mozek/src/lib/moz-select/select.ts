@@ -36,12 +36,14 @@ import {
     AfterContentInit,
     ChangeDetectorRef,
     inject,
-    HostListener
+    HostListener,
+    DestroyRef
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MozOption } from './option';
 import { MozIcon } from '../moz-icon/icon';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 let uid = 0;
 
@@ -59,12 +61,16 @@ let uid = 0;
     }]
 })
 export class MozSelect<T = any> implements ControlValueAccessor, AfterContentInit {
+    /** Accent color used for focus/selected states. */
+    @Input() color: 'primary' | 'danger' | 'success' | 'warning' | 'text' = 'primary';
     @Input() label?: string;
     @Input() placeholder = 'Please select';
     @Input() error?: string;
     @Input() hint?: string;
     @Input({ transform: booleanAttribute }) disabled = false;
+    @Input({ transform: booleanAttribute }) full = false;
     @Input() model: 'outline' | 'fill' = 'outline';
+    @Input() compareWith: (a: T | null, b: T | null) => boolean = Object.is;
 
     @Output() changed = new EventEmitter<T | null>();
 
@@ -73,6 +79,10 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
 
     @HostBinding('attr.aria-disabled') get ariaDisabled() { return String(this.disabled); }
     @HostBinding('class.disabled') get hostDisabled() { return this.disabled; }
+    @HostBinding('class.full') get hostFull() { return this.full; }
+    @HostBinding('style.--moz-select-accent') get accentCssVar() {
+        return `var(--moz-color-${this.color})`;
+    }
 
     id = `moz-select-${++uid}`;
     open = false;
@@ -80,6 +90,7 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
 
     private host = inject(ElementRef<HTMLElement>);
     private cdr = inject(ChangeDetectorRef);
+    private destroyRef = inject(DestroyRef);
 
     private _value: T | null = null;
 
@@ -91,7 +102,9 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     // Lifecycle
     // ---------------------------------------------------------------------------
     ngAfterContentInit() {
-        this.optionList.changes.subscribe(() => this.cdr.markForCheck());
+        this.optionList.changes
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => this.cdr.markForCheck());
     }
 
     // ---------------------------------------------------------------------------
@@ -142,6 +155,7 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     // ---------------------------------------------------------------------------
     writeValue(v: any): void {
         this._value = v;
+        this.cdr.markForCheck();
     }
 
     registerOnChange(fn: any): void {
@@ -202,6 +216,6 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     }
 
     equals(a: any, b: any) {
-        return JSON.stringify(a) === JSON.stringify(b);
+        return this.compareWith(a, b);
     }
 }

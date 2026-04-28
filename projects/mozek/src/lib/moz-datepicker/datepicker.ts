@@ -30,7 +30,8 @@ import {
     ChangeDetectorRef,
     booleanAttribute,
     inject,
-    OnInit
+    OnInit,
+    ViewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OnDestroy } from '@angular/core';
@@ -113,8 +114,13 @@ export class MozDatepicker implements OnInit, OnDestroy {
 
     private host = inject(ElementRef<HTMLElement>);
     private cdr = inject(ChangeDetectorRef);
+    @ViewChild('trigger', { static: true }) triggerRef!: ElementRef<HTMLButtonElement>;
+    @ViewChild('panel') panelRef!: ElementRef<HTMLElement>;
 
     open = false;
+    panelPlacement: 'top' | 'bottom' = 'bottom';
+    panelMaxHeight: string | null = null;
+    panelOffsetX = 0;
     viewYear: number;
     viewMonth: number;    // 0-11
     weekdayLabels: string[] = [];
@@ -195,6 +201,9 @@ export class MozDatepicker implements OnInit, OnDestroy {
             this.viewMode = 'date';
         }
         this.open = next;
+        if (next) {
+            this.schedulePanelPositionUpdate();
+        }
         this.cdr.markForCheck();
     }
 
@@ -208,6 +217,20 @@ export class MozDatepicker implements OnInit, OnDestroy {
         }
     }
 
+    @HostListener('window:resize')
+    onWindowResize(): void {
+        if (this.open) {
+            this.updatePanelPosition();
+        }
+    }
+
+    @HostListener('window:scroll')
+    onWindowScroll(): void {
+        if (this.open) {
+            this.updatePanelPosition();
+        }
+    }
+
     setView(mode: ViewMode): void {
         this.viewMode = mode;
         if (mode === 'month') {
@@ -215,6 +238,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
         } else if (mode === 'year') {
             this.buildYearGrid();
         }
+        this.schedulePanelPositionUpdate();
         this.cdr.markForCheck();
     }
 
@@ -234,6 +258,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
         this.buildCalendar();
         this.buildMonthGrid();
         this.buildYearGrid();
+        this.schedulePanelPositionUpdate();
         this.cdr.markForCheck();
     }
 
@@ -250,6 +275,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
         this.buildCalendar();
         this.buildMonthGrid();
         this.buildYearGrid();
+        this.schedulePanelPositionUpdate();
         this.cdr.markForCheck();
     }
 
@@ -292,6 +318,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
         this.viewMonth = m.index;
         this.buildCalendar();
         this.viewMode = 'date';
+        this.schedulePanelPositionUpdate();
         this.cdr.markForCheck();
     }
 
@@ -331,6 +358,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
         this.buildCalendar();
         this.viewMode = 'month';
         this.buildMonthGrid();
+        this.schedulePanelPositionUpdate();
         this.cdr.markForCheck();
     }
 
@@ -338,6 +366,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
         const minY = this.minYear;
         this.yearPageStart = Math.max(minY, this.yearPageStart - this.yearPageSize);
         this.buildYearGrid();
+        this.schedulePanelPositionUpdate();
         this.cdr.markForCheck();
     }
 
@@ -348,6 +377,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
         this.yearPageStart + this.yearPageSize
         );
         this.buildYearGrid();
+        this.schedulePanelPositionUpdate();
         this.cdr.markForCheck();
     }
 
@@ -413,5 +443,42 @@ export class MozDatepicker implements OnInit, OnDestroy {
             a.getMonth() === b.getMonth() &&
             a.getDate() === b.getDate()
         );
+    }
+
+    private schedulePanelPositionUpdate(): void {
+        if (!this.open) return;
+        queueMicrotask(() => {
+            requestAnimationFrame(() => this.updatePanelPosition());
+        });
+    }
+
+    private updatePanelPosition(): void {
+        const triggerEl = this.triggerRef?.nativeElement;
+        const panelEl = this.panelRef?.nativeElement;
+
+        if (!this.open || !triggerEl || !panelEl) return;
+
+        const viewportPadding = 12;
+        const panelGap = 8;
+        const triggerRect = triggerEl.getBoundingClientRect();
+        const hostRect = this.host.nativeElement.getBoundingClientRect();
+        const panelHeight = panelEl.scrollHeight;
+        const panelWidth = panelEl.offsetWidth;
+
+        const spaceBelow = window.innerHeight - triggerRect.bottom - viewportPadding - panelGap;
+        const spaceAbove = triggerRect.top - viewportPadding - panelGap;
+
+        const shouldOpenTop = panelHeight > spaceBelow && spaceAbove > spaceBelow;
+        const availableSpace = shouldOpenTop ? spaceAbove : spaceBelow;
+
+        const minLeft = viewportPadding;
+        const maxLeft = window.innerWidth - viewportPadding - panelWidth;
+        const desiredLeft = triggerRect.left;
+        const clippedLeft = Math.min(Math.max(desiredLeft, minLeft), Math.max(minLeft, maxLeft));
+
+        this.panelPlacement = shouldOpenTop ? 'top' : 'bottom';
+        this.panelMaxHeight = `${Math.max(160, Math.floor(availableSpace))}px`;
+        this.panelOffsetX = Math.round(clippedLeft - hostRect.left);
+        this.cdr.markForCheck();
     }
 }

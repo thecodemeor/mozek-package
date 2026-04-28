@@ -4,15 +4,18 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "new-[component]": "ng g component moz-[new component] --project=mozek --standalone --inline-template=false --inline-style=false",
-    "build-mozek": "ng build mozek --configuration production",
     "demo": "ng serve demo",
-    "pack": "npm run build:mozek && cd dist/mozek && npm pack",
-    "publish-mozek": "npm run build:mozek && cd dist/mozek && npm publish --access public"
+    "demo:prod": "ng serve demo --configuration production",
+    "build:demo": "ng build demo --configuration development",
+    "build:demo:prod": "ng build demo --configuration production",
+    "build:mozek": "ng build mozek --configuration production",
+    "build:mozek:dev": "ng build mozek --configuration development",
+    "pack:mozek": "npm run build:mozek && cd dist/mozek && npm pack",
+    "publish:mozek": "npm run build:mozek && cd dist/mozek && npm publish --access public",
+    "commit": "git add . && git commit -m",
+    "push": "git push",
+    "commit:push": "git add . && git commit -m"
   },
   "prettier": {
     "overrides": [
@@ -37,6 +40,7 @@
     "zone.js": "^0.15.1"
   },
   "devDependencies": {
+    "@angular/build": "^20.3.13",
     "@angular-devkit/build-angular": "^20.3.13",
     "@angular/cli": "^20.1.1",
     "@angular/compiler-cli": "^20.1.0",

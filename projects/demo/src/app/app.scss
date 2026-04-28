@@ -1,9 +1,17 @@
 @use "../../../mozek/src/styles.scss" as moz;
+$grid-color: #63b3ed;
+$cell-size: 40px;
+$opacity: 0.15;
 
 .demo-shell {
   width: 100vw;
-  padding: 2rem;
+  padding: 2rem 0 2rem 2rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #fff;
+  background-image:
+    linear-gradient(rgba($grid-color, $opacity) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($grid-color, $opacity) 1px, transparent 1px);
+  background-size: $cell-size $cell-size;
 
   h1, h3 { margin-bottom: 1rem;}
   p { margin: 1rem 0 0.5rem;}

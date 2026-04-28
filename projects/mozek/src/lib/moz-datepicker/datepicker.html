@@ -26,9 +26,14 @@
 
     <!-- Dropdown calendar -->
     <div
+        #panel
         id="dropdown"
         class="moz-datepicker__panel"
         [class.dropdown]="open"
+        [class.moz-datepicker__panel--top]="panelPlacement === 'top'"
+        [class.moz-datepicker__panel--bottom]="panelPlacement === 'bottom'"
+        [style.left.px]="panelOffsetX"
+        [style.max-height]="panelMaxHeight"
         tabindex="-1">
         <div class="moz-calendar">
             <!-- Header (month / year pickers) -->

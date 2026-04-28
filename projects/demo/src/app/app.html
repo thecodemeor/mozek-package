@@ -166,7 +166,7 @@
           <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
-      <moz-select label="Select">
+      <moz-select model="fill" label="Select">
         @for (item of ['1','2','3','4','5']; track $index) {
           <moz-option [value]="item">{{item}}</moz-option>
         }
@@ -210,6 +210,9 @@
       <moz-datepicker label="Date Picker"></moz-datepicker>
       <moz-datepicker disabled></moz-datepicker>
     </div>
+  </div>
+  <div class="flex" style="justify-content: end;">
+    <moz-datepicker label="Date Picker"></moz-datepicker>
   </div>
 
   <h3>Button Icon</h3>
