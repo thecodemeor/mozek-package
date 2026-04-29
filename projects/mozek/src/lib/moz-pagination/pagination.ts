@@ -49,7 +49,7 @@ type PaginationViewItem =
 @Component({
     selector: 'moz-pagination',
     standalone: true,
-    imports: [CommonModule, FormsModule, MozIcon],
+    imports: [CommonModule, FormsModule],
     templateUrl: './pagination.html',
     styleUrls: ['./pagination.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

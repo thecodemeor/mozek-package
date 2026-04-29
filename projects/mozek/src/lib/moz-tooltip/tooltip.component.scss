@@ -1,0 +1,63 @@
+@use "styles" as moz;
+
+:host {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.moz-tooltip-popup {
+  position: absolute;
+  pointer-events: none;
+
+  // Visual
+  background: var(--moz-color-default, #1a1a2e);
+  color: var(--moz-color-surface, #ffffff);
+  padding: 5px 11px;
+  border-radius: var(--moz-radius-sm, 6px);
+  font-size: 0.78rem;
+  font-weight: var(--moz-font-weight-medium, 500);
+  white-space: nowrap;
+  line-height: 1.4;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.15);
+
+  // Hidden by default — fades + scales in
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity 0.15s ease,
+    transform 0.18s var(--moz-ease-bounce, cubic-bezier(0.34, 1.4, 0.64, 1));
+
+  &.moz-tooltip--visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  // Arrow base
+  .moz-tooltip-popup__arrow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  // Arrow — pointing down (tooltip is above the host)
+  &.moz-tooltip-popup--top .moz-tooltip-popup__arrow {
+    top: 100%;
+    border-width: 5px 5px 0 5px;
+    border-color: var(--moz-color-default, #1a1a2e) transparent transparent transparent;
+  }
+
+  // Arrow — pointing up (tooltip is below the host)
+  &.moz-tooltip-popup--bottom .moz-tooltip-popup__arrow {
+    bottom: 100%;
+    border-width: 0 5px 5px 5px;
+    border-color: transparent transparent var(--moz-color-default, #1a1a2e) transparent;
+  }
+}

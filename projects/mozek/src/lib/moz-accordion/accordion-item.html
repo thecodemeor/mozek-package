@@ -23,10 +23,11 @@
 <div
     class="moz-accordion-item__panel"
     [attr.id]="panelId"
-    [style.maxHeight]="expanded ? '1000px' : '0'"
     [class.moz-accordion-item__panel--expanded]="expanded"
 >
     <div class="moz-accordion-item__panel-inner">
-        <ng-content></ng-content>
+        <div class="moz-accordion-item__panel-content">
+            <ng-content></ng-content>
+        </div>
     </div>
 </div>

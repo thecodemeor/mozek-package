@@ -1,0 +1,7 @@
+<div class="moz-dialog-backdrop" [class.visible]="animationState === 'enter'" (click)="onBackdropClick()"></div>
+<div class="moz-dialog-wrapper">
+    <div class="moz-dialog-surface" [class.visible]="animationState === 'enter'">
+        <!-- The user's custom component will be injected here -->
+        <ng-template #portal></ng-template>
+    </div>
+</div>

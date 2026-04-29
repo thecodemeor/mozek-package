@@ -22,3 +22,8 @@ export * from './lib/moz-checkbox/checkbox';
 export * from './lib/moz-checkbox/checkbox-group';
 export * from './lib/moz-radio/radio';
 export * from './lib/moz-radio/radio-group';
+export * from './lib/moz-dialog/dialog-ref';
+export * from './lib/moz-dialog/dialog-container';
+export * from './lib/moz-dialog/dialog.service';
+export * from './lib/moz-tooltip/tooltip.directive';
+export * from './lib/moz-tooltip/tooltip.component';

@@ -10,7 +10,7 @@
     "noImplicitReturns": true,
     "paths": {
       "mozek": [
-        "./dist/mozek"
+        "./projects/mozek/src/public-api.ts"
       ]
     },
     "noFallthroughCasesInSwitch": true,

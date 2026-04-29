@@ -20,13 +20,16 @@ button.moz-btn {
     border-radius: var(--moz-radius-default);
     font-weight: var(--moz-font-weight-semibold);
     text-align: center;
-    transition: all var(--moz-duration) var(--moz-ease);
+    transition: all var(--moz-duration-fast, 0.2s) var(--moz-ease-bounce, cubic-bezier(0.34, 1.3, 0.64, 1));
     cursor: pointer;
 
     &:focus-visible {
         outline: solid 2px transparent;
         outline-offset: 2px;
         box-shadow: 0 0 0 3px rgba(37, 99, 235, .35);
+    }
+    &:active:not(:disabled) {
+        transform: scale(0.96);
     }
     &:disabled {
         opacity: 0.3;
@@ -78,7 +81,7 @@ button.moz-btn {
     border: none;
     @include moz.root-shadow(1);
     &:hover:not(:disabled) { background: color-mix(in srgb, var(--moz-btn-bg, var(--moz-color-primary))  var(--moz-fade-hover), white);}
-    &:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 0.5px 1px 0 rgba(60,64,67,.08);}
+    &:active:not(:disabled) { box-shadow: 0 0.5px 1px 0 rgba(60,64,67,.08);}
 }
 
 /* Glassmorphism */

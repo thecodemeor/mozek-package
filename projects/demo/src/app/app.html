@@ -1,23 +1,18 @@
 <main class="demo-shell">
   <h1>Mozek Demo</h1>
 
-  <div class="demo">
-    <div class="item">
-      <moz-switch color="primary"></moz-switch>
-    </div>
-    <div class="item">
-      <moz-button model="fill" color="primary">Generate</moz-button>
-    </div>
-    <div class="item">
-      <moz-checkbox color="primary"></moz-checkbox>
-    </div>
-    <div class="item">
-      <moz-select color="primary"></moz-select>
-    </div>
-    <div class="item">
-      <moz-input model="fill" color="primary" placeholder="Search"></moz-input>
-    </div>
+  <h3>Tooltip</h3>
+  <div class="grid gap-2 w-full">
+    <div style="padding: 20px; background: red; width: 100px" mozTooltip="Native div tooltip">Hover Me</div>
+    <moz-button model="fill" color="primary" mozTooltip="Click to open a popup">Tooltip</moz-button>
   </div>
+
+
+  <h3>Dialog</h3>
+  <div class="grid gap-2 w-full">
+    <moz-button model="elevated" color="primary" (click)="openDialog()" mozTooltip="Click to open a popup">Open Programmatic Dialog</moz-button>
+  </div>
+
 
   <h3>Radio</h3>
   <div class="grid gap-2 w-full">
@@ -330,17 +325,18 @@
   <h3>Progress</h3>
   <div class="grid gap-2 w-full">
     <moz-progress></moz-progress>
-    <moz-progress model="infinity"></moz-progress>
+    <moz-progress model="mirage"></moz-progress>
     <div class="flex gap-2">
       <moz-progress model="ring"></moz-progress>
       <moz-progress model="line_spinner"></moz-progress>
       <moz-progress model="hourglass"></moz-progress>
       <moz-progress model="zoomies"></moz-progress>
       <moz-progress model="line_wobble"></moz-progress>
-      <moz-progress model="infinity"></moz-progress>
       <moz-progress model="cardio"></moz-progress>
       <moz-progress model="helix"></moz-progress>
       <moz-progress model="newton"></moz-progress>
+      <moz-progress model="mirage"></moz-progress>
+      <moz-progress model="blank"></moz-progress>
     </div>
     <div class="flex gap-2">
       <moz-progress model="line_spinner" color="primary" size="20"></moz-progress>
@@ -399,7 +395,7 @@
       <moz-icon size="40">train</moz-icon>
       <moz-icon size="50">eye_closed</moz-icon>
       <moz-icon size="100">check_read</moz-icon>
-      <moz-icon size="200">check_read</moz-icon>
+      <moz-icon size="200">paperclip</moz-icon>
     </div>
   </div>
 

@@ -23,10 +23,11 @@ type MozProgressModel =
     | 'hourglass'
     | 'zoomies'
     | 'line_wobble'
-    | 'infinity'
     | 'cardio'
     | 'helix'
     | 'newton'
+    | 'mirage'
+    | 'blank'
 
 @Component({
   selector: 'moz-progress',

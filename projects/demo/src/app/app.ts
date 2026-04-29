@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import {
   MozButton,
   MozCard, MozCardMedia, MozCardHeader, MozCardBody, MozCardFooter,
@@ -15,7 +15,9 @@ import {
   MozSelect, MozOption,
   MozAccordion, MozAccordionItem,
   MozCheckbox, MozCheckboxGroup,
-  MozRadio, MozRadioGroup
+  MozRadio, MozRadioGroup,
+  MozDialogService, MozDialogRef,
+  MozTooltip
 } from 'mozek';
 
 @Component({
@@ -36,13 +38,25 @@ import {
     MozSelect, MozOption,
     MozAccordion, MozAccordionItem,
     MozCheckbox, MozCheckboxGroup,
-    MozRadio, MozRadioGroup
+    MozRadio, MozRadioGroup,
+    MozTooltip
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('demo');
+  private dialogService = inject(MozDialogService);
+
+  openDialog() {
+    const dialogRef = this.dialogService.open(ExampleDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed with result:', result);
+      if (result) {
+        alert('Dialog returned: ' + result);
+      }
+    });
+  }
 
   pageIndex = 0;     // zero-based
   pageSize = 2;
@@ -72,4 +86,25 @@ export class App {
   food = 'pizza';
   house = 'apartment';
   career = 'engineer';
+}
+
+@Component({
+  selector: 'example-dialog',
+  standalone: true,
+  imports: [MozButton],
+  template: `
+    <h2>Hello from Dialog!</h2>
+    <p>This is a programmatically opened dialog.</p>
+    <div style="margin-top: 2rem; display: flex; justify-content: flex-end; gap: 1rem;">
+      <moz-button model="outline" color="secondary" (click)="closeDialog(null)">Cancel</moz-button>
+      <moz-button (click)="closeDialog('Confirmed!')">Confirm</moz-button>
+    </div>
+  `
+})
+export class ExampleDialogComponent {
+  dialogRef = inject(MozDialogRef);
+
+  closeDialog(result: any) {
+    this.dialogRef.close(result);
+  }
 }
