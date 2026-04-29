@@ -1,11 +1,4 @@
-:host {
-    // display: flex;
-    // width: fit-content;
-    // height: fit-content;
-    // aspect-ratio: 1 / 1;
-    // justify-content: center;
-    // align-items: center;
-}
+:host {}
 
 .ring {
     --uib-bg-opacity: 0;
@@ -21,7 +14,7 @@
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
         stroke-linecap: round;
-        animation: stretch calc(var(--moz-progress-speed) * 0.75) ease-in-out infinite;
+        animation: ring calc(var(--moz-progress-speed) * 0.75) ease-in-out infinite;
         will-change: stroke-dasharray, stroke-dashoffset;
         transition: stroke 0.5s ease;
     }
@@ -37,7 +30,7 @@
             transform: rotate(360deg);
         }
     }
-    @keyframes stretch {
+    @keyframes ring {
         0% {
             stroke-dasharray: 0, 150;
             stroke-dashoffset: 0;
@@ -75,7 +68,7 @@
         width: 100%;
         border-radius: calc(var(--uib-stroke) / 2);
         background-color: var(--moz-progress-color);
-        animation: pulse calc(var(--moz-progress-speed)) ease-in-out infinite;
+        animation: lspinner calc(var(--moz-progress-speed)) ease-in-out infinite;
         transition: background-color 0.3s ease;
         transform-origin: center bottom;
     }
@@ -146,7 +139,7 @@
         }
     }
 
-    @keyframes pulse {
+    @keyframes lspinner {
         0%,
         80%,
         100% {
@@ -168,7 +161,7 @@
     height: var(--moz-progress-size);
     width: var(--moz-progress-size);
     transform: rotate(45deg);
-    animation: rotate calc(var(--moz-progress-speed) * 2) ease-in-out infinite;
+    animation: hourglass-rotate calc(var(--moz-progress-speed) * 2) ease-in-out infinite;
     .half {
         --uib-half-size: calc(var(--moz-progress-size) * 0.435);
         position: absolute;
@@ -217,11 +210,11 @@
             width: 100%;
             transform-origin: bottom right;
             border-radius: 0 0 calc(var(--moz-progress-size) / 20) 0;
-            animation: flow calc(var(--moz-progress-speed) * 2) linear infinite both;
+            animation: hourglass-flow calc(var(--moz-progress-speed) * 2) linear infinite both;
             transition: background-color 0.3s ease;
         }
     }
-    @keyframes flow {
+    @keyframes hourglass-flow {
         0% {
             transform: rotate(45deg) translate(-3%, 50%) scaleX(1.2);
         }
@@ -239,7 +232,7 @@
             transform: rotate(0deg) translate(0%, 0%) scaleX(1);
         }
     }
-    @keyframes rotate {
+    @keyframes hourglass-rotate {
         0%,
         30% {
             transform: rotate(45deg);
@@ -284,12 +277,12 @@
         height: 100%;
         width: 100%;
         border-radius: calc(var(--uib-stroke) / 2);
-        animation: zoom var(--moz-progress-speed) ease-in-out infinite;
+        animation: zoomies var(--moz-progress-speed) ease-in-out infinite;
         transform: translateX(-100%);
         background-color: var(--moz-progress-color);
         transition: background-color 0.3s ease;
     }
-    @keyframes zoom {
+    @keyframes zoomies {
         0% {
             transform: translateX(-100%);
         }
@@ -327,12 +320,12 @@
         height: 100%;
         width: 100%;
         border-radius: calc(var(--uib-stroke) / 2);
-        animation: wobble var(--moz-progress-speed) ease-in-out infinite;
+        animation: line-wobble var(--moz-progress-speed) ease-in-out infinite;
         transform: translateX(-95%);
         background-color: var(--moz-progress-color);
         transition: background-color 0.3s ease;
     }
-    @keyframes wobble {
+    @keyframes line-wobble {
         0% { transform: translateX(-95%);}
         100% { transform: translateX(-95%);}
         50% { transform: translateX(95%);}
@@ -351,7 +344,7 @@
         stroke-dasharray: 15, 85;
         stroke-dashoffset: 0;
         stroke-linecap: round;
-        animation: travel var(--moz-progress-speed) linear infinite;
+        animation: infinity-travel var(--moz-progress-speed) linear infinite;
         will-change: stroke-dasharray, stroke-dashoffset;
         transition: stroke 0.5s ease;
     }
@@ -359,7 +352,7 @@
         stroke: var(--moz-progress-color);
         opacity: var(--uib-bg-opacity);
     }
-    @keyframes travel {
+    @keyframes infinity-travel {
         0% {
             stroke-dashoffset: 0;
         }
@@ -383,8 +376,8 @@
         stroke-linecap: round;
         stroke-linejoin: round;
         animation:
-            travel var(--moz-progress-speed) ease-in-out infinite,
-            fade var(--moz-progress-speed) ease-out infinite;
+            cardio-travel var(--moz-progress-speed) ease-in-out infinite,
+            cardio-fade var(--moz-progress-speed) ease-out infinite;
         will-change: stroke-dasharray, stroke-dashoffset;
         transition: stroke 0.5s ease;
     } 
@@ -394,7 +387,7 @@
         stroke: var(--moz-progress-color);
         opacity: var(--uib-bg-opacity);
     }
-    @keyframes travel {
+    @keyframes cardio-travel {
         0% {
             stroke-dashoffset: 100;
         }
@@ -403,7 +396,7 @@
             stroke-dashoffset: 0;
         }
     }
-    @keyframes fade {
+    @keyframes cardio-fade {
         0% {
             opacity: 0;
         }
@@ -444,7 +437,7 @@
         border-radius: 50%;
         background-color: var(--moz-progress-color);
         flex-shrink: 0;
-        animation: orbit var(--moz-progress-speed) linear infinite;
+        animation: helix var(--moz-progress-speed) linear infinite;
         transition: background-color 0.3s ease;
     }
     .slice:nth-child(1)::after {
@@ -480,7 +473,7 @@
     .slice:nth-child(6)::after {
         animation-delay: calc(var(--uib-a) + var(--uib-b) * 5);
     } 
-    @keyframes orbit {
+    @keyframes helix {
         0% {
             transform: translateX(calc(var(--moz-progress-size) * 0.25)) scale(0.73684);
             opacity: 0.65;
@@ -595,12 +588,12 @@
         transition: background-color 0.3s ease;
     }
     .dot:first-child {
-        animation: swing var(--moz-progress-speed) linear infinite;
+        animation: newton-swing var(--moz-progress-speed) linear infinite;
     }
     .dot:last-child {
-        animation: swing2 var(--moz-progress-speed) linear infinite;
+        animation: newton-swing2 var(--moz-progress-speed) linear infinite;
     }  
-    @keyframes swing {
+    @keyframes newton-swing {
         0% {
             transform: rotate(0deg);
             animation-timing-function: ease-out;
@@ -616,7 +609,7 @@
             animation-timing-function: linear;
         }
     } 
-    @keyframes swing2 {
+    @keyframes newton-swing2 {
         0% {
             transform: rotate(0deg);
             animation-timing-function: linear;
