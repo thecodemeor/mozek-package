@@ -10,7 +10,7 @@
 
 ### **The Signal-Powered UI Engine for Modern SaaS Architecture.**
 
-[Explore Documentation](https://thecodemeor.github.io/mozek-website) • [View Showcase](https://thecodemeor.github.io/mozek-website/showcase)
+[View Showcase](https://thecodemeor.github.io/mozek-website/showcase) • [Explore Documentation](CHANGELOG.md)
 
 </div>
 
@@ -31,7 +31,9 @@ Mozek is an enterprise-grade UI library designed to **reduce time-to-market** fo
 Mozek is engineered for the future of Angular. It is a **signal-reactive**, **type-safe** library that leverages the power of Angular Signals for **fine-grained reactivity** and **performant** rendering.
 
 ### Why Signals?
+
 By adopting a signal-based architecture, Mozek achieves:
+
 - **Zone-less Compatibility**: Ready for the future of Angular without the overhead of Zone.js.
 - **Decoupled Architecture**: Components react only to the data they need, minimizing change detection cycles.
 - **Ultra-Fast Performance**: Experience snappy interactions even in data-heavy enterprise dashboards.
@@ -55,6 +57,7 @@ We believe that enterprise software should feel premium, not sterile. Our design
 Mozek is built by developers, for developers. We prioritize a **performant** and **type-safe** experience that feels natural to integrate.
 
 ### Seamless Integration
+
 Get up and running in seconds. Mozek is designed for **tree-shaking**, ensuring that you only ship the code you actually use, keeping your bundle sizes small and your load times fast.
 
 ```bash
@@ -63,7 +66,7 @@ npm install mozek-angular
 
 ```typescript
 // In your component
-import { MozButton, MozInput } from 'mozek-angular';
+import { MozButton, MozInput } from "mozek-angular";
 
 @Component({
   standalone: true,
@@ -71,7 +74,7 @@ import { MozButton, MozInput } from 'mozek-angular';
   template: `
     <moz-input label="Full Name" placeholder="John Doe" />
     <moz-button model="fill" color="primary">Create Account</moz-button>
-  `
+  `,
 })
 export class RegisterComponent {}
 ```
@@ -98,10 +101,12 @@ Our mission is to provide the most comprehensive, signal-based UI suite in the A
 
 Ready to see Mozek in action? Visit our official showcase to interact with every component and explore full API documentation.
 
-👉 **[Explore Full Documentation](https://thecodemeor.github.io/mozek-website)**
+👉 **[View Showcase @mozek-website.](https://thecodemeor.github.io/mozek-website)**
 
 ---
 
 ## 📜 License
 
-Mozek is available under the terms of the [MIT license](LICENSE). Built with ❤️ by thecodemeor.
+Mozek is available under the terms of the [MIT license](LICENSE).<br>
+
+Whether you're building **Mozek** or building something with **Mozek** — have fun creating! 🥾

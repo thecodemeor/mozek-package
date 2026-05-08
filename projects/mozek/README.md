@@ -1,51 +1,73 @@
-# Mozek Angular UI
+# Mozek Angular
 
-[![npm](https://img.shields.io/npm/v/mozek-angular.svg)](https://www.npmjs.com/package/mozek-angular)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/thecodemeor/mozek-package/blob/main/LICENSE)
-
-**The Signal-Powered UI Engine for Modern SaaS Architecture.**
-
-Mozek is an enterprise-grade UI library designed to **reduce time-to-market** for modern web applications. Built specifically for high-growth SaaS platforms, Mozek provides a **cohesive** suite of components that ensure a **modern** aesthetic and **efficient** development workflow.
+**The high-performance, signal-powered UI suite for Angular.**  
+Mozek is a minimalist UI library designed with a sleek glassmorphism aesthetic to bring premium SaaS design to your enterprise applications.
 
 ---
 
-## ⚙️ Technical Core
+## ⚡ Quick Start
 
-Mozek is engineered for the future of Angular, leveraging **Angular Signals** for **fine-grained reactivity** and **performant** rendering.
+Get your project up and running in under 2 minutes.
 
-- **Zone-less Compatibility**: Ready for the future of Angular without the overhead of Zone.js.
-- **Ultra-Fast Performance**: Snappy interactions even in data-heavy enterprise dashboards.
-- **Modern Control Flow**: Utilizing Angular's newest `@if`, `@for`, and `@switch` syntax.
-
----
-
-## 🛠️ Quick Start
-
+### 1. Install the package
 ```bash
 npm install mozek-angular
 ```
 
-Import Mozek components directly into your standalone components:
+### 2. Implementation
+Import Mozek components directly into your standalone components.
 
 ```typescript
-import { MozButton, MozInput } from 'mozek-angular';
+import { MozButtonIcon } from 'mozek-angular';
 
 @Component({
+  selector: 'app-root',
   standalone: true,
-  imports: [MozButton, MozInput],
+  imports: [MozButtonIcon],
   template: `
-    <moz-input label="Full Name" placeholder="John Doe" />
-    <moz-button model="fill" color="primary">Create Account</moz-button>
+    <moz-button-icon icon="home" (click)="goHome()">
+      Return to Dashboard
+    </moz-button-icon>
   `
 })
-export class RegisterComponent {}
+export class AppComponent {}
 ```
 
 ---
 
-## 🌐 Documentation & Showcase
+## 🛠️ Key Technical Specs
 
-Explore the full API documentation and interactive component showcase at our official website.
+*   **Full Angular Signal Integration**: Engineered for fine-grained reactivity and minimal change detection overhead.
+*   **Zero-Zone.js Compatibility**: Optimized for high-performance, future-proof Angular architectures.
+*   **Fully Tree-Shakeable**: Modular design ensures you only ship the components you actually use.
+*   **First-Class Style Support**: Seamless integration with existing SCSS projects or TailwindCSS workflows.
+
+---
+
+## 🧩 Components Overview
+
+| Component Category | Available Components |
+| :--- | :--- |
+| **Actions** | **Button**, **Button Icon** |
+| **Forms** | **Input**, **Select**, **Checkbox**, **Radio**, **Switch**, **Date Picker** |
+| **Layout** | **Card**, **Divider**, **Badge**, **Accordion** |
+| **Navigation** | **Pagination**, **Breadcrumbs** |
+| **Feedback** | **Snackbar**, **Tooltip**, **Progress**, **Icon**, **Currency** |
+
+---
+
+## 📋 Peer Dependencies
+
+Mozek requires a modern Angular environment to function correctly:
+
+*   **Angular Core/Common**: `>=18.0.0 <21.0.0`
+*   **Sass**: Dart Sass is recommended for the design system tokens.
+
+---
+
+## 🌐 Full Documentation & Showcase
+
+For a full interactive component showcase, API references, and advanced configuration guides, visit our official documentation:
 
 👉 **[https://thecodemeor.github.io/mozek-website](https://thecodemeor.github.io/mozek-website)**
 
@@ -53,4 +75,4 @@ Explore the full API documentation and interactive component showcase at our off
 
 ## 📜 License
 
-Mozek is available under the terms of the [MIT license](https://github.com/thecodemeor/mozek-package/blob/main/LICENSE).
+Mozek is available under the [MIT License](https://github.com/thecodemeor/mozek-package/blob/main/LICENSE).
