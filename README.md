@@ -2,6 +2,7 @@
     <img src="./img/png/mozek_banner.png" width="450" alt="Mozek Logo Banner"/>
 
 # 🎨 Mozek UI
+
 ### **Stop coding interfaces. Start crafting experiences.**
 
 [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -9,7 +10,7 @@
 [![update](https://img.shields.io/badge/Mozek_Angular-v_1.0.0-blue.svg)](CHANGELOG)
 [![Angular](https://img.shields.io/badge/Angular-18+-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io/)
 
-[**✨ View Showcase**](https://thecodemeor.github.io/mozek-website/showcase) • [**📚 Explore Documentation**](https://thecodemeor.github.io/mozek-website)
+[**View Showcase**](https://thecodemeor.github.io/mozek-website/showcase) • [**Explore Documentation**](https://thecodemeor.github.io/mozek-website)
 
 </div>
 
@@ -30,6 +31,7 @@ Mozek isn't just another UI library; it's your **unfair advantage** in the SaaS 
 While other libraries are stuck in the past, Mozek is built on the **bleeding edge** of reactivity. We’ve gone **all-in on Angular Signals** to give you performance that feels like magic.
 
 ### 🏎️ Why your dev team will love it:
+
 - **Zone-less by Design**: Move towards a Zone-free future with fine-grained reactivity that only updates exactly what’s needed.
 - **Type-Safe Everything**: Catch errors at compile-time, not runtime. Our strict TypeScript integration is a Senior dev's best friend.
 - **Modern Control Flow**: Say goodbye to legacy directives. We use the sleek `@if`, `@for`, and `@switch` syntax for ultra-lean templates.
@@ -42,7 +44,7 @@ While other libraries are stuck in the past, Mozek is built on the **bleeding ed
 We believe enterprise software should feel **tactile and alive**. Our "Glassmorphism" philosophy isn't just about blur—it's about **hierarchy and clarity**.
 
 - **Glassmorphism 2.0**: Sophisticated translucency that creates depth without the clutter.
-- **Tactile Physics**: Micro-animations that provide instant satisfying feedback. It doesn't just work; it *feels* good.
+- **Tactile Physics**: Micro-animations that provide instant satisfying feedback. It doesn't just work; it _feels_ good.
 - **Minimalist SaaS Aesthetic**: We stripped away the noise so your data can take center stage.
 - **Standardized Human-Readability**: Components are named for humans. **Button Icon** vs `button-icon`. Clarity always wins.
 
@@ -53,11 +55,13 @@ We believe enterprise software should feel **tactile and alive**. Our "Glassmorp
 Integrating Mozek is as smooth as our animations. **Go from `npm install` to a working UI in under 60 seconds.**
 
 ### 1. The Magic Command
+
 ```bash
 npm install mozek-angular
 ```
 
 ### 2. The Minimalist Implementation
+
 ```typescript
 import { MozButton, MozInput } from "mozek-angular";
 
