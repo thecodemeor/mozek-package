@@ -4,37 +4,48 @@ All notable changes to the **Mozek UI Library** are documented in this file.
 
 ---
 
-## [1.0.0] — The Feature Evolution
+## [1.0.0] — The Complete Component Suite
 
-### 🧩 New Components & Major Features
+This version marks the transition to a full **Signal-Powered** and **Zero-Waste** architecture across the entire library.
 
-*   **Adaptive Breadcrumbs (`MozBreadcrumbs`)**
-    *   **Middle-Collapse Logic**: Automatically collapses intermediate paths into a dropdown menu based on container width to prevent layout overflow.
-    *   **Icon Support**: Native integration for path-specific icons, enhancing visual hierarchy.
-    *   **Dynamic Truncation**: Ensures the first and last paths remain visible at all times for orientation.
-*   **Focus Menu Overlay (`MozFocusOverlay`)**
-    *   **Isolated Focus**: Uses a CSS backdrop-filter blur with a custom masking strategy to isolate the trigger element and menu, keeping them sharp while blurring the background.
-    *   **Signal Integration**: Managed via Angular Signals for high-performance open/close state transitions.
-    *   **Scroll Lock**: Automatically disables body scrolling when the overlay is active.
-*   **Enhanced Snackbar Suite**
-    *   **Queue Management**: Standardized a singleton snackbar queue to prevent message overlapping and handle high-frequency notifications.
-    *   **Physics-Based Transitions**: Refactored entry/exit animations for a more tactile, premium feel.
-*   **Tutor Onboarding System**
-    *   **Smart Anchor Positioning**: Dynamically calculates tooltip placement based on target element bounding rectangles.
-    *   **Glassmorphism Theming**: Consistent aesthetic integration with the broader Mozek design language.
+### 🧩 Available Components
 
-### ⚙️ Under the Hood
-*   **Signal-First Architecture**: Internal states migrated to Angular Signals for fine-grained reactivity.
-*   **Modern Control Flow**: Templates converted to `@if`, `@for`, and `@switch` for faster compilation.
-*   **Zero-Waste Refactor**: Removed `CommonModule` dependencies to enable aggressive tree-shaking and smaller bundle sizes.
+#### **Navigation & Orchestration**
+*   **`MozBreadcrumbs`**: Adaptive navigation with "middle-collapse" logic, icon support, and dynamic URL routing.
+*   **`MozFocusOverlay`**: Premium isolation menu with backdrop-blur masking, scroll-locking, and signal-based visibility.
+*   **`MozPagination`**: High-performance data pagination with configurable page sizes and tactile transitions.
+*   **`MozAccordion`**: Multi-select support with smooth expansion/collapse animations and accessible headers.
+
+#### **Form Controls (Signal-Enabled)**
+*   **`MozInput`**: Type-safe text entry with support for labels, hints, and error-state management.
+*   **`MozSelect`**: Custom dropdown with glassmorphism styling and seamless signal integration.
+*   **`MozDatepicker`**: Modular calendar system with rapid month/year navigation and custom styling.
+*   **`MozCheckbox`**: Tactile checkbox with configurable label positions and reactive states.
+*   **`MozRadio`** & **`MozRadioGroup`**: Grouped selection controls with unified state management.
+*   **`MozSwitch`**: Premium toggle switch with optimized CSS transitions for tactile feedback.
+
+#### **Feedback & Overlays**
+*   **`MozSnackbar`** & **`MozSnackbarQueue`**: Managed notification system with singleton queueing and auto-dismissal.
+*   **`MozTooltip`**: Anchor-based hover info with physics-based entry animations.
+*   **`MozTutor`**: Onboarding lifecycle system with smart target element anchoring.
+*   **`MozProgress`**: 9+ animated loading models including ring, line-wobble, and cardio effects.
+
+#### **Actions & Display**
+*   **`MozButton`**: Multi-model buttons (fill, outline, glass, tonal) with unified color token support.
+*   **`MozButtonIcon`**: Minimalist icon actions with optimized hit zones and signal hover states.
+*   **`MozCard`**: Structural container with support for headers, media, and action-footer sections.
+*   **`MozBadge`**: Notification indicators with pulse animations and dot/icon modes.
+*   **`MozDivider`**: Layout separator with depth, orientation, and alignment configurations.
+*   **`MozIcon`**: Scalable SVG icon wrapper with unified token-based coloring.
+*   **`MozCurrency`**: Auto-formatting currency display supporting 30+ international symbols.
+
+### ⚙️ Core Enhancements
+- **Signals Migration**: Every component now uses Angular Signals for internal state and inputs.
+- **Modern Control Flow**: Templates optimized with `@if`, `@for`, and `@switch`.
+- **Zero-Waste Refactor**: Removed `CommonModule` to maximize tree-shaking efficiency.
 
 ---
 
-## [0.0.1] — Initial Baseline
+## [0.0.1] — Initial Beta Release
 
-### 🏛️ Core Suite
-- **Action Elements**: `MozButton`, `MozButtonIcon`.
-- **Form Foundation**: `MozInput`, `MozSelect`, `MozCheckbox`, `MozRadio`, `MozSwitch`, `MozDatepicker`.
-- **Layout & Structure**: `MozCard`, `MozDivider`, `MozBadge`, `MozAccordion`.
-- **Data & Feedback**: `MozPagination`, `MozProgress`, `MozCurrency`, `MozIcon`.
-- **Global Styles**: Full SCSS token system and utility engine.
+Establishment of the core SCSS design system, tokens, and initial component prototypes.
