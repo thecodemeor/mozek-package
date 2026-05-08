@@ -1,6 +1,6 @@
 # Mozek Angular
 
-![Mozek Banner](https://raw.githubusercontent.com/thecodemeor/mozek-package/main/projects/mozek/banner.png)
+![Mozek Banner](https://raw.githubusercontent.com/thecodemeor/mozek-package/main/projects/mozek/mozek_banner.svg)
 
 **The high-performance, signal-powered UI suite for Angular.**  
 Mozek is a minimalist UI library designed with a sleek glassmorphism aesthetic to bring premium SaaS design to your enterprise applications.

@@ -1,0 +1,24 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="800" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2E1065"/>
+      <stop offset="1" stop-color="#0369A1"/>
+    </linearGradient>
+    <filter id="filter0_b" x="-20" y="-20" width="440" height="240" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feGaussianBlur in="BackgroundImage" stdDeviation="10"/>
+      <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="800" height="400" fill="url(#paint0_linear)"/>
+  <circle cx="100" cy="100" r="150" fill="#7C3AED" fill-opacity="0.15"/>
+  <circle cx="700" cy="300" r="100" fill="#0EA5E9" fill-opacity="0.15"/>
+  
+  <g filter="url(#filter0_b)">
+    <rect x="200" y="100" width="400" height="200" rx="24" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.2"/>
+  </g>
+  
+  <text x="400" y="200" text-anchor="middle" fill="white" style="font-family: sans-serif; font-weight: 800; font-size: 72px; letter-spacing: -2px;">Mozek</text>
+  <text x="400" y="240" text-anchor="middle" fill="white" fill-opacity="0.6" style="font-family: sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 4px; text-transform: uppercase;">Premium Angular UI Library</text>
+</svg>
