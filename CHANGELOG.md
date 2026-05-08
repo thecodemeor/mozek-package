@@ -1,46 +1,40 @@
 # Changelog
 
-All notable changes to the **Mozek UI Library** are documented in this file. Adherence to [Semantic Versioning](https://semver.org/) is strictly maintained to ensure downstream stability.
+All notable changes to the **Mozek UI Library** are documented in this file.
 
 ---
 
-## [1.0.0] — The "Zero-Waste" Architectural Evolution
+## [1.0.0] — The Feature Evolution
 
-### ⚡ Technical Core & Reactivity
-- **Signal-Based State Management**: Migrated internal component states to **Angular Signals**, enabling fine-grained reactivity and minimizing change detection cycles for improved runtime performance.
-- **Modern Control Flow Migration**: Optimized template compilation by transitioning from legacy structural directives (`*ngIf`, `*ngFor`, `*ngSwitch`) to the native Angular `@if`, `@for`, and `@switch` syntax, reducing template overhead.
-- **Zone-less Readiness**: Refactored component interaction patterns to support future **Zone-less** Angular deployments, ensuring compatibility with high-performance execution environments.
+### 🧩 New Components & Major Features
 
-### 🏗️ Architectural Shifts
-- **Tree-Shaking Optimization**: Pruned `CommonModule` from all library entry points. Individual utilities (e.g., `DatePipe`, `NgTemplateOutlet`) are now imported as standalone dependencies to minimize bundle weight.
-- **Responsive "Middle-Collapse" Strategy**: Implemented an adaptive breadcrumb logic utilizing `ResizeObserver` and `NgZone.runOutsideAngular` to handle complex layout calculations without triggering unnecessary change detection.
-- **Standardized Design Token System**: Refined the SCSS foundation by migrating to a centralized token-based architecture for spacing, elevation, and typography, ensuring CSS property inheritance consistency.
+*   **Adaptive Breadcrumbs (`MozBreadcrumbs`)**
+    *   **Middle-Collapse Logic**: Automatically collapses intermediate paths into a dropdown menu based on container width to prevent layout overflow.
+    *   **Icon Support**: Native integration for path-specific icons, enhancing visual hierarchy.
+    *   **Dynamic Truncation**: Ensures the first and last paths remain visible at all times for orientation.
+*   **Focus Menu Overlay (`MozFocusOverlay`)**
+    *   **Isolated Focus**: Uses a CSS backdrop-filter blur with a custom masking strategy to isolate the trigger element and menu, keeping them sharp while blurring the background.
+    *   **Signal Integration**: Managed via Angular Signals for high-performance open/close state transitions.
+    *   **Scroll Lock**: Automatically disables body scrolling when the overlay is active.
+*   **Enhanced Snackbar Suite**
+    *   **Queue Management**: Standardized a singleton snackbar queue to prevent message overlapping and handle high-frequency notifications.
+    *   **Physics-Based Transitions**: Refactored entry/exit animations for a more tactile, premium feel.
+*   **Tutor Onboarding System**
+    *   **Smart Anchor Positioning**: Dynamically calculates tooltip placement based on target element bounding rectangles.
+    *   **Glassmorphism Theming**: Consistent aesthetic integration with the broader Mozek design language.
 
-### 🧩 Component Refinements
-- **Adaptive Breadcrumbs**: Native support for icon-based navigation and dynamic middle-item collapsing.
-- **Overlay Suite Optimization**: Refactored `MozTooltip` and `MozSnackbar` to use decoupled positioning logic, improving DOM placement accuracy.
-- **Form Controls Refactor**: Enhanced `MozInput` and `MozSelect` with consistent error-state management and ARIA-compliant accessibility patterns.
+### ⚙️ Under the Hood
+*   **Signal-First Architecture**: Internal states migrated to Angular Signals for fine-grained reactivity.
+*   **Modern Control Flow**: Templates converted to `@if`, `@for`, and `@switch` for faster compilation.
+*   **Zero-Waste Refactor**: Removed `CommonModule` dependencies to enable aggressive tree-shaking and smaller bundle sizes.
 
 ---
 
-## [0.0.1] — Initial Architectural Baseline
+## [0.0.1] — Initial Baseline
 
-### 🏛️ Foundation & Framework
-- **Core Design System**: Established the primary design language, implementing a **glassmorphism-focused** SCSS toolkit with full support for light/dark mode elevation levels.
-- **Modular Component Suite**: Released the first iteration of 17 standalone components, designed with a focus on high-reusability and decoupled styling logic.
-- **Utility Engine**: Integrated a high-performance utility class system for spacing (`m-*`, `p-*`), flexbox orchestration, and text manipulation.
-
-### 📦 Initial Modules
+### 🏛️ Core Suite
 - **Action Elements**: `MozButton`, `MozButtonIcon`.
 - **Form Foundation**: `MozInput`, `MozSelect`, `MozCheckbox`, `MozRadio`, `MozSwitch`, `MozDatepicker`.
 - **Layout & Structure**: `MozCard`, `MozDivider`, `MozBadge`, `MozAccordion`.
 - **Data & Feedback**: `MozPagination`, `MozProgress`, `MozCurrency`, `MozIcon`.
-
----
-
-## 🔮 Future Roadmap
-
-- **Modular Sidenav Engine**: Implementation of a persistent navigation framework with collapsible states.
-- **Dialog Orchestrator**: A programmatic overlay service for modal management.
-- **High-Performance Data Tables**: Signal-driven table components with native support for server-side pagination and lazy loading.
-- **Advanced Transition Suite**: Standardization of physics-based micro-animations across all interactive layers.
+- **Global Styles**: Full SCSS token system and utility engine.
