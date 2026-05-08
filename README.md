@@ -1,14 +1,11 @@
 <div align="center">
     <img src="./img/png/mozek_banner.png" width="450" alt="Mozek Logo Banner"/>
 
-# 🎨 Mozek UI: Easy & Beautiful Angular Components
-
-### **Stop wrestling with CSS. Start building your app.**
+# Mozek UI: Easy & Beautiful Angular Components
 
 [![Angular](https://img.shields.io/badge/Angular-18+-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io/)
 [![npm](https://img.shields.io/badge/Mozek_Angular-v1.0.3-blue.svg)](https://www.npmjs.com/package/mozek-angular)
 [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![update](https://img.shields.io/badge/Mozek_Angular-v_1.0.0-blue.svg)](CHANGELOG)
 
 [**Live Demo Playground**](https://thecodemeor.github.io/mozek-website/showcase) • [**Easy Documentation**](https://thecodemeor.github.io/mozek-website)
 
