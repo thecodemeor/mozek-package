@@ -1,112 +1,110 @@
 <div align="center">
-    <img src="./img/png/mozek_banner.png" width="400" alt="Mozek Logo Banner"/>
+    <img src="./img/png/mozek_banner.png" width="450" alt="Mozek Logo Banner"/>
 
-# Mozek UI
+# 🎨 Mozek UI
+### **Stop coding interfaces. Start crafting experiences.**
 
 [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![npm](https://img.shields.io/badge/Downloads-Mozek_Angular-blue.svg)](https://www.npmjs.com/package/mozek-angular)
 [![update](https://img.shields.io/badge/Mozek_Angular-v_1.0.0-blue.svg)](CHANGELOG)
-[![Angular](https://img.shields.io/badge/Angular-17+-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io/)
+[![Angular](https://img.shields.io/badge/Angular-18+-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io/)
 
-### **The Signal-Powered UI Engine for Modern SaaS Architecture.**
-
-[View Showcase](https://thecodemeor.github.io/mozek-website/showcase) • [Explore Documentation](CHANGELOG.md)
+[**✨ View Showcase**](https://thecodemeor.github.io/mozek-website/showcase) • [**📚 Explore Documentation**](https://thecodemeor.github.io/mozek-website)
 
 </div>
 
 ---
 
-## 🚀 Executive Summary
+## 🚀 The Executive Pitch
 
-Mozek is an enterprise-grade UI library designed to **reduce time-to-market** for modern web applications without compromising on **design consistency** or **stability**. Built specifically for high-growth SaaS platforms, Mozek provides a **cohesive** suite of components that ensure a **modern** aesthetic and **efficient** development workflow from day one.
+Mozek isn't just another UI library; it's your **unfair advantage** in the SaaS market. We’ve engineered a system that solves the "Enterprise Dilemma"—how to maintain **unshakeable stability** while delivering a **premium, world-class aesthetic**.
 
-- **Design Systems at Scale**: Maintain a single source of truth for your brand with unified tokens.
-- **Business Agility**: Rapidly prototype and deploy features using a library built for speed.
-- **Enterprise Reliability**: Rigorously tested components designed to handle complex data and user flows.
-
----
-
-## ⚙️ Technical Core
-
-Mozek is engineered for the future of Angular. It is a **signal-reactive**, **type-safe** library that leverages the power of Angular Signals for **fine-grained reactivity** and **performant** rendering.
-
-### Why Signals?
-
-By adopting a signal-based architecture, Mozek achieves:
-
-- **Zone-less Compatibility**: Ready for the future of Angular without the overhead of Zone.js.
-- **Decoupled Architecture**: Components react only to the data they need, minimizing change detection cycles.
-- **Ultra-Fast Performance**: Experience snappy interactions even in data-heavy enterprise dashboards.
-- **Modern Control Flow**: Utilizing Angular's newest `@if`, `@for`, and `@switch` syntax for cleaner, faster templates.
+- **Zero-Waste Workflow**: Don't waste weeks on CSS. Mozek gives you a "Day 1" design system that scales as fast as your user base.
+- **Cohesive DNA**: Every shadow, gradient, and interaction is mathematically aligned to a single design token system.
+- **Future-Proof ROI**: Built on Angular 18+ architecture, ensuring your investment stays relevant for years to come.
 
 ---
 
-## 💎 The 'Mozek' Philosophy
+## ⚡ The Signal Revolution (Technical Core)
 
-We believe that enterprise software should feel premium, not sterile. Our design language is rooted in a **minimalist SaaS** aesthetic, featuring:
+While other libraries are stuck in the past, Mozek is built on the **bleeding edge** of reactivity. We’ve gone **all-in on Angular Signals** to give you performance that feels like magic.
 
-- **Glassmorphism**: Subtle translucency and blur effects that add depth and hierarchy to your interface.
-- **Tactile UX**: Physics-based animations and micro-interactions that make the software feel alive and responsive.
-- **Clutter-Free Layouts**: A focus on whitespace and typography that reduces cognitive load for your users.
-- **Cohesive Aesthetics**: Every component, from a simple **Button Icon** to a complex **Date Picker**, shares the same visual DNA.
+### 🏎️ Why your dev team will love it:
+- **Zone-less by Design**: Move towards a Zone-free future with fine-grained reactivity that only updates exactly what’s needed.
+- **Type-Safe Everything**: Catch errors at compile-time, not runtime. Our strict TypeScript integration is a Senior dev's best friend.
+- **Modern Control Flow**: Say goodbye to legacy directives. We use the sleek `@if`, `@for`, and `@switch` syntax for ultra-lean templates.
+- **Lightweight Footprint**: Fully tree-shakeable. You only pay (in KBs) for what you ship to production.
+
+---
+
+## 💎 The 'Mozek' Zen (Philosophy)
+
+We believe enterprise software should feel **tactile and alive**. Our "Glassmorphism" philosophy isn't just about blur—it's about **hierarchy and clarity**.
+
+- **Glassmorphism 2.0**: Sophisticated translucency that creates depth without the clutter.
+- **Tactile Physics**: Micro-animations that provide instant satisfying feedback. It doesn't just work; it *feels* good.
+- **Minimalist SaaS Aesthetic**: We stripped away the noise so your data can take center stage.
+- **Standardized Human-Readability**: Components are named for humans. **Button Icon** vs `button-icon`. Clarity always wins.
 
 ---
 
 ## 🛠️ Developer Experience (DX)
 
-Mozek is built by developers, for developers. We prioritize a **performant** and **type-safe** experience that feels natural to integrate.
+Integrating Mozek is as smooth as our animations. **Go from `npm install` to a working UI in under 60 seconds.**
 
-### Seamless Integration
-
-Get up and running in seconds. Mozek is designed for **tree-shaking**, ensuring that you only ship the code you actually use, keeping your bundle sizes small and your load times fast.
-
+### 1. The Magic Command
 ```bash
 npm install mozek-angular
 ```
 
+### 2. The Minimalist Implementation
 ```typescript
-// In your component
 import { MozButton, MozInput } from "mozek-angular";
 
 @Component({
   standalone: true,
   imports: [MozButton, MozInput],
   template: `
-    <moz-input label="Full Name" placeholder="John Doe" />
-    <moz-button model="fill" color="primary">Create Account</moz-button>
+    <div class="flex-col gap-4">
+      <moz-input label="Your Vision" placeholder="Enter the future..." />
+      <moz-button model="glass" color="primary">Launch Experience</moz-button>
+    </div>
   `,
 })
-export class RegisterComponent {}
+export class FutureComponent {}
 ```
 
 ---
 
 ## 🗺️ Feature Roadmap
 
-Our mission is to provide the most comprehensive, signal-based UI suite in the Angular ecosystem.
+We're not stopping here. Here is what's brewing in the Mozek labs:
 
-- [x] **Core Foundation**: Type-safe Tokens, Typography Mixins, and Spacing Utilities.
+- [x] **The Foundation**: Type-safe Tokens, Typography Mixins, Spacing Utilities.
 - [x] **Interactive Basics**: **Button**, **Button Icon**, **Divider**, **Badge**, **Card**.
-- [x] **Form Suite**: **Input**, **Select**, **Checkbox**, **Radio**, **Switch**.
+- [x] **Form Mastery**: **Input**, **Select**, **Checkbox**, **Radio**, **Switch**.
 - [x] **Advanced Controls**: **Date Picker**, **Accordion**, **Pagination**.
-- [x] **Feedback Systems**: **Snackbar**, **Snackbar Queue**, **Tooltip**, **Tutor**.
+- [x] **Feedback Systems**: **Snackbar**, **Tooltip**, **Tutor** (Onboarding System).
 - [x] **Navigation**: **Breadcrumbs** (Adaptive Icon Support).
-- [/] **Data Intelligence**: Advanced Data Tables with Signal-based filtering (Q3 2026).
-- [ ] **Complex Interactions**: Drag-and-drop Multi-select and Dashboard Grid Layouts.
+- [/] **Data Intelligence**: High-performance Data Tables with Signal-filtering (Coming Q3 2026).
+- [ ] **Complex Layouts**: Drag-and-drop Multi-select & Dashboard Grid Engines.
 - [ ] **Media Suite**: Modal Gallery and Asset Management interfaces.
 
 ---
 
-## 🌐 Showcase & Docs
+## 🌐 Join the Showcase
 
-Ready to see Mozek in action? Visit our official showcase to interact with every component and explore full API documentation.
+Ready to feel the difference? Our interactive documentation is more than just a list of props—it's a playground.
 
-👉 **[View Showcase @mozek-website.](https://thecodemeor.github.io/mozek-website)**
+👉 **[Launch the Mozek Interactive Showcase](https://thecodemeor.github.io/mozek-website)**
 
 ---
 
-## 📜 License
+## 📜 License & Community
 
-Mozek is available under the terms of the [MIT license](LICENSE).<br>
+Mozek is open-source and free to use under the **MIT license**.  
+Whether you're building the next big thing or just a small personal tool—**have fun creating!** 🥾
 
-Whether you're building **Mozek** or building something with **Mozek** — have fun creating! 🥾
+<div align="center">
+    <sub>Built with ❤️ by thecodemeor and the global dev community.</sub>
+</div>
