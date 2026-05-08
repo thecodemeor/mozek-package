@@ -39,7 +39,6 @@ import {
     HostListener,
     DestroyRef
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MozOption } from './option';
 import { MozIcon } from '../moz-icon/icon';
@@ -50,7 +49,7 @@ let uid = 0;
 @Component({
     selector: 'moz-select',
     standalone: true,
-    imports: [CommonModule, MozIcon],
+    imports: [MozIcon],
     templateUrl: './select.html',
     styleUrls: ['./select.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

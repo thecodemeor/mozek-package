@@ -29,7 +29,7 @@ import {
     AfterViewInit,
     OnDestroy
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 type MozInputModel =
@@ -50,7 +50,7 @@ let uid = 0;
 @Component({
     selector: 'moz-input',
     standalone: true,
-    imports: [CommonModule],
+    imports: [NgTemplateOutlet],
     templateUrl: './input.html',
     styleUrls: ['./input.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

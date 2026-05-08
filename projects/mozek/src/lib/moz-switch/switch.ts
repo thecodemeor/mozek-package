@@ -14,7 +14,6 @@
 // Author: thecodemeor
 // Version: 1.0
 // -----------------------------------------------------------------------------
-
 import {
     Component,
     ChangeDetectionStrategy,
@@ -25,14 +24,13 @@ import {
     forwardRef,
     HostBinding
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MozColorName } from '../helper/export';
 
 @Component({
     selector: 'moz-switch',
     standalone: true,
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './switch.html',
     styleUrls: ['./switch.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

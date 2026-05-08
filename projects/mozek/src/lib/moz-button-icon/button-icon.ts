@@ -54,7 +54,7 @@ export class MozButtonIcon {
             case 'success': return 'var(--moz-color-success)';
             case 'warn':    return 'var(--moz-color-warning)';
             case 'danger':  return 'var(--moz-color-danger)';
-            default:        return 'var(--moz-color-text)';
+            default:        return 'var(--moz-color-border)';
         }
     }
 

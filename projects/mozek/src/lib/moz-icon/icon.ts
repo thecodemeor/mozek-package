@@ -31,6 +31,8 @@ type MozIconModel = 'outline' | 'duotone';
 
 @Component({
     selector: 'moz-icon',
+    standalone: true,
+    imports: [],
     templateUrl: './icon.html',
     styleUrls: ['./icon.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

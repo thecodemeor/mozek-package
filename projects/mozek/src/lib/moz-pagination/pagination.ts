@@ -32,7 +32,6 @@ import {
     inject,
     HostBinding
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MozIcon } from '../moz-icon/icon'; // adjust path if needed
 
@@ -49,7 +48,7 @@ type PaginationViewItem =
 @Component({
     selector: 'moz-pagination',
     standalone: true,
-    imports: [CommonModule, FormsModule],
+    imports: [FormsModule],
     templateUrl: './pagination.html',
     styleUrls: ['./pagination.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

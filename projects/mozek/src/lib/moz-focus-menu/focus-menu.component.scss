@@ -1,0 +1,63 @@
+@use "../../styles" as moz;
+
+.moz-focus-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: auto;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.moz-focus-menu-panel {
+  position: fixed;
+  z-index: 10001;
+  background: var(--moz-color-primary-lite);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 0.1rem solid var(--moz-color-primary);
+  border-radius: var(--moz-radius-default);
+  box-shadow: var(--moz-shadow-lg);
+  padding: var(--moz-space-1);
+  min-width: 200px;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 250ms var(--moz-ease-bounce), opacity 200ms ease;
+  pointer-events: auto;
+
+  &.visible {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  &.drop-up {
+    transform-origin: bottom center;
+  }
+
+  &.drop-down {
+    transform-origin: top center;
+  }
+
+  .focus-content {
+    background-color: var(--moz-color-background);
+    border-radius: calc(var(--moz-radius-default) - var(--moz-space-1));
+  }
+}
+
+// Global utility for the trigger element to pop out
+::ng-deep .moz-focus-trigger-highlight {
+  position: relative !important;
+  z-index: 10002 !important;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+  transition: z-index 0s;
+}

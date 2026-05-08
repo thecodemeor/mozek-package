@@ -1,0 +1,111 @@
+<nav class="moz-breadcrumbs-container" aria-label="Breadcrumb">
+  <!-- Measuring container for overflow logic -->
+  <div class="moz-breadcrumbs-measure" #measureContainer aria-hidden="true">
+    @for (item of items(); track item.label; let last = $last) {
+      <div class="moz-breadcrumb-item">
+        @if (item.icon) {
+          <moz-icon size="16">{{ item.icon }}</moz-icon>
+        }
+        <span class="item-label">{{ item.label }}</span>
+      </div>
+      @if (!last) {
+        <span class="moz-breadcrumb-separator">
+          <moz-icon size="14">chevron-right</moz-icon>
+        </span>
+      }
+    }
+  </div>
+
+  <!-- Real display -->
+  @if (!collapsed()) {
+    @for (item of items(); track item.label; let last = $last) {
+      @if (item.url && !last) {
+        <a [href]="item.url" class="moz-breadcrumb-item" [title]="item.label">
+          @if (item.icon) {
+            <moz-icon size="16">{{ item.icon }}</moz-icon>
+          }
+          <span class="moz-breadcrumb-label item-label">{{ item.label }}</span>
+        </a>
+      } @else if (!item.url && !last) {
+        <button class="moz-breadcrumb-item" [title]="item.label">
+          @if (item.icon) {
+            <moz-icon size="16">{{ item.icon }}</moz-icon>
+          }
+          <span class="moz-breadcrumb-label item-label">{{ item.label }}</span>
+        </button>
+      } @else if (last) {
+        <span class="moz-breadcrumb-item moz-breadcrumb-last" aria-current="page" [title]="item.label">
+          @if (item.icon) {
+            <moz-icon size="16">{{ item.icon }}</moz-icon>
+          }
+          <span class="moz-breadcrumb-label item-label">{{ item.label }}</span>
+        </span>
+      }
+
+      @if (!last) {
+        <span class="moz-breadcrumb-separator" aria-hidden="true">
+          <moz-icon size="20">arrow_chevron_right</moz-icon>
+        </span>
+      }
+    }
+  } @else {
+    <!-- First item -->
+    @if (firstItem(); as first) {
+      @if (first.url) {
+        <a [href]="first.url" class="moz-breadcrumb-item" [title]="first.label">
+          @if (first.icon) {
+            <moz-icon size="16">{{ first.icon }}</moz-icon>
+          }
+          <span class="moz-breadcrumb-label">{{ first.label }}</span>
+        </a>
+      } @else {
+        <span class="moz-breadcrumb-item" [title]="first.label">
+          @if (first.icon) {
+            <moz-icon size="16">{{ first.icon }}</moz-icon>
+          }
+          <span class="moz-breadcrumb-label">{{ first.label }}</span>
+        </span>
+      }
+      <span class="moz-breadcrumb-separator" aria-hidden="true">
+        <moz-icon size="20">arrow_chevron_right</moz-icon>
+      </span>
+    }
+
+    <!-- Ellipsis Trigger -->
+    <button class="moz-breadcrumb-item moz-breadcrumb-dropdown" [mozMenuTriggerFor]="breadcrumbMenu" aria-label="Show more paths">
+      <span>...</span>
+      <moz-icon size="12">arrow_alt_down</moz-icon>
+    </button>
+    <span class="moz-breadcrumb-separator" aria-hidden="true">
+      <moz-icon size="20">arrow_chevron_right</moz-icon>
+    </span>
+
+    <moz-menu #breadcrumbMenu="mozMenu">
+      @for (mid of middleItems(); track mid.label) {
+        @if (mid.url) {
+          <a moz-menu-item [href]="mid.url" class="moz-breadcrumb-menu-item">
+            @if (mid.icon) {
+              <moz-icon size="16">{{ mid.icon }}</moz-icon>
+            }
+            <span>{{ mid.label }}</span>
+          </a>
+        } @else {
+          <button moz-menu-item class="moz-breadcrumb-menu-item">
+            @if (mid.icon) {
+              <moz-icon size="16">{{ mid.icon }}</moz-icon>
+            }
+            <span>{{ mid.label }}</span>
+          </button>
+        }
+      }
+    </moz-menu>
+
+    <!-- Last item -->
+    <span class="moz-breadcrumb-item moz-breadcrumb-last" aria-current="page" [title]="lastItem()!.label">
+      @if (lastItem()?.icon) {
+        <moz-icon size="16">{{ lastItem()!.icon }}</moz-icon>
+      }
+      <span class="moz-breadcrumb-label">{{ lastItem()!.label }}</span>
+    </span>
+  }
+</nav>

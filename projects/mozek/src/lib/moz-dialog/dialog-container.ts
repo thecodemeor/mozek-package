@@ -9,13 +9,12 @@ import {
   inject,
   Injector
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MozDialogConfig, MozDialogRef } from './dialog-ref';
 
 @Component({
   selector: 'moz-dialog-container',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './dialog-container.html',
   styleUrls: ['./dialog-container.scss']
 })

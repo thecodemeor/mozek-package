@@ -1,0 +1,112 @@
+@use "../../styles" as moz;
+
+:host {
+    display: inline-flex;
+    max-width: 100%;
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+}
+
+.moz-breadcrumbs-measure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--moz-space-1);
+    white-space: nowrap;
+    opacity: 0;
+    z-index: -1;
+}
+
+.moz-breadcrumbs-container {
+    display: flex;
+    align-items: center;
+    gap: var(--moz-space-1);
+    width: fit-content;
+    max-width: 100%;
+    padding: calc(var(--moz-space-1) / 2) var(--moz-space-2);
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    background-color: var(--moz-color-surface);
+    border-radius: var(--moz-radius-sm);
+}
+
+.moz-breadcrumb-item {
+    @include moz.moz-typography('label-sm');
+    display: inline-flex;
+    align-items: center;
+    gap: var(--moz-space-1);
+    color: var(--moz-color-text-dim);
+    padding: calc(var(--moz-space-1) / 2) 0;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: background-color 150ms ease, color 150ms ease;
+    overflow: hidden;
+    max-width: 200px; // Default max-width for long labels
+
+    &:hover, &:focus-visible {
+        background: var(--moz-color-surface);
+        color: var(--moz-color-text);
+        outline: none;
+    }
+
+    .moz-breadcrumb-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        @include moz.moz-typography('default');
+    }
+
+    &.moz-breadcrumb-last {
+        color: var(--moz-color-primary);
+        font-weight: var(--moz-font-weight-medium);
+        pointer-events: none;
+        max-width: 300px; // Last item can be a bit longer
+        
+        &:hover {
+            background: transparent;
+        }
+    }
+}
+
+.moz-breadcrumb-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--moz-color-text-dim);
+    opacity: 0.4;
+    flex-shrink: 0;
+}
+
+.moz-breadcrumb-dropdown {
+    gap: 4px;
+    padding: calc(var(--moz-space-1) / 2) var(--moz-space-2);
+    border-radius: var(--moz-radius-sm);
+    background: var(--moz-color-background);
+
+    &:hover, &:focus-visible {
+        background: var(--moz-color-background);
+    }
+}
+
+::ng-deep .moz-breadcrumb-menu-item {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--moz-space-2);
+}
+
+.item-label {
+    @include moz.moz-typography('default');
+}
+
+moz-icon {
+    display: flex;
+    align-items: center;
+}

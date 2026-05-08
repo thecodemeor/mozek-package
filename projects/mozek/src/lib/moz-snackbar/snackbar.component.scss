@@ -1,0 +1,86 @@
+@use "../../styles" as moz;
+
+:host {
+    display: block;
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    font-family: var(--moz-font-family);
+
+    // Dynamic Positions
+    &.moz-snackbar--top-left { top: var(--moz-space-6); left: var(--moz-space-2); }
+    &.moz-snackbar--top-right { top: var(--moz-space-6); right: var(--moz-space-2); }
+    &.moz-snackbar--bottom-left { bottom: var(--moz-space-6); left: var(--moz-space-2); }
+    &.moz-snackbar--bottom-right { bottom: var(--moz-space-6); right: var(--moz-space-2); }
+    &.moz-snackbar--top-center { top: var(--moz-space-6); left: 50%; transform: translateX(-50%); }
+    &.moz-snackbar--bottom-center { bottom: var(--moz-space-6); left: 50%; transform: translateX(-50%); }
+}
+
+.moz-snackbar-container {
+    --moz-snackbar-border-width: 2px;
+    --moz-snackbar-theme-color: var(--moz-color-primary);
+
+    position: relative;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--moz-space-3);
+    padding: var(--moz-space-2) var(--moz-space-4);
+    border-radius: var(--moz-radius-default);
+    background: var(--moz-color-surface);
+    color: var(--moz-color-text);
+    border: solid 0.1rem var(--moz-color-border);
+    @include moz.root-shadow(2);
+    
+    min-width: 300px;
+    max-width: 90vw;
+
+    // Animation state: Scale Fade
+    opacity: 0;
+    transform: scale(0.85);
+    transition: 
+        opacity 100ms ease,
+        transform 100ms var(--moz-ease-bounce);
+
+    &.moz-snackbar--visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// Variants directly on container
+.moz-snackbar-container.moz-snackbar--success {
+    --moz-snackbar-theme-color: var(--moz-color-success);
+    border-color: var(--moz-color-success);
+}
+.moz-snackbar-container.moz-snackbar--error {
+    --moz-snackbar-theme-color: var(--moz-color-danger);
+    border-color: var(--moz-color-danger);
+}
+.moz-snackbar-container.moz-snackbar--warning {
+    --moz-snackbar-theme-color: var(--moz-color-warning);
+    border-color: var(--moz-color-warning);
+}
+.moz-snackbar-container.moz-snackbar--info {
+    --moz-snackbar-theme-color: var(--moz-color-primary);
+    border-color: var(--moz-color-primary);
+}
+
+.moz-snackbar-content {
+    display: flex;
+    align-items: center;
+    gap: var(--moz-space-2);
+    flex: 1;
+}
+
+.moz-snackbar-message {
+    @include moz.moz-typography('label-sm');
+    font-weight: var(--moz-font-weight-medium);
+}
+
+.moz-snackbar-close {
+    position: absolute;
+    top: -10px; right: -10px;
+    border: solid 1px var(--moz-color-border);
+    border-radius: 50%;
+}

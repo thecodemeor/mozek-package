@@ -1,0 +1,109 @@
+@use "../../styles" as moz;
+
+.moz-tutor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    
+    opacity: 0;
+    transition: opacity 300ms ease;
+
+    &.moz-tutor-overlay--visible {
+        opacity: 1;
+
+        .moz-tutor-dialog {
+            transform: scale(1) translateY(0);
+        }
+
+        .moz-tutor-line {
+            stroke-dashoffset: 0;
+        }
+
+        .moz-tutor-target-ring {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+.moz-tutor-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; // let clicks pass through SVG
+}
+
+.moz-tutor-line {
+    stroke: var(--moz-color-primary);
+    stroke-width: 2px;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    transition: stroke-dashoffset 800ms cubic-bezier(0.25, 1, 0.5, 1) 150ms;
+}
+
+.moz-tutor-target-ring {
+    fill: transparent;
+    stroke: var(--moz-color-primary);
+    stroke-width: 2px;
+    stroke-dasharray: 4 4;
+    transform-origin: center;
+    transform: scale(0.5);
+    opacity: 0;
+    transition: all 400ms ease 600ms;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { r: 20px; opacity: 1; }
+    50% { r: 25px; opacity: 0.5; }
+    100% { r: 20px; opacity: 1; }
+}
+
+.moz-tutor-dialog {
+    background: var(--moz-color-surface);
+    border: 1px solid var(--moz-color-border);
+    border-radius: calc(var(--moz-radius-default) * 1.5);
+    @include moz.root-shadow(3);
+    padding: var(--moz-space-4);
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1; // Above SVG
+    display: flex;
+    flex-direction: column;
+    gap: var(--moz-space-3);
+    
+    transform: scale(0.95) translateY(10px);
+    transition: transform 300ms var(--moz-ease-bounce);
+}
+
+.moz-tutor-title {
+    @include moz.moz-typography('heading-sm');
+    margin: 0;
+    color: var(--moz-color-text);
+}
+
+.moz-tutor-desc {
+    @include moz.moz-typography('body-md');
+    margin: 0;
+    color: var(--moz-color-text-dim);
+    line-height: 1.5;
+}
+
+.moz-tutor-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--moz-space-2);
+    margin-top: var(--moz-space-2);
+}

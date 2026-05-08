@@ -17,7 +17,14 @@ import {
   MozCheckbox, MozCheckboxGroup,
   MozRadio, MozRadioGroup,
   MozDialogService, MozDialogRef,
-  MozTooltip
+  MozTooltip,
+  MozSnackbarQueueComponent,
+  MozSnackbarQueueService,
+  MozSnackbarComponent,
+  MozSnackbarService,
+  MozMenu, MozMenuTrigger, MozMenuItem,
+  MozBreadcrumbs, MozBreadcrumbItem,
+  MozFocusMenu, MozFocusMenuTrigger
 } from 'mozek';
 
 @Component({
@@ -39,7 +46,12 @@ import {
     MozAccordion, MozAccordionItem,
     MozCheckbox, MozCheckboxGroup,
     MozRadio, MozRadioGroup,
-    MozTooltip
+    MozTooltip,
+    MozSnackbarQueueComponent,
+    MozSnackbarComponent,
+    MozMenu, MozMenuTrigger, MozMenuItem,
+    MozBreadcrumbs,
+    MozFocusMenu, MozFocusMenuTrigger
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
@@ -47,6 +59,43 @@ import {
 export class App {
   protected readonly title = signal('demo');
   private dialogService = inject(MozDialogService);
+  private snackbarQueue = inject(MozSnackbarQueueService);
+  private basicSnackbar = inject(MozSnackbarService);
+
+  breadcrumbItems: MozBreadcrumbItem[] = [
+    { label: 'Home', icon: 'home' },
+    { label: 'Checkout' },
+    { label: 'Payment' },
+    { label: 'Delivery address' },
+    { label: 'Payment' },
+    { label: 'Delivery address' },
+    { label: 'Payment' },
+    { label: 'Delivery address' },
+    { label: 'Payment' },
+    { label: 'Delivery address' },
+    { label: 'Payment' },
+    { label: 'Delivery address' }
+  ];
+
+  showSnackbar(type: any) {
+    const messages = {
+      success: 'Action completed successfully!',
+      error: 'An error occurred while saving.',
+      warning: 'Your session is about to expire.',
+      info: 'New updates are available.'
+    };
+    this.snackbarQueue.show(messages[type as keyof typeof messages], type);
+  }
+
+  showBasicSnackbar(type: any, position: any = 'top-right') {
+    const messages = {
+      success: 'Basic Success completed!',
+      error: 'Basic Error occurred.',
+      warning: 'Basic Warning.',
+      info: 'Basic Info.'
+    };
+    this.basicSnackbar.show(messages[type as keyof typeof messages], type, position);
+  }
 
   openDialog() {
     const dialogRef = this.dialogService.open(ExampleDialogComponent);

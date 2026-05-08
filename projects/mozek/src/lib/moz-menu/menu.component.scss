@@ -1,0 +1,55 @@
+@use "../../styles" as moz;
+
+.moz-menu-popup {
+    position: fixed;
+    pointer-events: auto;
+    background: var(--moz-color-surface);
+    border: 1px solid var(--moz-color-border);
+    border-radius: var(--moz-radius-default);
+    @include moz.root-shadow(3);
+    padding: var(--moz-space-1);
+    min-width: 150px;
+    z-index: 10001;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    
+    opacity: 0;
+    transform: scale(0.95);
+    transform-origin: top left;
+    transition: 
+        opacity 150ms ease,
+        transform 150ms var(--moz-ease-bounce);
+
+    &.moz-menu--visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.moz-menu-item {
+    @include moz.moz-typography('label-sm');
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: var(--moz-space-2) var(--moz-space-3);
+    border-radius: calc(var(--moz-radius-default) - 2px);
+    cursor: pointer;
+    color: var(--moz-color-text);
+    display: flex;
+    align-items: center;
+    gap: var(--moz-space-2);
+    transition: background-color 150ms ease, color 150ms ease;
+
+    &:hover, &:focus {
+        background: var(--moz-color-border);
+        outline: none;
+    }
+    
+    &:disabled, &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}

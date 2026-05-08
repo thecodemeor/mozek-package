@@ -148,8 +148,19 @@ export class MozTooltip implements OnInit, OnDestroy {
       top = host.bottom + 10;
     }
 
+    // Calculate arrow position relative to tooltip popup
+    // Host center in viewport
+    const hostCenterX = host.left + host.width / 2;
+    // Arrow's left relative to the tooltip popup
+    let arrowLeft = hostCenterX - left;
+    
+    // Clamp arrow to tooltip edges with some padding for rounded corners
+    const arrowPadding = 12;
+    arrowLeft = Math.max(arrowPadding, Math.min(arrowLeft, tipW - arrowPadding));
+
     instance.left = left;
     instance.top = top;
+    instance.arrowLeft = arrowLeft;
     
     // Update view with new coordinates
     this.componentRef.changeDetectorRef.detectChanges();

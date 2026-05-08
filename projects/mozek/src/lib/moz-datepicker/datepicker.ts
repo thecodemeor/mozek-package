@@ -33,7 +33,7 @@ import {
     OnInit,
     ViewChild
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { MozOverlayService } from './moz-datepicker.service';
@@ -69,7 +69,7 @@ type ViewMode = 'date' | 'month' | 'year';
     templateUrl: './datepicker.html',
     styleUrls: ['./datepicker.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [CommonModule, MozButton, MozButtonIcon, MozIcon]
+    imports: [DatePipe, MozButton, MozButtonIcon, MozIcon]
 })
 export class MozDatepicker implements OnInit, OnDestroy {
     @Input() label?: string = '';

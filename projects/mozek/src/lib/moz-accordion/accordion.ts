@@ -28,7 +28,6 @@ import {
     ChangeDetectorRef,
     inject
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MozAccordionItem } from './accordion-item';
 
 @Component({
@@ -37,7 +36,7 @@ import { MozAccordionItem } from './accordion-item';
     templateUrl: './accordion.html',
     styleUrls: ['./accordion.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [CommonModule]
+    imports: []
 })
 export class MozAccordion implements AfterContentInit {
     @Input() multi = false;

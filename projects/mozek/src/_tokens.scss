@@ -72,7 +72,8 @@ $moz-theme-secondary: violet !default;
     /* Standard Colors */
     --moz-color-background: #ffffff;
     --moz-color-default: #000000;
-    --moz-color-surface: #fefefe;
+    --moz-color-surface: #f6f6f6;
+    --moz-color-surface-dark: #e0e0e0;
     --moz-color-text: #1b1813;
     --moz-color-border: color-mix(in srgb, var(--moz-color-text) 15%, transparent);
 
@@ -95,6 +96,7 @@ $moz-theme-secondary: violet !default;
 
     --moz-color-background: #050816;
     --moz-color-surface:    #0b1020;
+    --moz-color-surface-dark: #797979;
     --moz-color-text:       #f3f4f6;
     --moz-color-default:    #ffffff;
     --moz-color-border:     color-mix(in srgb, var(--moz-color-text) 15%, transparent);
@@ -143,7 +145,7 @@ body.dark-theme {
     --moz-fade-hover-dark: 30%;
     --moz-fade-outline: 50%;
     --moz-fade-placeholder: 60%;
-    --moz-fade-border-dark: 80%
+    --moz-fade-border-dark: 80%;
 
     /* Typography -------------------------------------------------- */
     --moz-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",

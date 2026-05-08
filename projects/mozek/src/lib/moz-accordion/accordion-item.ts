@@ -9,7 +9,6 @@ import {
     HostBinding,
     booleanAttribute
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MozAccordion } from './accordion';
 import { MozIcon } from '../moz-icon/icon'; // adjust path
 
@@ -21,7 +20,7 @@ let nextId = 0;
     templateUrl: './accordion-item.html',
     styleUrls: ['./accordion-item.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [CommonModule, MozIcon]
+    imports: [MozIcon]
 })
 export class MozAccordionItem {
     @Input({ transform: booleanAttribute }) disabled = false;

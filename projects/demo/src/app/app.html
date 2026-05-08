@@ -1,16 +1,107 @@
 <main class="demo-shell">
   <h1>Mozek Demo</h1>
+  <div style="width: 20px; height: 10rem;"></div>
+
+  <div class="flex gap-2 w-full mb-8">
+    <div [mozFocusMenuTriggerFor]="focusMenu" #focusTrigger="mozFocusMenuTrigger" style="padding: 2rem; border: 1px solid var(--moz-color-border); border-radius: var(--moz-radius-default); background: var(--moz-color-surface); cursor: pointer;">
+      <h4 style="margin: 0">Feature Highlight Trigger</h4>
+      <p style="margin: 0.5rem 0 0 0; color: var(--moz-color-text-dim);">This element is highlighted while the rest is blurred.</p>
+    </div>
+  </div>
+
+  <moz-focus-menu #focusMenu="mozFocusMenu">
+    <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+      <h3 style="margin: 0">New Feature!</h3>
+      <p style="margin: 0; color: var(--moz-color-text-dim); line-height: 1.5;">This is a custom 'Focus Overlay' menu that mimics mat-menu but with a high-impact blur effect.</p>
+      <div style="display: flex; justify-content: flex-end;">
+        <moz-button (click)="focusTrigger.close()">Got it!</moz-button>
+      </div>
+    </div>
+  </moz-focus-menu>
+
+
+  <h3>Breadcrumbs</h3>
+  <div style="max-width: 100%; width: fit-content; padding: 1rem;">
+    <moz-breadcrumbs [items]="breadcrumbItems"></moz-breadcrumbs>
+  </div>
 
   <h3>Tooltip</h3>
   <div class="grid gap-2 w-full">
-    <div style="padding: 20px; background: red; width: 100px" mozTooltip="Native div tooltip">Hover Me</div>
+    <div style="background: red; width: 20px; height: 20px;" mozTooltip="Native div tooltip"></div>
     <moz-button model="fill" color="primary" mozTooltip="Click to open a popup">Tooltip</moz-button>
+  </div>
+
+  <h3>Menu</h3>
+  <div class="flex gap-2 w-full">
+    <moz-button model="fill" color="primary" [mozMenuTriggerFor]="myMenu">Open Menu</moz-button>
+    <div class="spacer"></div>
+    <moz-button model="outline" color="secondary" [mozMenuTriggerFor]="myMenu2">Open Menu (Right)</moz-button>
+    
+    <moz-menu #myMenu="mozMenu">
+      <button moz-menu-item>
+        <moz-icon size="18">user</moz-icon> Profile
+      </button>
+      <button moz-menu-item>
+        <moz-icon size="18">settings</moz-icon> Settings
+      </button>
+      <button moz-menu-item disabled>
+        <moz-icon size="18">lock</moz-icon> Disabled Item
+      </button>
+      <hr style="margin: 4px 0; border: 0; border-top: 1px solid var(--moz-color-border);" />
+      <button moz-menu-item style="color: var(--moz-color-danger);">
+        <moz-icon size="18" color="danger">exit</moz-icon> Logout
+      </button>
+    </moz-menu>
+
+    <moz-menu #myMenu2="mozMenu">
+      <button moz-menu-item>
+        <moz-icon size="18">user</moz-icon> Profile
+      </button>
+      <button moz-menu-item>
+        <moz-icon size="18">settings</moz-icon> Settings
+      </button>
+      <button moz-menu-item disabled>
+        <moz-icon size="18">lock</moz-icon> Disabled Item For Testing Purposes
+      </button>
+      <hr style="margin: 4px 0; border: 0; border-top: 1px solid var(--moz-color-border);" />
+      <button moz-menu-item style="color: var(--moz-color-danger);">
+        <moz-icon size="18" color="danger">exit</moz-icon> Logout
+      </button>
+    </moz-menu>
   </div>
 
 
   <h3>Dialog</h3>
   <div class="grid gap-2 w-full">
-    <moz-button model="elevated" color="primary" (click)="openDialog()" mozTooltip="Click to open a popup">Open Programmatic Dialog</moz-button>
+    <moz-button model="elevated" color="primary" (click)="openDialog()" mozTooltip="Click to open a popup with new ui design tooltip that develop by meor muhammad haki. bin meor abdul razak bin musa">Open Programmatic Dialog</moz-button>
+  </div>
+
+
+  <h3>Snackbar</h3>
+  <div class="flex flex-col gap-4 w-full">
+    <div class="flex gap-2">
+      <moz-button model="fill" color="success" (click)="showSnackbar('success')">Queue Success</moz-button>
+      <moz-button model="fill" color="danger" (click)="showSnackbar('error')">Queue Error</moz-button>
+      <moz-button model="fill" color="warn" (click)="showSnackbar('warning')">Queue Warning</moz-button>
+      <moz-button model="fill" color="primary" (click)="showSnackbar('info')">Queue Info</moz-button>
+    </div>
+  </div>
+
+  <h3>Basic Snackbar (No Stack)</h3>
+  <div class="flex flex-col gap-4 w-full">
+    <div class="flex gap-2">
+      <moz-button model="fill" color="success" (click)="showBasicSnackbar('success')">Basic Success</moz-button>
+      <moz-button model="fill" color="danger" (click)="showBasicSnackbar('error')">Basic Error</moz-button>
+    </div>
+    
+    <div class="flex gap-2">
+      <moz-button model="outline" (click)="showBasicSnackbar('info', 'top-left')">Top Left</moz-button>
+      <moz-button model="outline" (click)="showBasicSnackbar('info', 'top-center')">Top Center</moz-button>
+      <moz-button model="outline" (click)="showBasicSnackbar('info', 'top-right')">Top Right</moz-button>
+      <moz-button model="outline" (click)="showBasicSnackbar('info', 'bottom-left')">Bottom Left</moz-button>
+      <moz-button model="outline" (click)="showBasicSnackbar('info', 'bottom-center')">Bottom Center</moz-button>
+      <moz-button model="outline" (click)="showBasicSnackbar('info', 'bottom-right')">Bottom Right</moz-button>
+    </div>
   </div>
 
 
@@ -743,9 +834,9 @@
     </div>
 
     <moz-button>Default</moz-button>
-    <div class="flex gap-2">
-      <moz-button model="fill" color="primary">Primary</moz-button>
-      <moz-button model="fill" color="secondary">Secondary</moz-button>
+    <div class="grid gap-2 w-full">
+    <span #targetForTutor style="display: inline-block"><moz-button model="fill" color="primary">Primary Fill</moz-button></span>
+    <moz-button model="outline" color="primary">Primary Outline</moz-button>
       <moz-button model="fill" color="success">Success</moz-button>
       <moz-button model="fill" color="warn">Warn</moz-button>
       <moz-button model="fill" color="danger">Danger</moz-button>
@@ -831,3 +922,5 @@
   </div>
 
 </main>
+<moz-snackbar-queue></moz-snackbar-queue>
+<moz-snackbar></moz-snackbar>
