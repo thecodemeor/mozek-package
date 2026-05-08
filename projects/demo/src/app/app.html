@@ -3,21 +3,21 @@
   <div style="width: 20px; height: 10rem;"></div>
 
   <div class="flex gap-2 w-full mb-8">
-    <div [mozFocusMenuTriggerFor]="focusMenu" #focusTrigger="mozFocusMenuTrigger" style="padding: 2rem; border: 1px solid var(--moz-color-border); border-radius: var(--moz-radius-default); background: var(--moz-color-surface); cursor: pointer;">
+    <div [mozTutorFor]="tutor" #tutorTrigger="mozTutorTrigger" style="padding: 2rem; border: 1px solid var(--moz-color-border); border-radius: var(--moz-radius-default); background: var(--moz-color-surface); cursor: pointer;">
       <h4 style="margin: 0">Feature Highlight Trigger</h4>
       <p style="margin: 0.5rem 0 0 0; color: var(--moz-color-text-dim);">This element is highlighted while the rest is blurred.</p>
     </div>
   </div>
 
-  <moz-focus-menu #focusMenu="mozFocusMenu">
+  <moz-tutor #tutor="mozTutor">
     <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
       <h3 style="margin: 0">New Feature!</h3>
       <p style="margin: 0; color: var(--moz-color-text-dim); line-height: 1.5;">This is a custom 'Focus Overlay' menu that mimics mat-menu but with a high-impact blur effect.</p>
       <div style="display: flex; justify-content: flex-end;">
-        <moz-button (click)="focusTrigger.close()">Got it!</moz-button>
+        <moz-button (click)="tutorTrigger.close()">Got it!</moz-button>
       </div>
     </div>
-  </moz-focus-menu>
+  </moz-tutor>
 
 
   <h3>Breadcrumbs</h3>

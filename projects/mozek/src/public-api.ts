@@ -34,4 +34,3 @@ export * from './lib/moz-snackbar/snackbar.component';
 export * from './lib/moz-menu/menu';
 export * from './lib/moz-breadcrumbs/breadcrumbs';
 export * from './lib/moz-tutor/tutor';
-export * from './lib/moz-focus-menu/focus-menu';

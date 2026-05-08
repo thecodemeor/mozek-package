@@ -3,7 +3,6 @@ import {
   ElementRef,
   ViewChild,
   AfterViewInit,
-  OnDestroy,
   inject,
   NgZone,
   ChangeDetectionStrategy,
@@ -17,19 +16,19 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
-  selector: 'moz-focus-menu-overlay',
+  selector: 'moz-tutor-overlay',
   standalone: true,
   imports: [NgTemplateOutlet],
   template: `
     <div 
-      class="moz-focus-menu-backdrop" 
+      class="moz-tutor-backdrop" 
       [class.visible]="visible()" 
       (click)="onBackdropClick($event)">
     </div>
     
     <div 
       #panel 
-      class="moz-focus-menu-panel" 
+      class="moz-tutor-panel" 
       [class.visible]="visible()"
       [class]="positionClass()"
       [style.left.px]="left"
@@ -39,10 +38,10 @@ import { NgTemplateOutlet } from '@angular/common';
       </div>
     </div>
   `,
-  styleUrls: ['./focus-menu.component.scss'],
+  styleUrls: ['./tutor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MozFocusMenuOverlayComponent implements AfterViewInit {
+export class MenuTutorOverlayComponent implements AfterViewInit {
   templateRef!: TemplateRef<any>;
   triggerElement!: HTMLElement;
   
@@ -74,7 +73,6 @@ export class MozFocusMenuOverlayComponent implements AfterViewInit {
 
     const triggerRect = this.triggerElement.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    const scrollY = window.scrollY;
 
     // Default left alignment
     this.left = triggerRect.left;
@@ -86,12 +84,7 @@ export class MozFocusMenuOverlayComponent implements AfterViewInit {
 
     if (spaceBelow < estimatedHeight && triggerRect.top > estimatedHeight) {
       this.positionClass.set('drop-up');
-      this.top = triggerRect.top - 8; // Small gap, we use transform-origin bottom
-      // In the CSS we use transform-origin: bottom center and top-origin: top center
-      // But we need to position the box top correctly.
-      // Actually, it's easier to position it and let CSS handle the origin.
-      this.top = triggerRect.top - estimatedHeight; // Simplified for now, will refine in real-time if needed
-      // Better approach: set top to triggerRect.top and use transform: translateY(-100%) in CSS if drop-up
+      this.top = triggerRect.top - estimatedHeight; 
     } else {
       this.positionClass.set('drop-down');
       this.top = triggerRect.bottom + 8;

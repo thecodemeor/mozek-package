@@ -1,25 +1,19 @@
-import {
-  Component,
-  ElementRef,
-  ViewChild,
-  AfterViewInit,
-  OnDestroy,
-  inject,
-  NgZone,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  TemplateRef
-} from '@angular/core';
-import { MozButton } from '../moz-button/button';
+import { Component, ChangeDetectionStrategy, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'moz-tutor',
   standalone: true,
   exportAs: 'mozTutor',
-  template: `<ng-template><ng-content></ng-content></ng-template>`,
-  styleUrls: ['./tutor.component.scss'],
+  template: `
+    <ng-template>
+      <div class="moz-tutor-content">
+        <ng-content></ng-content>
+      </div>
+    </ng-template>
+  `,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MozTutorComponent {
-  @ViewChild(TemplateRef, { static: true }) templateRef!: TemplateRef<any>;
+export class MenuTutor {
+  @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
 }

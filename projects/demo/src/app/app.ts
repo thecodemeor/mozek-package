@@ -24,7 +24,7 @@ import {
   MozSnackbarService,
   MozMenu, MozMenuTrigger, MozMenuItem,
   MozBreadcrumbs, MozBreadcrumbItem,
-  MozFocusMenu, MozFocusMenuTrigger
+  MenuTutor, MenuTutorTrigger
 } from 'mozek';
 
 @Component({
@@ -51,7 +51,7 @@ import {
     MozSnackbarComponent,
     MozMenu, MozMenuTrigger, MozMenuItem,
     MozBreadcrumbs,
-    MozFocusMenu, MozFocusMenuTrigger
+    MenuTutor, MenuTutorTrigger
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

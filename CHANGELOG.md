@@ -12,7 +12,7 @@ This version marks the transition to a full **Signal-Powered** and **Zero-Waste*
 
 #### **Navigation & Orchestration**
 *   **`MozBreadcrumbs`**: Adaptive navigation with "middle-collapse" logic, icon support, and dynamic URL routing.
-*   **`MozFocusOverlay`**: Premium isolation menu with backdrop-blur masking, scroll-locking, and signal-based visibility.
+*   **`MenuTutor`**: Premium isolation and onboarding menu with backdrop-blur masking, trigger highlighting, and signal-based visibility.
 *   **`MozPagination`**: High-performance data pagination with configurable page sizes and tactile transitions.
 *   **`MozAccordion`**: Multi-select support with smooth expansion/collapse animations and accessible headers.
 
@@ -27,7 +27,6 @@ This version marks the transition to a full **Signal-Powered** and **Zero-Waste*
 #### **Feedback & Overlays**
 *   **`MozSnackbar`** & **`MozSnackbarQueue`**: Managed notification system with singleton queueing and auto-dismissal.
 *   **`MozTooltip`**: Anchor-based hover info with physics-based entry animations.
-*   **`MozTutor`**: Onboarding lifecycle system with smart target element anchoring.
 *   **`MozProgress`**: 9+ animated loading models including ring, line-wobble, and cardio effects.
 
 #### **Actions & Display**

@@ -11,26 +11,25 @@ import {
   OnInit,
   OnDestroy,
   AfterViewInit,
-  signal,
-  computed
+  signal
 } from '@angular/core';
-import { MozFocusMenu } from './focus-menu.component';
-import { MozFocusMenuOverlayComponent } from './focus-menu-overlay.component';
+import { MenuTutor } from './tutor.component';
+import { MenuTutorOverlayComponent } from './tutor-overlay.component';
 
 @Directive({
-  selector: '[mozFocusMenuTriggerFor]',
+  selector: '[mozTutorFor]',
   standalone: true,
-  exportAs: 'mozFocusMenuTrigger'
+  exportAs: 'mozTutorTrigger'
 })
-export class MozFocusMenuTrigger implements OnInit, OnDestroy, AfterViewInit {
-  @Input('mozFocusMenuTriggerFor') menu!: MozFocusMenu;
+export class MenuTutorTrigger implements OnInit, OnDestroy, AfterViewInit {
+  @Input('mozTutorFor') tutor!: MenuTutor;
 
   private elementRef = inject(ElementRef);
   private appRef = inject(ApplicationRef);
   private injector = inject(EnvironmentInjector);
   private renderer = inject(Renderer2);
 
-  private overlayRef: ComponentRef<MozFocusMenuOverlayComponent> | null = null;
+  private overlayRef: ComponentRef<MenuTutorOverlayComponent> | null = null;
   
   // Use Angular Signal for isOpen state
   isOpen = signal(false);
@@ -51,19 +50,19 @@ export class MozFocusMenuTrigger implements OnInit, OnDestroy, AfterViewInit {
     if (this.isOpen()) return;
 
     // 1. Elevate the trigger element above the blur
-    this.renderer.addClass(this.elementRef.nativeElement, 'moz-focus-trigger-highlight');
+    this.renderer.addClass(this.elementRef.nativeElement, 'moz-tutor-trigger-highlight');
     
     // 2. Lock body scroll
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
     this.renderer.setStyle(document.body, 'padding-right', this.getScrollbarWidth() + 'px');
 
     // 3. Create and attach overlay
-    this.overlayRef = createComponent(MozFocusMenuOverlayComponent, {
+    this.overlayRef = createComponent(MenuTutorOverlayComponent, {
       environmentInjector: this.injector
     });
 
     this.overlayRef.instance.triggerElement = this.elementRef.nativeElement;
-    this.overlayRef.instance.templateRef = this.menu.templateRef;
+    this.overlayRef.instance.templateRef = this.tutor.templateRef;
     
     // Listen for close event
     this.overlayRef.instance.closed.subscribe(() => {
@@ -80,7 +79,7 @@ export class MozFocusMenuTrigger implements OnInit, OnDestroy, AfterViewInit {
     if (!this.isOpen()) return;
 
     // 1. Remove elevation class
-    this.renderer.removeClass(this.elementRef.nativeElement, 'moz-focus-trigger-highlight');
+    this.renderer.removeClass(this.elementRef.nativeElement, 'moz-tutor-trigger-highlight');
 
     // 2. Unlock body scroll
     this.renderer.removeStyle(document.body, 'overflow');
