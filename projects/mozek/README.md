@@ -1,5 +1,7 @@
 # Mozek Angular
 
+![Mozek Banner](https://raw.githubusercontent.com/thecodemeor/mozek-package/main/projects/mozek/banner.png)
+
 **The high-performance, signal-powered UI suite for Angular.**  
 Mozek is a minimalist UI library designed with a sleek glassmorphism aesthetic to bring premium SaaS design to your enterprise applications.
 
@@ -51,7 +53,7 @@ export class AppComponent {}
 | **Actions** | **Button**, **Button Icon** |
 | **Forms** | **Input**, **Select**, **Checkbox**, **Radio**, **Switch**, **Date Picker** |
 | **Layout** | **Card**, **Divider**, **Badge**, **Accordion** |
-| **Navigation** | **Pagination**, **Breadcrumbs** |
+| **Navigation** | **Pagination**, **Breadcrumbs**, **MenuTutor** |
 | **Feedback** | **Snackbar**, **Tooltip**, **Progress**, **Icon**, **Currency** |
 
 ---
@@ -60,7 +62,7 @@ export class AppComponent {}
 
 Mozek requires a modern Angular environment to function correctly:
 
-*   **Angular Core/Common**: `>=18.0.0 <21.0.0`
+*   **Angular Core/Common**: >=18.0.0 <21.0.0
 *   **Sass**: Dart Sass is recommended for the design system tokens.
 
 ---
@@ -69,7 +71,7 @@ Mozek requires a modern Angular environment to function correctly:
 
 For a full interactive component showcase, API references, and advanced configuration guides, visit our official documentation:
 
-👉 **[https://thecodemeor.github.io/mozek-website](https://thecodemeor.github.io/mozek-website)**
+👉 **[https://thecodemeor.github.io/mozek-website/home](https://thecodemeor.github.io/mozek-website/home)**
 
 ---
 
