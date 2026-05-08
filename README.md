@@ -98,7 +98,7 @@ Our mission is to provide the most comprehensive, signal-based UI suite in the A
 
 Ready to see Mozek in action? Visit our official showcase to interact with every component and explore full API documentation.
 
-👉 **[mozek-website.documentation](https://thecodemeor.github.io/mozek-website)**
+👉 **[Explore Full Documentation](https://thecodemeor.github.io/mozek-website)**
 
 ---
 
