@@ -1,95 +1,97 @@
 # Contributing to Mozek
 
-Thank you for your interest in contributing to **Mozek**.  
-As the creator and maintainer of this project, I welcome contributions of any kind —  
-bug fixes, feature additions, documentation improvements, or even ideas.
+First off, thank you for considering contributing to Mozek! It's people like you that make Mozek a premium tool for the Angular community.
 
-To keep **Mozek** clean, consistent, and enjoyable to work on, please follow the guidelines below.
+By contributing, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ---
 
-## 🧩 How to Contribute
+## 🛠️ Technical Standards
 
-### 1. Fork The Repository
+To maintain the high quality and "Zero-Waste" philosophy of Mozek, all contributions must adhere to the following technical standards:
 
-Click **Fork** at the top-right of the GitHub page.
+### 1. Angular Signals
+All new components and state logic **must** use Angular Signals. We are a signal-first library aiming for Zone-less compatibility.
+*   Use `input()`, `output()`, and `model()` for component communication.
+*   Use `computed()` for derived state to ensure efficient change detection.
 
+### 2. Modern Control Flow
+Do not use legacy structural directives (`*ngIf`, `*ngFor`, etc.). Use the modern Angular control flow blocks:
+*   `@if`, `@else`, `@for`, `@switch`.
 
-### 2. Create New Feature Branch
+### 3. Design Tokens & SCSS
+*   Avoid hardcoded values (hex colors, pixel spacings). Always use our design tokens found in `_tokens.scss`.
+*   Maintain the **glassmorphism** aesthetic. Use translucency and backdrop filters where appropriate.
+*   All styles should be scoped to the component and follow the `moz-` prefix naming convention.
 
-Do not work in `main`.
-Create your own branch:
+### 4. Zero-Waste Policy
+*   Prune unused imports immediately.
+*   Keep templates lean and logic decoupled.
+*   Ensure components are tree-shakeable.
+
+---
+
+## 🚀 Development Workflow
+
+### 1. Setup
+Fork the repository and clone it locally:
 
 ```bash
-git checkout -b feature/\(my-update\)
+git clone https://github.com/YOUR_USERNAME/mozek-package.git
+cd mozek-package
+npm install
 ```
 
-Use one of these prefixes:
-- `feature/` | New components, features
-- `fix/` | Bug fixes
-- `docs/` | Documentation updates
-- `style/` | Non-functional styling changes
+### 2. Branching
+Always create a new branch for your work. We follow a strict branching strategy:
 
-
-### 3. Make Your Changes
-
-Follow the coding standards described below.
-
-
-### 4. Commit Your Changes
-
-Write clear and descriptive commit messages:
+*   `feat/` - New components or features
+*   `fix/` - Bug fixes
+*   `docs/` - Documentation updates
+*   `refactor/` - Code improvements without feature changes
 
 ```bash
-git commit -m "(Exp) feat(button): add outline variant"
+git checkout -b feat/your-component-name
 ```
 
-
-### 5. Push To Your Fork
+### 3. Development & Testing
+Use the **Demo Application** to test your changes in real-time.
 
 ```bash
-git push origin feature/\(my-update\)
+# Run the demo playground
+npm run demo
+
+# Build the library to verify compilation
+npm run build:mozek
 ```
 
+### 4. Conventional Commits
+We enforce [Conventional Commits](https://www.conventionalcommits.org/). This helps us generate clean changelogs and manage releases.
 
-### 6. Open A Pull Request (PR)
+**Format**: `<type>(<scope>): <description>`
 
-Create a PR to:
+*   `feat(button): add support for ghost variant`
+*   `fix(input): resolve alignment issue on mobile`
+*   `docs(readme): fix typo in quick start guide`
 
-```bash
-main
-```
-
-Your PR will be reviewed by maintainers.
-Please ensure your PR is complete and passes all checks.
 ---
 
+## 📬 Submission Process
 
-## 🔒 Branch Protection Rules
+### 1. Pull Request Guidelines
+When opening a PR, please ensure:
+*   The PR title follows Conventional Commits.
+*   You have provided a clear description of the changes.
+*   You have updated the relevant documentation (README, etc.).
+*   The code builds successfully without errors.
 
-The `main` branch is protected:
+### 2. Review Process
+All PRs require at least one review from the maintainers. Be prepared to address feedback and make iterative improvements.
 
-- No direct pushes
-- All changes must come through Pull Requests
-- PR approvals may be required
-
-This ensures the stability of Mozek UI for all users.
 ---
 
+## 🌟 Community & Support
 
-## 🌟 Need Help?
+If you have questions or want to discuss a major architectural change before starting, please [open an issue](https://github.com/thecodemeor/mozek-package/issues).
 
-If you are unsure about anything:
-
-1. Open an **Issue**
-2. Ask your question
-3. Discuss your idea before starting work
-
-We appreciate contributions of any size — even fixing a typo helps the project grow.
----
-
-
-## Thank You
-
-Thank you for helping build **Mozek** into a beautiful, reliable, and reusable interface library.
-Your contributions make the project stronger and more valuable for developers everywhere.
----
+Thank you for helping us build the future of Angular UI! 🚀🥾

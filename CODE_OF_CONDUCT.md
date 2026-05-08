@@ -1,68 +1,79 @@
-# Code of Conduct
+# Contributor Covenant Code of Conduct
 
-## My Pledge
+## Our Pledge
 
-As the creator and maintainer of **Mozek**, I am committed to fostering a welcoming,  
-respectful, and harassment-free environment for everyone who chooses to interact  
-with this project. Regardless of age, background, identity, or experience level,  
-you are welcome here.
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
-My goal is to ensure **Mozek** remains a positive and open space for learning, sharing,  
-and collaborating.
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
----
+## Our Standards
 
-## My Standards
+Examples of behavior that contributes to a positive environment for our community include:
 
-### Behavior I Encourage
+* Demonstrating empathy and kindness toward other people
+* Being respectful of differing opinions, viewpoints, and experiences
+* Giving and gracefully receiving constructive feedback
+* Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
+* Focusing on what is best not just for us as individuals, but for the overall community
 
-- Being respectful and considerate
-- Communicating with kindness and honesty
-- Being open to constructive feedback
-- Demonstrating empathy and patience
-- Focusing on what benefits the community and users
+Examples of unacceptable behavior include:
 
-### Behavior I Do Not Accept
+* The use of sexualized language or imagery, and unwelcome sexual attention or advances
+* Trolling, insulting or derogatory comments, and personal or political attacks
+* Public or private harassment
+* Publishing others' private information, such as a physical or email address, without their explicit permission
+* Other conduct which could reasonably be considered inappropriate in a professional setting
 
-- Harassment or discrimination of any kind
-- Trolling, insulting comments, or personal attacks
-- Public or private harassment
-- Publishing private information without permission
-- Any conduct inappropriate for a professional environment
+## Enforcement Responsibilities
 
----
+Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
 
-## My Responsibilities
-
-I am responsible for:
-
-- Defining clear standards of acceptable behavior  
-- Reviewing and acting on behavior that violates this Code  
-- Moderating discussions, issues, and pull requests  
-- Removing or rejecting contributions that are harmful or disrespectful
-
-I reserve the right to take any action I deem necessary to maintain a healthy environment.
-
----
+Community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.
 
 ## Scope
 
-This Code of Conduct applies to:
+This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
 
-- All project spaces, including issues, discussions, and pull requests  
-- Any project-related interaction, online or offline
+## Enforcement
 
----
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at **meorhakimz@gmail.com**. All complaints will be reviewed and investigated promptly and fairly.
 
-## Reporting Issues
+All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 
-If you experience unacceptable behavior, please report it by opening an issue  
-or contacting me directly.
+## Enforcement Guidelines
 
-I take all reports seriously and will respond promptly and fairly.
+Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
 
----
+### 1. Correction
+
+**Community Impact**: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.
+
+**Consequence**: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
+
+### 2. Warning
+
+**Community Impact**: A violation through a single incident or series of actions.
+
+**Consequence**: A warning with consequences for continued behavior. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
+
+### 3. Temporary Ban
+
+**Community Impact**: A serious violation of community standards, including sustained inappropriate behavior.
+
+**Consequence**: A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, is allowed during this period. Violating these terms may lead to a permanent ban.
+
+### 4. Permanent Ban
+
+**Community Impact**: Demonstrating a pattern of violation of community standards, including sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of classes of individuals.
+
+**Consequence**: A permanent ban from any sort of public interaction within the community.
 
 ## Attribution
 
-This Code of Conduct is adapted from the Contributor Covenant, version 2.0.
+This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 2.1,
+available at [https://www.contributor-covenant.org/version/2/1/code_of_conduct.html][v2.1].
+
+Community Impact Guidelines were inspired by [Mozilla's code of conduct enforcement ladder](https://github.com/mozilla/no-signal-vibration/blob/master/code-of-conduct-enforcement.md).
+
+[homepage]: https://www.contributor-covenant.org
+[v2.1]: https://www.contributor-covenant.org/version/2/1/code_of_conduct.html
