@@ -18,7 +18,7 @@ import { MozDialogConfig, MozDialogRef } from './dialog-ref';
   templateUrl: './dialog-container.html',
   styleUrls: ['./dialog-container.scss']
 })
-export class MozDialogContainer implements OnInit {
+export class MozDialog implements OnInit {
   @ViewChild('portal', { read: ViewContainerRef, static: true })
   portal!: ViewContainerRef;
 

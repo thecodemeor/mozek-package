@@ -13,23 +13,23 @@ import {
   AfterViewInit,
   signal
 } from '@angular/core';
-import { MenuTutor } from './tutor.component';
-import { MenuTutorOverlayComponent } from './tutor-overlay.component';
+import { MozTutor } from './tutor.component';
+import { MozTutorOverlay } from './tutor-overlay.component';
 
 @Directive({
   selector: '[mozTutorFor]',
   standalone: true,
   exportAs: 'mozTutorTrigger'
 })
-export class MenuTutorTrigger implements OnInit, OnDestroy, AfterViewInit {
-  @Input('mozTutorFor') tutor!: MenuTutor;
+export class MozTutorTrigger implements OnInit, OnDestroy, AfterViewInit {
+  @Input('mozTutorFor') tutor!: MozTutor;
 
   private elementRef = inject(ElementRef);
   private appRef = inject(ApplicationRef);
   private injector = inject(EnvironmentInjector);
   private renderer = inject(Renderer2);
 
-  private overlayRef: ComponentRef<MenuTutorOverlayComponent> | null = null;
+  private overlayRef: ComponentRef<MozTutorOverlay> | null = null;
   
   // Use Angular Signal for isOpen state
   isOpen = signal(false);
@@ -57,7 +57,7 @@ export class MenuTutorTrigger implements OnInit, OnDestroy, AfterViewInit {
     this.renderer.setStyle(document.body, 'padding-right', this.getScrollbarWidth() + 'px');
 
     // 3. Create and attach overlay
-    this.overlayRef = createComponent(MenuTutorOverlayComponent, {
+    this.overlayRef = createComponent(MozTutorOverlay, {
       environmentInjector: this.injector
     });
 

@@ -23,7 +23,7 @@ import { Component, Input } from '@angular/core';
     `,
     styleUrls: ['./tooltip.component.scss']
 })
-export class MozTooltipComponent {
+export class MozTooltip {
     @Input() text: string = '';
     @Input() position: 'top' | 'bottom' = 'top';
     @Input() left: number = 0;

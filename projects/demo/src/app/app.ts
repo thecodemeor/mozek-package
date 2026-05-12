@@ -17,14 +17,14 @@ import {
   MozCheckbox, MozCheckboxGroup,
   MozRadio, MozRadioGroup,
   MozDialogService, MozDialogRef,
-  MozTooltip,
-  MozSnackbarQueueComponent,
+  MozTooltipDirective,
+  MozSnackbarQueue,
   MozSnackbarQueueService,
-  MozSnackbarComponent,
+  MozSnackbar,
   MozSnackbarService,
   MozMenu, MozMenuTrigger, MozMenuItem,
   MozBreadcrumbs, MozBreadcrumbItem,
-  MenuTutor, MenuTutorTrigger
+  MozTutor, MozTutorTrigger
 } from 'mozek';
 
 @Component({
@@ -46,12 +46,12 @@ import {
     MozAccordion, MozAccordionItem,
     MozCheckbox, MozCheckboxGroup,
     MozRadio, MozRadioGroup,
-    MozTooltip,
-    MozSnackbarQueueComponent,
-    MozSnackbarComponent,
+    MozTooltipDirective,
+    MozSnackbarQueue,
+    MozSnackbar,
     MozMenu, MozMenuTrigger, MozMenuItem,
     MozBreadcrumbs,
-    MenuTutor, MenuTutorTrigger
+    MozTutor, MozTutorTrigger
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

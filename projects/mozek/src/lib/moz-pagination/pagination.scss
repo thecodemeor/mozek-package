@@ -85,7 +85,7 @@
         height: 100%;
         padding: 0.3rem;
         border: color-mix(in srgb, var(--moz-color-text) var(--moz-fade-outline), white);
-        background: color-mix(in srgb, var(--moz-color-text) var(--moz-fade-hover), white);
+        background: var(--moz-color-surface-dark);
         border-radius: 1rem;
         align-items: center;
         gap: var(--moz-space-2);

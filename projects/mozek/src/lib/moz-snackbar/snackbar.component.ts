@@ -44,7 +44,7 @@ import { MozButtonIcon } from '../moz-button-icon/button-icon';
     styleUrls: ['./snackbar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MozSnackbarComponent {
+export class MozSnackbar {
     snackbarService = inject(MozSnackbarService);
 
     position = computed(() => this.snackbarService.activeSnackbar()?.position ?? 'top-right');

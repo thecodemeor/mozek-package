@@ -12,7 +12,7 @@ import {
   createComponent,
   NgZone
 } from '@angular/core';
-import { MozTooltipComponent } from './tooltip.component';
+import { MozTooltip } from './tooltip.component';
 
 /**
  * MozTooltip — adds a tooltip to any element.
@@ -26,7 +26,7 @@ import { MozTooltipComponent } from './tooltip.component';
   selector: '[mozTooltip]',
   standalone: true,
 })
-export class MozTooltip implements OnInit, OnDestroy {
+export class MozTooltipDirective implements OnInit, OnDestroy {
   /** The tooltip text to display on hover */
   @Input('mozTooltip') text: string = '';
 
@@ -41,7 +41,7 @@ export class MozTooltip implements OnInit, OnDestroy {
   private readonly injector = inject(EnvironmentInjector);
   private readonly zone = inject(NgZone);
 
-  private componentRef: ComponentRef<MozTooltipComponent> | null = null;
+  private componentRef: ComponentRef<MozTooltip> | null = null;
   private showTimer: ReturnType<typeof setTimeout> | null = null;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -74,7 +74,7 @@ export class MozTooltip implements OnInit, OnDestroy {
     if (this.componentRef) return;
 
     // Create the component
-    this.componentRef = createComponent(MozTooltipComponent, {
+    this.componentRef = createComponent(MozTooltip, {
       environmentInjector: this.injector
     });
 

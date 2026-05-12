@@ -37,7 +37,7 @@ import { MozButtonIcon } from '../moz-button-icon/button-icon';
     styleUrls: ['./snackbar-queue.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MozSnackbarQueueComponent {
+export class MozSnackbarQueue {
     snackbarService = inject(MozSnackbarQueueService);
 
     activeSnackbars = this.snackbarService.activeSnackbars;

@@ -6,12 +6,12 @@ import {
   createComponent,
   EnvironmentInjector
 } from '@angular/core';
-import { MozDialogContainer } from './dialog-container';
+import { MozDialog } from './dialog-container';
 import { MozDialogConfig, MozDialogRef } from './dialog-ref';
 
 @Injectable({ providedIn: 'root' })
 export class MozDialogService {
-  private dialogRefs: { ref: MozDialogRef, containerRef: ComponentRef<MozDialogContainer> }[] = [];
+  private dialogRefs: { ref: MozDialogRef, containerRef: ComponentRef<MozDialog> }[] = [];
 
   constructor(
     private appRef: ApplicationRef,
@@ -23,7 +23,7 @@ export class MozDialogService {
     const dialogRef = new MozDialogRef<R>(id);
 
     // Create the container
-    const containerRef = createComponent(MozDialogContainer, {
+    const containerRef = createComponent(MozDialog, {
       environmentInjector: this.injector
     });
 

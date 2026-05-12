@@ -41,7 +41,7 @@ import { NgTemplateOutlet } from '@angular/common';
   styleUrls: ['./tutor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MenuTutorOverlayComponent implements AfterViewInit {
+export class MozTutorOverlay implements AfterViewInit {
   templateRef!: TemplateRef<any>;
   triggerElement!: HTMLElement;
   

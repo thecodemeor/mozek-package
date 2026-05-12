@@ -14,6 +14,6 @@ import { Component, ChangeDetectionStrategy, TemplateRef, ViewChild, ViewEncapsu
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MenuTutor {
+export class MozTutor {
   @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
 }
