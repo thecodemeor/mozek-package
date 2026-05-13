@@ -10,8 +10,6 @@
         [indeterminate]="indeterminate"
         [disabled]="disabled"
         (change)="_onNativeChange($event)"
-        (focus)="focused = true"
-        (blur)="focused = false"
         [attr.aria-checked]="indeterminate ? 'mixed' : (checked ? 'true' : 'false')"
         role="checkbox"
     />

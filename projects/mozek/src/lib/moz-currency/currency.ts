@@ -26,15 +26,25 @@ import {
     booleanAttribute
 } from '@angular/core';
 
+const CURRENCY_SYMBOLS: Record<string, string> = {
+    USD: '$', EUR: '€', GBP: '£', JPY: '¥', CNY: '¥', KRW: '₩',
+    INR: '₹', MYR: 'RM', SGD: 'S$', IDR: 'Rp', PHP: '₱', THB: '฿',
+    VND: '₫', AUD: 'A$', NZD: 'NZ$', CAD: 'C$', CHF: 'Fr', SEK: 'kr',
+    NOK: 'kr', DKK: 'kr', PLN: 'zł', RUB: '₽', ZAR: 'R', NGN: '₦',
+    AED: 'د.إ', SAR: 'ر.س', KWD: 'د.ك', BHD: '.د.ب', OMR: 'ر.ع',
+    PKR: 'Rs', LKR: 'Rs', BDT: '৳', HKD: 'HK$', TWD: 'NT$'
+};
+
 @Component({
     selector: 'moz-currency',
     templateUrl: './currency.html',
     styleUrls: ['./currency.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true
 })
 export class MozCurrency implements AfterContentInit {
     @Input() value?: number;
-    @Input() currency: string = 'MYR';
+    @Input() currency = 'MYR';
     @Input({ transform: booleanAttribute }) symbol = false;
     
     @ViewChild('slot', { static: true }) slot!: ElementRef<HTMLElement>;
@@ -42,63 +52,22 @@ export class MozCurrency implements AfterContentInit {
     private cdr = inject(ChangeDetectorRef);
     
     displayValue = '';
+
     ngAfterContentInit(): void {
-        const raw =
-        this.value != null
+        const raw = this.value != null
             ? String(this.value)
             : (this.slot.nativeElement.textContent ?? '').trim();
 
         const num = parseFloat(raw);
-        this.displayValue = isNaN(num)
-        ? ''
-        : `${num.toFixed(2)}`;
-
+        this.displayValue = isNaN(num) ? '' : num.toFixed(2);
         this.cdr.markForCheck();
     }
 
-    currencyLabel(): string {
+    get currencyLabel(): string {
         if (this.symbol) {
-            const symbol = this.symbolCurrency[this.currency.toUpperCase()];
-            return symbol ? symbol : this.currency;
-        } else {
-            return this.currency;
+            const symbol = CURRENCY_SYMBOLS[this.currency.toUpperCase()];
+            return symbol || this.currency;
         }
+        return this.currency;
     }
-
-    symbolCurrency: Record<string, string> = {
-        USD: '$',
-        EUR: '€',
-        GBP: '£',
-        JPY: '¥',
-        CNY: '¥',
-        KRW: '₩',
-        INR: '₹',
-        MYR: 'RM',
-        SGD: 'S$',
-        IDR: 'Rp',
-        PHP: '₱',
-        THB: '฿',
-        VND: '₫',
-        AUD: 'A$',
-        NZD: 'NZ$',
-        CAD: 'C$',
-        CHF: 'Fr',
-        SEK: 'kr',
-        NOK: 'kr',
-        DKK: 'kr',
-        PLN: 'zł',
-        RUB: '₽',
-        ZAR: 'R',
-        NGN: '₦',
-        AED: 'د.إ',
-        SAR: 'ر.س',
-        KWD: 'د.ك',
-        BHD: '.د.ب',
-        OMR: 'ر.ع',
-        PKR: 'Rs',
-        LKR: 'Rs',
-        BDT: '৳',
-        HKD: 'HK$',
-        TWD: 'NT$'
-    };
 }

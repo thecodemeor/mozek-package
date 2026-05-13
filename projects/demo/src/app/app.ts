@@ -74,7 +74,7 @@ export class App {
     { label: 'Payment' },
     { label: 'Delivery address' },
     { label: 'Payment' },
-    { label: 'Delivery address' }
+    { label: 'Delivery address', icon: 'home' }
   ];
 
   showSnackbar(type: any) {

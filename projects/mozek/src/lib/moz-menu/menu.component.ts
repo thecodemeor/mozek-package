@@ -24,9 +24,9 @@ export class MozMenu {
   
   @Output() closed = new EventEmitter<void>();
 
-  @ViewChild(TemplateRef, { static: true }) templateRef!: TemplateRef<any>;
+  @ViewChild(TemplateRef, { static: true }) templateRef!: TemplateRef<unknown>;
 
-  close(event: MouseEvent) {
+  close(event: MouseEvent): void {
     const target = event.target as HTMLElement;
     const item = target.closest('.moz-menu-item');
     if (item && !item.hasAttribute('disabled') && !item.classList.contains('disabled')) {

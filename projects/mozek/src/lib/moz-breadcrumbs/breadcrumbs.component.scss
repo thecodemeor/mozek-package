@@ -36,7 +36,6 @@
 }
 
 .moz-breadcrumb-item {
-    @include moz.moz-typography('label-sm');
     display: inline-flex;
     align-items: center;
     gap: var(--moz-space-1);
@@ -50,6 +49,7 @@
     transition: background-color 150ms ease, color 150ms ease;
     overflow: hidden;
     max-width: 200px; // Default max-width for long labels
+    @include moz.moz-typography('label-sm');
 
     &:hover, &:focus-visible {
         background: color-mix(in srgb, white 70%, transparent 30%);

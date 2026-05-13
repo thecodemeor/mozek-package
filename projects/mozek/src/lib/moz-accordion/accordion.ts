@@ -24,9 +24,9 @@ import {
     ContentChildren,
     QueryList,
     Input,
-    AfterContentInit,
     ChangeDetectorRef,
-    inject
+    inject,
+    booleanAttribute
 } from '@angular/core';
 import { MozAccordionItem } from './accordion-item';
 
@@ -38,17 +38,14 @@ import { MozAccordionItem } from './accordion-item';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: []
 })
-export class MozAccordion implements AfterContentInit {
-    @Input() multi = false;
+export class MozAccordion {
+    @Input({ transform: booleanAttribute }) multi = false;
 
     @ContentChildren(MozAccordionItem, { descendants: true })
     items!: QueryList<MozAccordionItem>;
 
     private cdr = inject(ChangeDetectorRef);
 
-    ngAfterContentInit(): void {
-        // reserved for future behaviour
-    }
 
     /** Called by an item WHEN it toggles itself */
     _notifyItemToggled(source: MozAccordionItem): void {

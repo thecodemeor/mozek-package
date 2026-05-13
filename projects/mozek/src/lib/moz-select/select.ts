@@ -59,7 +59,7 @@ let uid = 0;
         multi: true
     }]
 })
-export class MozSelect<T = any> implements ControlValueAccessor, AfterContentInit {
+export class MozSelect<T = unknown> implements ControlValueAccessor, AfterContentInit {
     /** Accent color used for focus/selected states. */
     @Input() color: 'primary' | 'danger' | 'success' | 'warning' | 'text' = 'primary';
     @Input() label?: string;
@@ -76,10 +76,10 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     @ContentChildren(MozOption) optionList!: QueryList<MozOption<T>>;
     @ViewChild('trigger', { static: true }) triggerRef!: ElementRef<HTMLButtonElement>;
 
-    @HostBinding('attr.aria-disabled') get ariaDisabled() { return String(this.disabled); }
-    @HostBinding('class.disabled') get hostDisabled() { return this.disabled; }
-    @HostBinding('class.full') get hostFull() { return this.full; }
-    @HostBinding('style.--moz-select-accent') get accentCssVar() {
+    @HostBinding('attr.aria-disabled') get ariaDisabled(): string { return String(this.disabled); }
+    @HostBinding('class.disabled') get hostDisabled(): boolean { return this.disabled; }
+    @HostBinding('class.full') get hostFull(): boolean { return this.full; }
+    @HostBinding('style.--moz-select-accent') get accentCssVar(): string {
         return `var(--moz-color-${this.color})`;
     }
 
@@ -100,7 +100,7 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     // ---------------------------------------------------------------------------
     // Lifecycle
     // ---------------------------------------------------------------------------
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this.optionList.changes
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => this.cdr.markForCheck());
@@ -110,7 +110,7 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     // Close when clicking outside the component
     // ---------------------------------------------------------------------------
     @HostListener('document:click', ['$event'])
-    onDocumentClick(event: MouseEvent) {
+    onDocumentClick(event: MouseEvent): void {
         if (!this.open) return;
 
         const target = event.target as Node | null;
@@ -143,25 +143,25 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
         return this.selectedOption?.label || '';
     }
 
-    get isErrored() { return !!this.error; }
+    get isErrored(): boolean { return !!this.error; }
 
-    get modelClass() {
+    get modelClass(): string {
         return `moz-select moz-select--${this.model}`;
     }
 
     // ---------------------------------------------------------------------------
     // CVA
     // ---------------------------------------------------------------------------
-    writeValue(v: any): void {
+    writeValue(v: T | null): void {
         this._value = v;
         this.cdr.markForCheck();
     }
 
-    registerOnChange(fn: any): void {
+    registerOnChange(fn: (v: T | null) => void): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn: any): void {
+    registerOnTouched(fn: () => void): void {
         this.onTouched = fn;
     }
 
@@ -175,18 +175,18 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     // ---------------------------------------------------------------------------
     // Open / close
     // ---------------------------------------------------------------------------
-    togglePanel() {
+    togglePanel(): void {
         if (this.disabled) return;
         this.open ? this.closePanel() : this.openPanel();
     }
 
-    openPanel() {
+    openPanel(): void {
         this.open = true;
         this.activeIndex = Math.max(0, this.options.findIndex(o => this.equals(o.value, this.value)));
         this.cdr.markForCheck();
     }
 
-    closePanel() {
+    closePanel(): void {
         this.open = false;
         this.activeIndex = -1;
         this.onTouched();
@@ -196,13 +196,13 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     // ---------------------------------------------------------------------------
     // Select / clear
     // ---------------------------------------------------------------------------
-    selectOption(opt: MozOption<T>) {
+    selectOption(opt: MozOption<T>): void {
         if (opt.disabled) return;
         this.value = opt.value;
         this.closePanel();
     }
 
-    clearSelection(e?: MouseEvent) {
+    clearSelection(e?: MouseEvent): void {
         e?.stopPropagation();
         this.value = null;
     }
@@ -210,11 +210,11 @@ export class MozSelect<T = any> implements ControlValueAccessor, AfterContentIni
     // ---------------------------------------------------------------------------
     // Helpers
     // ---------------------------------------------------------------------------
-    isSelected(opt: MozOption<T>) {
+    isSelected(opt: MozOption<T>): boolean {
         return this.equals(opt.value, this.value);
     }
 
-    equals(a: any, b: any) {
+    equals(a: T | null, b: T | null): boolean {
         return this.compareWith(a, b);
     }
 }

@@ -96,6 +96,7 @@ moz-card-header-actions { display: contents; }
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    @include moz.moz-typography('label-md');
 
     &--fill {
         padding: var(--moz-space-1) var(--moz-space-2);
@@ -107,9 +108,6 @@ moz-card-header-actions { display: contents; }
         background: color-mix(in srgb, white 90%, transparent 10%);
         border-radius: calc(var(--moz-card-corner) - var(--moz-card-gap)) calc(var(--moz-card-corner) - var(--moz-card-gap)) var(--moz-radius-default) var(--moz-radius-default);
     }
-    
-    // Font Styles
-    @include moz.moz-typography('label-md');
 
     .moz-card-header-actions {
         display: flex;

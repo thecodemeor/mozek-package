@@ -34,11 +34,11 @@ export class MozTutorTrigger implements OnInit, OnDestroy, AfterViewInit {
   // Use Angular Signal for isOpen state
   isOpen = signal(false);
 
-  ngOnInit() {
+  ngOnInit(): void {
     // Initial setup if needed
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     // Automatically open on init as requested
     // Small delay to ensure everything is rendered and positioned
     setTimeout(() => {
@@ -46,7 +46,7 @@ export class MozTutorTrigger implements OnInit, OnDestroy, AfterViewInit {
     }, 1000);
   }
 
-  open() {
+  open(): void {
     if (this.isOpen()) return;
 
     // 1. Elevate the trigger element above the blur
@@ -75,7 +75,7 @@ export class MozTutorTrigger implements OnInit, OnDestroy, AfterViewInit {
     this.isOpen.set(true);
   }
 
-  close() {
+  close(): void {
     if (!this.isOpen()) return;
 
     // 1. Remove elevation class
@@ -99,7 +99,7 @@ export class MozTutorTrigger implements OnInit, OnDestroy, AfterViewInit {
     return window.innerWidth - document.documentElement.clientWidth;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.close();
   }
 }

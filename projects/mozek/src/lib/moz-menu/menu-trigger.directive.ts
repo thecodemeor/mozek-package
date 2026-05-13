@@ -10,6 +10,7 @@ import {
   ViewContainerRef,
   EmbeddedViewRef
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MozMenu } from './menu.component';
 
 @Directive({
@@ -24,13 +25,13 @@ export class MozMenuTrigger implements OnDestroy {
   private readonly zone = inject(NgZone);
   private readonly vcr = inject(ViewContainerRef);
 
-  private viewRef: EmbeddedViewRef<any> | null = null;
+  private viewRef: EmbeddedViewRef<unknown> | null = null;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
   private panelEl: HTMLElement | null = null;
-  private closedSubscription: any = null;
+  private closedSubscription: Subscription | null = null;
 
   @HostListener('click', ['$event'])
-  toggleMenu(event: MouseEvent) {
+  toggleMenu(event: MouseEvent): void {
     event.stopPropagation();
     if (this.viewRef) {
       this.closeMenu();
@@ -40,7 +41,7 @@ export class MozMenuTrigger implements OnDestroy {
   }
 
   @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
+  onDocumentClick(event: MouseEvent): void {
     if (!this.viewRef || !this.panelEl) return;
     
     const clickedInside = this.panelEl.contains(event.target as Node);
@@ -51,7 +52,7 @@ export class MozMenuTrigger implements OnDestroy {
     }
   }
 
-  openMenu() {
+  openMenu(): void {
     if (this.viewRef || !this.menu || !this.menu.templateRef) return;
 
     this.viewRef = this.vcr.createEmbeddedView(this.menu.templateRef);
@@ -79,7 +80,7 @@ export class MozMenuTrigger implements OnDestroy {
     });
   }
 
-  closeMenu() {
+  closeMenu(): void {
     if (this.hideTimer) return;
     if (this.panelEl) {
       this.panelEl.classList.remove('moz-menu--visible');
@@ -140,7 +141,7 @@ export class MozMenuTrigger implements OnDestroy {
     this.panelEl.style.minWidth = `${host.width}px`;
   }
 
-  private destroy() {
+  private destroy(): void {
     if (this.viewRef) {
       window.removeEventListener('resize', this.onScrollResize);
       window.removeEventListener('scroll', this.onScrollResize, { capture: true });
@@ -160,7 +161,7 @@ export class MozMenuTrigger implements OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.hideTimer !== null) clearTimeout(this.hideTimer);
     this.destroy();
   }

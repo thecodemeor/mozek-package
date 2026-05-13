@@ -63,9 +63,9 @@ export class MozBadge implements AfterContentInit {
     get classes(): string {
         return [
             'moz-badge',
-            this.dot ? 'moz-badge--dot' : '',
-            this.pulse && !this.dot ? 'moz-badge--pulsar' : '',
-        ].filter(Boolean).join(' ');
+            this.dot ? 'moz-badge--dot' : null,
+            this.pulse && !this.dot ? 'moz-badge--pulsar' : null,
+        ].filter((c): c is string => !!c).join(' ');
     }
 
     get bg(): string {
@@ -78,20 +78,21 @@ export class MozBadge implements AfterContentInit {
             default:        return '';
         }
     }
-    @HostBinding('style') get hostStyle() {
+    @HostBinding('style') get hostStyle(): Partial<CSSStyleDeclaration> {
         const position = this.notification ? 'absolute' : 'unset';
         const top = this.notification ? '-0.56rem' : 'unset';
         const right = this.notification ? '1rem' : 'unset';
         return {
             position, top, right,
-        };
+        } as any;
     }
 
-    get styleVars() {
+    get styleVars(): Record<string, string | undefined> {
         if(this.dot) { return {};}
+        
+        let width: string | undefined;
+        let padding: string | undefined;
 
-        let width
-        let padding
         if((this.contentLength === 1 && !this.icon) || (this.contentLength === 0 && this.icon)) {
             width = '1.2rem';
             padding = '0.125rem';
@@ -103,8 +104,6 @@ export class MozBadge implements AfterContentInit {
             padding = '0 0.625rem';
         }
 
-        return {
-            width, padding,
-        };
+        return { width, padding };
     }
 }

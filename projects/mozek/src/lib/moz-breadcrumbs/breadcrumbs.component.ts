@@ -51,7 +51,7 @@ export class MozBreadcrumbs implements AfterViewInit, OnDestroy {
 
   private el = inject(ElementRef<HTMLElement>);
   private zone = inject(NgZone);
-  private resizeObserver!: ResizeObserver;
+  private resizeObserver: ResizeObserver | null = null;
 
   constructor() {
     // Re-check overflow if items change
@@ -63,7 +63,7 @@ export class MozBreadcrumbs implements AfterViewInit, OnDestroy {
     });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.zone.runOutsideAngular(() => {
       this.resizeObserver = new ResizeObserver(() => {
         this.checkOverflow();
@@ -78,7 +78,7 @@ export class MozBreadcrumbs implements AfterViewInit, OnDestroy {
     setTimeout(() => this.checkOverflow(), 0);
   }
 
-  private checkOverflow() {
+  private checkOverflow(): void {
     if (!this.measureContainer || !this.el) return;
     
     const availableWidth = this.el.nativeElement.offsetWidth;
@@ -94,9 +94,10 @@ export class MozBreadcrumbs implements AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
+      this.resizeObserver = null;
     }
   }
 }

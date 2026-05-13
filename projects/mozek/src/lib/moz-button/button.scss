@@ -126,5 +126,5 @@ button.moz-btn {
 
 @media (prefers-reduced-motion: reduce) {
     .ripple { animation-duration: 0.001s;}
-    button.moz-button:active { transform: none;}
+    button.moz-btn:active { transform: none;}
 }

@@ -17,11 +17,11 @@ export class MozSnackbarQueueService {
     private nextId = 0;
     public activeSnackbars = signal<MozSnackbarQueueState[]>([]);
     
-    private timers = new Map<number, any>();
+    private timers = new Map<number, ReturnType<typeof setTimeout>>();
 
     show(message: string, duration?: number): void;
     show(message: string, type?: MozSnackbarQueueType, duration?: number): void;
-    show(message: string, arg2?: number | MozSnackbarQueueType, arg3?: number) {
+    show(message: string, arg2?: number | MozSnackbarQueueType, arg3?: number): void {
         let duration = 3000;
         let type: MozSnackbarQueueType = 'info';
 
@@ -44,18 +44,18 @@ export class MozSnackbarQueueService {
         this.startTimer(state);
     }
 
-    pause(id: number) {
+    pause(id: number): void {
         this.clearTimer(id);
     }
 
-    resume(id: number) {
+    resume(id: number): void {
         const current = this.activeSnackbars().find(s => s.id === id);
         if (current && !current.leaving) {
             this.startTimer(current);
         }
     }
 
-    hide(id: number) {
+    hide(id: number): void {
         this.clearTimer(id);
         
         this.activeSnackbars.update(snackbars => 
@@ -68,7 +68,7 @@ export class MozSnackbarQueueService {
         }, 200);
     }
 
-    private startTimer(state: MozSnackbarQueueState) {
+    private startTimer(state: MozSnackbarQueueState): void {
         this.clearTimer(state.id);
         const timer = setTimeout(() => {
             this.hide(state.id);
@@ -76,7 +76,7 @@ export class MozSnackbarQueueService {
         this.timers.set(state.id, timer);
     }
 
-    private clearTimer(id: number) {
+    private clearTimer(id: number): void {
         if (this.timers.has(id)) {
             clearTimeout(this.timers.get(id));
             this.timers.delete(id);

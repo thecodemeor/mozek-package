@@ -50,27 +50,27 @@ export class MozSwitch implements ControlValueAccessor {
     onChange: (v: boolean) => void = () => {};
     onTouched: () => void = () => {};
 
-    get checked() { return this._value; }
+    get checked(): boolean { return this._value; }
     set checked(v: boolean) {
         this._value = !!v;
         this.onChange(this._value);
     }
 
-    toggle() {
+    toggle(): void {
         if (this.disabled) return;
         this.checked = !this.checked;
         this.changed.emit(this.checked);
     }
 
     // ControlValueAccessor
-    writeValue(v: any): void { this._value = !!v; }
-    registerOnChange(fn: any): void { this.onChange = fn; }
-    registerOnTouched(fn: any): void { this.onTouched = fn; }
+    writeValue(v: boolean): void { this._value = !!v; }
+    registerOnChange(fn: (v: boolean) => void): void { this.onChange = fn; }
+    registerOnTouched(fn: () => void): void { this.onTouched = fn; }
     setDisabledState(isDisabled: boolean): void { this.disabled = isDisabled; }
 
     // For host
-    @HostBinding('class.disabled') get hostDisabled() { return this.disabled; }
+    @HostBinding('class.disabled') get hostDisabled(): boolean { return this.disabled; }
     @HostBinding('attr.role') role = 'switch';
-    @HostBinding('attr.aria-checked') get ariaChecked() { return this.checked; }
-    @HostBinding('attr.aria-disabled') get ariaDisabled() { return this.disabled; }
+    @HostBinding('attr.aria-checked') get ariaChecked(): boolean { return this.checked; }
+    @HostBinding('attr.aria-disabled') get ariaDisabled(): boolean { return this.disabled; }
 }

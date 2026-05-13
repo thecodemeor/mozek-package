@@ -19,7 +19,7 @@
         <span class="moz-select__value" [class.placeholder]="displayLabel === ''">
             {{ displayLabel || placeholder }}
         </span>
-        <moz-icon [style.rotate]="open ? '-180deg' : '0deg'">arrow_chevron_down</moz-icon>
+        <moz-icon [style.transform]="open ? 'rotate(180deg)' : 'rotate(0deg)'">arrow_chevron_down</moz-icon>
     </button>
 
     <!-- helper / error -->

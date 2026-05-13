@@ -26,13 +26,13 @@ export class MozDialog implements OnInit {
   
   componentRef!: ComponentRef<any>;
   componentType!: Type<any>;
-  config!: MozDialogConfig;
-  dialogRef!: MozDialogRef;
+  config!: MozDialogConfig<any>;
+  dialogRef!: MozDialogRef<any>;
 
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly injector = inject(Injector);
 
-  ngOnInit() {
+  ngOnInit(): void {
     // Trigger entrance animation on next tick
     setTimeout(() => {
       this.animationState = 'enter';
@@ -41,7 +41,7 @@ export class MozDialog implements OnInit {
     this.attachComponent();
   }
 
-  attachComponent() {
+  attachComponent(): void {
     this.portal.clear();
     
     // Create a custom injector that provides the MozDialogRef and config
@@ -58,7 +58,7 @@ export class MozDialog implements OnInit {
     });
   }
 
-  onBackdropClick() {
+  onBackdropClick(): void {
     if (!this.config?.disableClose) {
       this.dialogRef.close();
     }

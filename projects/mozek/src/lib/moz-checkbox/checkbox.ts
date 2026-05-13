@@ -78,7 +78,6 @@ export class MozCheckbox {
     @Output() change = new EventEmitter<boolean>();
     @Output() checkedChange = new EventEmitter<boolean>();
 
-    focused = false;
 
     private _cdr = inject(ChangeDetectorRef)
 

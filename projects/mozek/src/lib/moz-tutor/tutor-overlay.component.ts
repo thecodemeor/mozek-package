@@ -42,7 +42,7 @@ import { NgTemplateOutlet } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MozTutorOverlay implements AfterViewInit {
-  templateRef!: TemplateRef<any>;
+  templateRef!: TemplateRef<unknown>;
   triggerElement!: HTMLElement;
   
   @Output() closed = new EventEmitter<void>();
@@ -58,7 +58,7 @@ export class MozTutorOverlay implements AfterViewInit {
   private cdr = inject(ChangeDetectorRef);
   private zone = inject(NgZone);
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.updatePosition();
     
     // Animate in
@@ -68,7 +68,7 @@ export class MozTutorOverlay implements AfterViewInit {
     });
   }
 
-  updatePosition() {
+  updatePosition(): void {
     if (!this.triggerElement) return;
 
     const triggerRect = this.triggerElement.getBoundingClientRect();
@@ -102,11 +102,11 @@ export class MozTutorOverlay implements AfterViewInit {
     }, 0);
   }
 
-  onBackdropClick(event: MouseEvent) {
+  onBackdropClick(event: MouseEvent): void {
     this.close();
   }
 
-  close() {
+  close(): void {
     this.visible.set(false);
     this.cdr.detectChanges();
     setTimeout(() => {
@@ -115,7 +115,7 @@ export class MozTutorOverlay implements AfterViewInit {
   }
 
   @HostListener('window:resize')
-  onResize() {
+  onResize(): void {
     this.updatePosition();
     this.cdr.detectChanges();
   }

@@ -16,11 +16,11 @@ export interface MozSnackbarState {
 })
 export class MozSnackbarService {
   public activeSnackbar = signal<MozSnackbarState | null>(null);
-  private timer: any;
+  private timer: ReturnType<typeof setTimeout> | null = null;
 
   show(message: string, duration?: number): void;
   show(message: string, type?: MozSnackbarType, position?: MozSnackbarPosition, duration?: number): void;
-  show(message: string, arg2?: number | MozSnackbarType, arg3?: MozSnackbarPosition, arg4?: number) {
+  show(message: string, arg2?: number | MozSnackbarType, arg3?: MozSnackbarPosition, arg4?: number): void {
     let duration = 3000;
     let type: MozSnackbarType = 'info';
     let position: MozSnackbarPosition = 'top-right';
@@ -50,23 +50,23 @@ export class MozSnackbarService {
     }
   }
 
-  private display(state: MozSnackbarState) {
+  private display(state: MozSnackbarState): void {
     this.activeSnackbar.set(state);
     this.startTimer(state);
   }
 
-  pause() {
+  pause(): void {
     this.clearTimer();
   }
 
-  resume() {
+  resume(): void {
     const current = this.activeSnackbar();
     if (current && !current.leaving) {
       this.startTimer(current);
     }
   }
 
-  hide() {
+  hide(): void {
     this.clearTimer();
     const current = this.activeSnackbar();
     if (current && !current.leaving) {
@@ -80,14 +80,14 @@ export class MozSnackbarService {
     }
   }
 
-  private startTimer(state: MozSnackbarState) {
+  private startTimer(state: MozSnackbarState): void {
     this.clearTimer();
     this.timer = setTimeout(() => {
       this.hide();
     }, state.duration);
   }
 
-  private clearTimer() {
+  private clearTimer(): void {
     if (this.timer) {
       clearTimeout(this.timer);
       this.timer = null;

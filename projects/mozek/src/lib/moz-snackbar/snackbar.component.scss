@@ -74,8 +74,8 @@
 }
 
 .moz-snackbar-message {
-    @include moz.moz-typography('label-sm');
     font-weight: var(--moz-font-weight-medium);
+    @include moz.moz-typography('label-sm');
 }
 
 .moz-snackbar-close {
@@ -83,4 +83,5 @@
     top: -10px; right: -10px;
     border: solid 1px var(--moz-color-border);
     border-radius: 50%;
+    background-color: var(--moz-color-background);
 }

@@ -8,14 +8,14 @@ import {
     template: `<ng-content></ng-content>`,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MozOption<T = any> {
+export class MozOption<T = unknown> {
     @Input() value!: T;
     @Input({ transform: booleanAttribute }) disabled = false;
 
     public elementRef = inject(ElementRef<HTMLElement>);
 
     @HostBinding('attr.role') role = 'option';
-    @HostBinding('class.is-disabled') get isDisabled() { return this.disabled; }
+    @HostBinding('class.is-disabled') get isDisabled(): boolean { return this.disabled; }
 
     /** Read projected label text */
     get label(): string {

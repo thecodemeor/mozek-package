@@ -249,7 +249,7 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 </svg>`,
     heart: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
-<path opacity="0.5" d="M12 5.50063C16.4998 0.825464 22 4.27416 22 9.1371C22 14 17.9806 16.5914 15.0383 18.9109C14 19.7294 13 20.5 12 20.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M12 5.50063C16.4998 0.825464 22 4.27416 22 9.1371C22 14 17.9806 16.5914 15.0383 18.9109C14 19.7294 13 20.5 12 20.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>`,
     menu: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M20 7L4 7" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
@@ -279,7 +279,7 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 <path d="M2 6.94975C2 6.06722 2 5.62595 2.06935 5.25839C2.37464 3.64031 3.64031 2.37464 5.25839 2.06935C5.62595 2 6.06722 2 6.94975 2C7.33642 2 7.52976 2 7.71557 2.01738C8.51665 2.09229 9.27652 2.40704 9.89594 2.92051C10.0396 3.03961 10.1763 3.17633 10.4497 3.44975L11 4C11.8158 4.81578 12.2237 5.22367 12.7121 5.49543C12.9804 5.64471 13.2651 5.7626 13.5604 5.84678C14.0979 6 14.6747 6 15.8284 6H16.2021C18.8345 6 20.1506 6 21.0062 6.76946C21.0849 6.84024 21.1598 6.91514 21.2305 6.99383C22 7.84935 22 9.16554 22 11.7979V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V6.94975Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 </svg>`,
     folder_open: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.5" d="M4 11.5V5.71231C4 5.05041 4 4.71946 4.05548 4.44379C4.29971 3.23023 5.31225 2.28098 6.60671 2.05201C6.90076 2 7.25377 2 7.9598 2C8.26914 2 8.42381 2 8.57246 2.01303C9.21332 2.06921 9.82122 2.30528 10.3168 2.69039C10.4317 2.77971 10.5411 2.88224 10.7598 3.08731L11.2 3.5C11.8526 4.11183 12.1789 4.41775 12.5697 4.62157C12.7844 4.73353 13.012 4.82195 13.2483 4.88508C13.6783 5 14.1398 5 15.0627 5H15.3617C17.4676 5 18.5205 5 19.2049 5.5771C19.2679 5.63018 19.3278 5.68635 19.3844 5.74537C20 6.38701 20 7.37415 20 9.34843V11.5" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
+<path d="M4 11.5V5.71231C4 5.05041 4 4.71946 4.05548 4.44379C4.29971 3.23023 5.31225 2.28098 6.60671 2.05201C6.90076 2 7.25377 2 7.9598 2C8.26914 2 8.42381 2 8.57246 2.01303C9.21332 2.06921 9.82122 2.30528 10.3168 2.69039C10.4317 2.77971 10.5411 2.88224 10.7598 3.08731L11.2 3.5C11.8526 4.11183 12.1789 4.41775 12.5697 4.62157C12.7844 4.73353 13.012 4.82195 13.2483 4.88508C13.6783 5 14.1398 5 15.0627 5H15.3617C17.4676 5 18.5205 5 19.2049 5.5771C19.2679 5.63018 19.3278 5.68635 19.3844 5.74537C20 6.38701 20 7.37415 20 9.34843V11.5" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 <path opacity="0.5" d="M10 17H14" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 <path d="M3.47674 17.4839C2.99958 14.7678 2.761 13.4097 3.33908 12.433C3.4866 12.1838 3.66852 11.9582 3.87908 11.7634C4.7042 11 6.0379 11 8.7053 11H15.2947C17.9621 11 19.2958 11 20.1209 11.7634C20.3315 11.9582 20.5134 12.1838 20.6609 12.433C21.239 13.4097 21.0004 14.7678 20.5233 17.4839C20.1798 19.4391 20.008 20.4167 19.4129 21.0655C19.2585 21.2338 19.0858 21.383 18.8982 21.5101C18.175 22 17.2149 22 15.2947 22H8.70531C6.7851 22 5.825 22 5.10183 21.5101C4.9142 21.383 4.74145 21.2338 4.58706 21.0655C3.99198 20.4167 3.82024 19.4391 3.47674 17.4839Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 </svg>`,
@@ -664,8 +664,8 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`,
     check_read: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.5" d="M4 12.9L7.14286 16.5L15 7.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M20.0002 7.5625L11.4286 16.5625L11.0002 16" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4 12.9L7.14286 16.5L15 7.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path opacity="0.5" d="M20.0002 7.5625L11.4286 16.5625L11.0002 16" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`,
     smile_square: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9 16C9.85038 16.6303 10.8846 17 12 17C13.1154 17 14.1496 16.6303 15 16" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
@@ -781,8 +781,8 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
     battery_full: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H11.5C15.2712 4 17.1569 4 18.3284 5.17157C19.5 6.34315 19.5 8.22876 19.5 12C19.5 15.7712 19.5 17.6569 18.3284 18.8284C17.1569 20 15.2712 20 11.5 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 <path d="M7 9C7 9 7.5 9.9 7.5 12C7.5 14.1 7 15 7 15" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
-<path opacity="0.5" d="M10.5 9C10.5 9 11 9.9 11 12C11 14.1 10.5 15 10.5 15" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M14 9C14 9 14.5 9.9 14.5 12C14.5 14.1 14 15 14 15" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M10.5 9C10.5 9 11 9.9 11 12C11 14.1 10.5 15 10.5 15" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
+<path opacity="0.5" d="M14 9C14 9 14.5 9.9 14.5 12C14.5 14.1 14 15 14 15" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 <path opacity="0.5" d="M20 10C20.9428 10 21.4142 10 21.7071 10.2929C22 10.5858 22 11.0572 22 12C22 12.9428 22 13.4142 21.7071 13.7071C21.4142 14 20.9428 14 20 14V10Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 </svg>`,
     battery_low: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -842,7 +842,7 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 <path opacity="0.5" d="M15 20L15 22" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 <path opacity="0.5" d="M15 2L15 4" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>`,
-    mozitor: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    monitor: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 10C2 6.22876 2 4.34315 3.17157 3.17157C4.34315 2 6.22876 2 10 2H14C17.7712 2 19.6569 2 20.8284 3.17157C22 4.34315 22 6.22876 22 10V11C22 13.8284 22 15.2426 21.1213 16.1213C20.2426 17 18.8284 17 16 17H8C5.17157 17 3.75736 17 2.87868 16.1213C2 15.2426 2 13.8284 2 11V10Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 <path opacity="0.5" d="M16 22H8M12 17V22" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 <path opacity="0.5" d="M22 13H2" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
@@ -979,14 +979,14 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 <path opacity="0.5" d="M10.5 14.5H17" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>`,
     bill_check: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.5" d="M16.755 2H7.24502C6.08614 2 5.50671 2 5.03939 2.16261C4.15322 2.47096 3.45748 3.18719 3.15795 4.09946C3 4.58055 3 5.17705 3 6.37006V20.3742C3 21.2324 3.985 21.6878 4.6081 21.1176C4.97417 20.7826 5.52583 20.7826 5.8919 21.1176L6.375 21.5597C7.01659 22.1468 7.98341 22.1468 8.625 21.5597C9.26659 20.9726 10.2334 20.9726 10.875 21.5597C11.5166 22.1468 12.4834 22.1468 13.125 21.5597C13.7666 20.9726 14.7334 20.9726 15.375 21.5597C16.0166 22.1468 16.9834 22.1468 17.625 21.5597L18.1081 21.1176C18.4742 20.7826 19.0258 20.7826 19.3919 21.1176C20.015 21.6878 21 21.2324 21 20.3742V6.37006C21 5.17705 21 4.58055 20.842 4.09946C20.5425 3.18719 19.8468 2.47096 18.9606 2.16261C18.4933 2 17.9139 2 16.755 2Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
-<path d="M9.5 10.4L10.9286 12L14.5 8" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M7.5 15.5H16.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M16.755 2H7.24502C6.08614 2 5.50671 2 5.03939 2.16261C4.15322 2.47096 3.45748 3.18719 3.15795 4.09946C3 4.58055 3 5.17705 3 6.37006V20.3742C3 21.2324 3.985 21.6878 4.6081 21.1176C4.97417 20.7826 5.52583 20.7826 5.8919 21.1176L6.375 21.5597C7.01659 22.1468 7.98341 22.1468 8.625 21.5597C9.26659 20.9726 10.2334 20.9726 10.875 21.5597C11.5166 22.1468 12.4834 22.1468 13.125 21.5597C13.7666 20.9726 14.7334 20.9726 15.375 21.5597C16.0166 22.1468 16.9834 22.1468 17.625 21.5597L18.1081 21.1176C18.4742 20.7826 19.0258 20.7826 19.3919 21.1176C20.015 21.6878 21 21.2324 21 20.3742V6.37006C21 5.17705 21 4.58055 20.842 4.09946C20.5425 3.18719 19.8468 2.47096 18.9606 2.16261C18.4933 2 17.9139 2 16.755 2Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
+<path opacity="0.5" d="M9.5 10.4L10.9286 12L14.5 8" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path  opacity="0.5"d="M7.5 15.5H16.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>`,
     bill_error: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.5" d="M17.6667 2H6.33333C6.02379 2 5.86902 2 5.73853 2.01198C4.28819 2.14511 3.1383 3.35155 3.01142 4.87321C3 5.01012 3 5.1725 3 5.49727V20.2598C3 21.1323 4.05871 21.5026 4.55769 20.8045C4.90385 20.3203 5.59615 20.3203 5.94231 20.8045L6.375 21.4098C6.9375 22.1967 8.0625 22.1967 8.625 21.4098C9.1875 20.623 10.3125 20.623 10.875 21.4098C11.4375 22.1967 12.5625 22.1967 13.125 21.4098C13.6875 20.623 14.8125 20.623 15.375 21.4098C15.9375 22.1967 17.0625 22.1967 17.625 21.4098L18.0577 20.8045C18.4038 20.3203 19.0962 20.3203 19.4423 20.8045C19.9413 21.5026 21 21.1323 21 20.2598V5.49727C21 5.1725 21 5.01012 20.9886 4.87321C20.8617 3.35155 19.7118 2.14511 18.2615 2.01198C18.131 2 17.9762 2 17.6667 2Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
-<path d="M7.5 15.5H16.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M14 8.00003L10 12M10 8.00002L14 12" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M17.6667 2H6.33333C6.02379 2 5.86902 2 5.73853 2.01198C4.28819 2.14511 3.1383 3.35155 3.01142 4.87321C3 5.01012 3 5.1725 3 5.49727V20.2598C3 21.1323 4.05871 21.5026 4.55769 20.8045C4.90385 20.3203 5.59615 20.3203 5.94231 20.8045L6.375 21.4098C6.9375 22.1967 8.0625 22.1967 8.625 21.4098C9.1875 20.623 10.3125 20.623 10.875 21.4098C11.4375 22.1967 12.5625 22.1967 13.125 21.4098C13.6875 20.623 14.8125 20.623 15.375 21.4098C15.9375 22.1967 17.0625 22.1967 17.625 21.4098L18.0577 20.8045C18.4038 20.3203 19.0962 20.3203 19.4423 20.8045C19.9413 21.5026 21 21.1323 21 20.2598V5.49727C21 5.1725 21 5.01012 20.9886 4.87321C20.8617 3.35155 19.7118 2.14511 18.2615 2.01198C18.131 2 17.9762 2 17.6667 2Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
+<path opacity="0.5" d="M7.5 15.5H16.5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
+<path opacity="0.5" d="M14 8.00003L10 12M10 8.00002L14 12" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>`,
     shopping_bag_1: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.74157 18.5545C4.94119 20 7.17389 20 11.6393 20H12.3605C16.8259 20 19.0586 20 20.2582 18.5545M3.74157 18.5545C2.54194 17.1091 2.9534 14.9146 3.77633 10.5257C4.36155 7.40452 4.65416 5.84393 5.76506 4.92196M3.74157 18.5545C3.74156 18.5545 3.74157 18.5545 3.74157 18.5545ZM20.2582 18.5545C21.4578 17.1091 21.0464 14.9146 20.2235 10.5257C19.6382 7.40452 19.3456 5.84393 18.2347 4.92196M20.2582 18.5545C20.2582 18.5545 20.2582 18.5545 20.2582 18.5545ZM18.2347 4.92196C17.1238 4 15.5361 4 12.3605 4H11.6393C8.46374 4 6.87596 4 5.76506 4.92196M18.2347 4.92196C18.2347 4.92196 18.2347 4.92196 18.2347 4.92196ZM5.76506 4.92196C5.76506 4.92196 5.76506 4.92196 5.76506 4.92196Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
@@ -1136,7 +1136,7 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 </svg>`,
     hourglass: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.9577 9.07107L12 12L9.0423 9.07107L9.0423 9.07107C6.11981 6.177 4.65857 4.72997 5.06765 3.48149C5.10282 3.37417 5.14649 3.26977 5.19825 3.16926C5.80046 2 7.86697 2 12 2C16.133 2 18.1995 2 18.8017 3.16926C18.8535 3.26977 18.8972 3.37417 18.9323 3.48149C19.3414 4.72997 17.8802 6.177 14.9577 9.07107Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
-<path opacity="0.5" d="M9.0423 14.9289L12 12L14.9577 14.9289C17.8802 17.823 19.3414 19.27 18.9323 20.5185C18.8972 20.6258 18.8535 20.7302 18.8017 20.8307C18.1995 22 16.133 22 12 22C7.86697 22 5.80046 22 5.19825 20.8307C5.14649 20.7302 5.10282 20.6258 5.06765 20.5185C4.65857 19.27 6.11981 17.823 9.04229 14.9289L9.0423 14.9289Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
+<path d="M9.0423 14.9289L12 12L14.9577 14.9289C17.8802 17.823 19.3414 19.27 18.9323 20.5185C18.8972 20.6258 18.8535 20.7302 18.8017 20.8307C18.1995 22 16.133 22 12 22C7.86697 22 5.80046 22 5.19825 20.8307C5.14649 20.7302 5.10282 20.6258 5.06765 20.5185C4.65857 19.27 6.11981 17.823 9.04229 14.9289L9.0423 14.9289Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 </svg>`,
 };
 

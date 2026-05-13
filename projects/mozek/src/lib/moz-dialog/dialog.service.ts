@@ -11,7 +11,7 @@ import { MozDialogConfig, MozDialogRef } from './dialog-ref';
 
 @Injectable({ providedIn: 'root' })
 export class MozDialogService {
-  private dialogRefs: { ref: MozDialogRef, containerRef: ComponentRef<MozDialog> }[] = [];
+  private dialogRefs: { ref: MozDialogRef<any>, containerRef: ComponentRef<MozDialog> }[] = [];
 
   constructor(
     private appRef: ApplicationRef,
@@ -48,7 +48,7 @@ export class MozDialogService {
     return dialogRef;
   }
 
-  private closeDialog(dialogRef: MozDialogRef) {
+  private closeDialog(dialogRef: MozDialogRef<any>): void {
     const index = this.dialogRefs.findIndex(d => d.ref === dialogRef);
     if (index > -1) {
       const { containerRef } = this.dialogRefs[index];

@@ -141,8 +141,6 @@ export class MozDatepicker implements OnInit, OnDestroy {
 
         this.buildWeekdayLabels();
         this.buildCalendar();
-        // this.buildMonthGrid();
-        // this.buildYearGrid();
     }
 
     private overlay = inject(MozOverlayService);
@@ -163,7 +161,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
         this.destroy$.complete();
     }
 
-    get modelClass() {
+    get modelClass(): string {
         return `moz-datepicker moz-datepicker--${this.model}`;
     }
 

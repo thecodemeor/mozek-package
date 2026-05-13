@@ -45,7 +45,7 @@ export class MozTooltipDirective implements OnInit, OnDestroy {
   private showTimer: ReturnType<typeof setTimeout> | null = null;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
 
-  ngOnInit() {
+  ngOnInit(): void {
     const host = this.el.nativeElement;
     if (!host.hasAttribute('tabindex') && host.tagName !== 'BUTTON' && host.tagName !== 'A') {
       host.setAttribute('aria-label', this.text);
@@ -54,7 +54,7 @@ export class MozTooltipDirective implements OnInit, OnDestroy {
 
   @HostListener('mouseenter')
   @HostListener('focus')
-  onShow() {
+  onShow(): void {
     if (!this.text?.trim()) return;
     this.clearTimers();
     this.showTimer = setTimeout(() => this.create(), this.mozTooltipDelay);
@@ -62,7 +62,7 @@ export class MozTooltipDirective implements OnInit, OnDestroy {
 
   @HostListener('mouseleave')
   @HostListener('blur')
-  onHide() {
+  onHide(): void {
     this.clearTimers();
     if (this.componentRef) {
       this.componentRef.instance.visible = false;
@@ -70,7 +70,7 @@ export class MozTooltipDirective implements OnInit, OnDestroy {
     }
   }
 
-  private create() {
+  private create(): void {
     if (this.componentRef) return;
 
     // Create the component
@@ -108,14 +108,14 @@ export class MozTooltipDirective implements OnInit, OnDestroy {
     });
   }
 
-  private onScrollResize = () => {
+  private onScrollResize = (): void => {
     if (this.componentRef) {
       this.updatePosition();
       this.componentRef.changeDetectorRef.detectChanges();
     }
   }
 
-  private updatePosition() {
+  private updatePosition(): void {
     if (!this.componentRef) return;
     const host = this.el.nativeElement.getBoundingClientRect();
     const instance = this.componentRef.instance;
@@ -166,7 +166,7 @@ export class MozTooltipDirective implements OnInit, OnDestroy {
     this.componentRef.changeDetectorRef.detectChanges();
   }
 
-  private destroy() {
+  private destroy(): void {
     if (this.componentRef) {
       window.removeEventListener('resize', this.onScrollResize);
       window.removeEventListener('scroll', this.onScrollResize, { capture: true });
@@ -177,12 +177,12 @@ export class MozTooltipDirective implements OnInit, OnDestroy {
     }
   }
 
-  private clearTimers() {
+  private clearTimers(): void {
     if (this.showTimer !== null) { clearTimeout(this.showTimer); this.showTimer = null; }
     if (this.hideTimer !== null) { clearTimeout(this.hideTimer); this.hideTimer = null; }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.clearTimers();
     this.destroy();
   }

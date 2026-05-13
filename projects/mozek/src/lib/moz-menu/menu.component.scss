@@ -29,7 +29,6 @@
 }
 
 .moz-menu-item {
-    @include moz.moz-typography('label-sm');
     width: 100%;
     text-align: left;
     background: transparent;
@@ -42,6 +41,7 @@
     align-items: center;
     gap: var(--moz-space-2);
     transition: background-color 150ms ease, color 150ms ease;
+    @include moz.moz-typography('label-sm');
 
     &:hover, &:focus {
         background: var(--moz-color-border);

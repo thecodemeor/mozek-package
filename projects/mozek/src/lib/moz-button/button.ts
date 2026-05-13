@@ -87,28 +87,27 @@ export class MozButton {
     // ---------------------------------------------------------------------------
     get btnColor(): string {
         if (isHexColor(this.color)) {
-            return this.color as string;
+            return this.color;
         }
 
-        switch (this.color) {
-            case 'primary': return 'var(--moz-color-primary)';
-            case 'secondary': return 'var(--moz-color-secondary)';
-            case 'success': return 'var(--moz-color-success)';
-            case 'warn': return 'var(--moz-color-warning)';
-            case 'danger': return 'var(--moz-color-danger)';
-            default:
-                if (
-                    this.model === 'outline' ||
-                    this.model === 'elevated' ||
-                    this.model === 'glass' ||
-                    this.model === 'flavor' ||
-                    this.model === 'tonal'
-                ) {
-                    return 'var(--moz-color-text)';
-                } else {
-                    return 'var(--moz-color-primary)';
-                }
+        const colorMap: Record<string, string> = {
+            primary: 'var(--moz-color-primary)',
+            secondary: 'var(--moz-color-secondary)',
+            success: 'var(--moz-color-success)',
+            warn: 'var(--moz-color-warning)',
+            danger: 'var(--moz-color-danger)',
+        };
+
+        if (this.color in colorMap) {
+            return colorMap[this.color];
         }
+
+        const modelsRequiringTextColor = ['outline', 'elevated', 'glass', 'flavor', 'tonal'];
+        if (modelsRequiringTextColor.includes(this.model)) {
+            return 'var(--moz-color-text)';
+        }
+
+        return 'var(--moz-color-primary)';
     }
 
     get btnLineContrast(): string {

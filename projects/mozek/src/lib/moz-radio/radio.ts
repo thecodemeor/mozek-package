@@ -67,37 +67,33 @@ export class MozRadio {
         this._cdr.markForCheck();
     }
 
-    @Output() change = new EventEmitter<any>();
+    @Output() change = new EventEmitter<unknown>();
 
     @HostBinding('class.moz-radio--disabled')
-    get isDisabled() { return this.disabled; }
+    get isDisabled(): boolean { return this.disabled; }
 
     @HostBinding('attr.role') role = 'radio';
 
     @HostBinding('attr.aria-checked')
-    get ariaChecked() { return String(this.checked); }
+    get ariaChecked(): string { return String(this.checked); }
 
     @HostBinding('attr.aria-disabled')
-    get ariaDisabled() { return String(this.disabled); }
+    get ariaDisabled(): string { return String(this.disabled); }
 
     @HostBinding('tabindex')
-    get tabIndex() { return (this.disabled || !this.tabStop) ? -1 : 0; }
+    get tabIndex(): number { return (this.disabled || !this.tabStop) ? -1 : 0; }
 
     @ViewChild('input', { static: true })
 
     private _input!: ElementRef<HTMLInputElement>;
     private _cdr = inject(ChangeDetectorRef);
 
-    onInputChange() {
+    onInputChange(): void {
         if (this.disabled) return;
-        // if (!this.checked) {
-        //     this.checked = true;
-        //     this.change.emit(this.value);
-        // }
         this.change.emit(this.value);
     }
 
-    onKeydown(e: KeyboardEvent) {
+    onKeydown(e: KeyboardEvent): void {
         if (this.disabled) return;
         if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
@@ -124,7 +120,7 @@ export class MozRadio {
         }
     }
 
-    focus() {
+    focus(): void {
         if (!this.disabled) {
             this._input.nativeElement.focus();
         }
