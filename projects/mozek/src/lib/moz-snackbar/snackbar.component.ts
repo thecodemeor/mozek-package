@@ -31,7 +31,7 @@ import { MozButtonIcon } from '../moz-button-icon/button-icon';
                  aria-live="polite">
                 
                 <div class="moz-snackbar-content">
-                    <moz-icon class="moz-snackbar-icon" [color]="iconColor(active.type)">{{ iconName(active.type) }}</moz-icon>
+                    <moz-icon class="moz-snackbar-icon" [color]="iconColor(active.type)" [name]="iconName(active.type)"></moz-icon>
                     <span class="moz-snackbar-message">{{ active.message }}</span>
                 </div>
                 

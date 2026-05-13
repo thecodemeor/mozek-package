@@ -54,14 +54,17 @@
     }
 
     // Arrow — pointing down (tooltip is above the host)
-    &.moz-tooltip-popup--top .moz-tooltip-popup__arrow {
-        top: 100%; 
+    &.moz-tooltip-popup--top {
+        .moz-tooltip-popup__arrow {
+            top: 100%;
+        }
     }
 
     // Arrow — pointing up (tooltip is below the host)
-    &.moz-tooltip-popup--bottom .moz-tooltip-popup__arrow {
-        bottom: 100%;
-
-        svg { rotate: 180deg;}
+    &.moz-tooltip-popup--bottom {
+        .moz-tooltip-popup__arrow {
+            bottom: 100%;
+            svg { rotate: 180deg;}
+        }
     }
 }

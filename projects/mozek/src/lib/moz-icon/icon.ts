@@ -17,6 +17,9 @@ import {
     Component,
     Input,
     AfterContentInit,
+    AfterContentChecked,
+    OnChanges,
+    SimpleChanges,
     ViewChild,
     ElementRef,
     ChangeDetectorRef,
@@ -37,7 +40,8 @@ type MozIconModel = 'outline' | 'duotone';
     styleUrls: ['./icon.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MozIcon implements AfterContentInit {
+export class MozIcon implements AfterContentInit, AfterContentChecked, OnChanges {
+    @Input() name?: string;
     @Input() model: MozIconModel = 'outline';
     @Input() color: MozColorName | string = 'default';
     @Input() size: string | number = 24;
@@ -51,17 +55,40 @@ export class MozIcon implements AfterContentInit {
     private sanitizer = inject(DomSanitizer);
     private cdr = inject(ChangeDetectorRef);
 
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['name'] || changes['model']) {
+            this.updateIcon();
+        }
+    }
+
     ngAfterContentInit(): void {
-        this.iconName = (this.slot.nativeElement.textContent ?? '').trim();
+        if (!this.name) {
+            this.iconName = (this.slot.nativeElement.textContent ?? '').trim();
+            this.updateIcon();
+        }
+    }
+
+    ngAfterContentChecked(): void {
+        if (!this.name) {
+            const newName = (this.slot.nativeElement.textContent ?? '').trim();
+            if (newName !== this.iconName) {
+                this.iconName = newName;
+                this.updateIcon();
+            }
+        }
+    }
+
+    private updateIcon(): void {
+        const nameToUse = this.name || this.iconName;
+        if (!nameToUse) return;
 
         let svg = '';
         if (this.model === 'duotone') {
-            svg = mozek_DUOTONE_ICONS[this.iconName] || '';
+            svg = mozek_DUOTONE_ICONS[nameToUse] || '';
         } else {
-            svg = mozek_OUTLINE_ICONS[this.iconName] || '';
+            svg = mozek_OUTLINE_ICONS[nameToUse] || '';
         }
         this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(svg);
-
         this.cdr.markForCheck();
     }
 

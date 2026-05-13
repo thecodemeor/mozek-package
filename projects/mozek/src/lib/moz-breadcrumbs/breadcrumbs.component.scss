@@ -41,8 +41,9 @@
     align-items: center;
     gap: var(--moz-space-1);
     color: var(--moz-color-text-dim);
-    padding: calc(var(--moz-space-1) / 2) 0;
+    padding: calc(var(--moz-space-1) / 2);
     text-decoration: none;
+    border-radius: 0.5rem;
     cursor: pointer;
     background: transparent;
     border: none;
@@ -51,7 +52,7 @@
     max-width: 200px; // Default max-width for long labels
 
     &:hover, &:focus-visible {
-        background: var(--moz-color-surface);
+        background: color-mix(in srgb, white 70%, transparent 30%);
         color: var(--moz-color-text);
         outline: none;
     }

@@ -24,7 +24,7 @@ import { MozButtonIcon } from '../moz-button-icon/button-icon';
             >
                 
                 <div class="moz-snackbar-content">
-                    <moz-icon class="moz-snackbar-icon" [color]="iconColor(snackbar.type)">{{ iconName(snackbar.type) }}</moz-icon>
+                    <moz-icon class="moz-snackbar-icon" [color]="iconColor(snackbar.type)" [name]="iconName(snackbar.type)"></moz-icon>
                     <span class="moz-snackbar-message">{{ snackbar.message }}</span>
                 </div>
                 
