@@ -121,6 +121,7 @@ export class MozDatepicker implements OnInit, OnDestroy {
     panelPlacement: 'top' | 'bottom' = 'bottom';
     panelMaxHeight: string | null = null;
     panelOffsetX = 0;
+    panelOffsetY = 0;
     viewYear: number;
     viewMonth: number;    // 0-11
     weekdayLabels: string[] = [];
@@ -476,7 +477,11 @@ export class MozDatepicker implements OnInit, OnDestroy {
 
         this.panelPlacement = shouldOpenTop ? 'top' : 'bottom';
         this.panelMaxHeight = `${Math.max(160, Math.floor(availableSpace))}px`;
-        this.panelOffsetX = Math.round(clippedLeft - hostRect.left);
+        this.panelOffsetX = Math.round(clippedLeft);
+        this.panelOffsetY = Math.round(shouldOpenTop 
+            ? window.innerHeight - triggerRect.top + panelGap
+            : triggerRect.bottom + panelGap
+        );
         this.cdr.markForCheck();
     }
 }

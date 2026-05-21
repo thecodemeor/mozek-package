@@ -3,16 +3,19 @@
   <div style="width: 20px; height: 10rem;"></div>
 
   <div class="flex gap-2 w-full mb-8">
-    <div [mozTutorFor]="tutor" #tutorTrigger="mozTutorTrigger" style="padding: 2rem; border: 1px solid var(--moz-color-border); border-radius: var(--moz-radius-default); background: var(--moz-color-surface); cursor: pointer;">
+    <div [mozTutorFor]="tutor" #tutorTrigger="mozTutorTrigger"
+      style="padding: 2rem; border: 1px solid var(--moz-color-border); border-radius: var(--moz-radius-default); background: var(--moz-color-surface); cursor: pointer;">
       <h4 style="margin: 0">Feature Highlight Trigger</h4>
-      <p style="margin: 0.5rem 0 0 0; color: var(--moz-color-text-dim);">This element is highlighted while the rest is blurred.</p>
+      <p style="margin: 0.5rem 0 0 0; color: var(--moz-color-text-dim);">This element is highlighted while the rest is
+        blurred.</p>
     </div>
   </div>
 
   <moz-tutor #tutor="mozTutor">
     <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
       <h3 style="margin: 0">New Feature!</h3>
-      <p style="margin: 0; color: var(--moz-color-text-dim); line-height: 1.5;">This is a custom 'Focus Overlay' menu that mimics mat-menu but with a high-impact blur effect.</p>
+      <p style="margin: 0; color: var(--moz-color-text-dim); line-height: 1.5;">This is a custom 'Focus Overlay' menu
+        that mimics mat-menu but with a high-impact blur effect.</p>
       <div style="display: flex; justify-content: flex-end;">
         <moz-button (click)="tutorTrigger.close()">Got it!</moz-button>
       </div>
@@ -36,7 +39,7 @@
     <moz-button model="fill" color="primary" [mozMenuTriggerFor]="myMenu">Open Menu</moz-button>
     <div class="spacer"></div>
     <moz-button model="outline" color="secondary" [mozMenuTriggerFor]="myMenu2">Open Menu (Right)</moz-button>
-    
+
     <moz-menu #myMenu="mozMenu">
       <button moz-menu-item>
         <moz-icon size="18">user</moz-icon> Profile
@@ -73,7 +76,9 @@
 
   <h3>Dialog</h3>
   <div class="grid gap-2 w-full">
-    <moz-button model="elevated" color="primary" (click)="openDialog()" mozTooltip="Click to open a popup with new ui design tooltip that develop by meor muhammad haki. bin meor abdul razak bin musa">Open Programmatic Dialog</moz-button>
+    <moz-button model="elevated" color="primary" (click)="openDialog()"
+      mozTooltip="Click to open a popup with new ui design tooltip that develop by meor muhammad haki. bin meor abdul razak bin musa">Open
+      Programmatic Dialog</moz-button>
   </div>
 
 
@@ -93,7 +98,7 @@
       <moz-button model="fill" color="success" (click)="showBasicSnackbar('success')">Basic Success</moz-button>
       <moz-button model="fill" color="danger" (click)="showBasicSnackbar('error')">Basic Error</moz-button>
     </div>
-    
+
     <div class="flex gap-2">
       <moz-button model="outline" (click)="showBasicSnackbar('info', 'top-left')">Top Left</moz-button>
       <moz-button model="outline" (click)="showBasicSnackbar('info', 'top-center')">Top Center</moz-button>
@@ -107,43 +112,26 @@
 
   <h3>Radio</h3>
   <div class="grid gap-2 w-full">
-    <moz-radio-group
-      orientation="vertical"
-      name="fruit"
-      (valueChange)="fruit = $event"
-    >
+    <moz-radio-group orientation="vertical" name="fruit" (valueChange)="fruit = $event">
       <moz-radio value="apple" color="primary" [checked]="fruit === 'apple'">Apple</moz-radio>
       <moz-radio value="banana" color="success" [checked]="fruit === 'banana'">Banana</moz-radio>
       <moz-radio value="mango" color="warn" [checked]="fruit === 'mango'">Mango</moz-radio>
     </moz-radio-group>
     <p>Selected: {{ fruit }}</p>
 
-    <moz-radio-group
-      orientation="horizontal"
-      name="food"
-      (valueChange)="food = $event"
-    >
+    <moz-radio-group orientation="horizontal" name="food" (valueChange)="food = $event">
       <moz-radio value="pizza" color="primary" [checked]="food === 'pizza'">Pizza</moz-radio>
       <moz-radio value="burger" color="success" [checked]="food === 'burger'">Burger</moz-radio>
       <moz-radio value="kebab" color="warn" [checked]="food === 'kebab'">Kebab</moz-radio>
     </moz-radio-group>
     <p>Selected: {{ food }}</p>
 
-    <moz-radio-group
-      orientation="horizontal"
-      name="house"
-      (valueChange)="house = $event"
-      disabled
-    >
+    <moz-radio-group orientation="horizontal" name="house" (valueChange)="house = $event" disabled>
       <moz-radio value="apartment" color="primary" [checked]="house === 'apartment'">Apartment</moz-radio>
       <moz-radio value="house" color="success" [checked]="house === 'house'">House</moz-radio>
       <moz-radio value="condo" color="warn" [checked]="house === 'condo'">Condo</moz-radio>
     </moz-radio-group>
-    <moz-radio-group
-      orientation="horizontal"
-      name="house"
-      (valueChange)="house = $event"
-    >
+    <moz-radio-group orientation="horizontal" name="house" (valueChange)="house = $event">
       <moz-radio value="engineer" color="primary" [checked]="career === 'engineer'">Engineer</moz-radio>
       <moz-radio value="doctor" color="success" [checked]="career === 'doctor'">Doctor</moz-radio>
       <moz-radio value="teacher" color="warn" [checked]="career === 'teacher'" disabled>Teacher</moz-radio>
@@ -187,92 +175,97 @@
   <div class="grid gap-2 w-full">
     <moz-accordion>
       @for (item of ['1','2','3']; track $index) {
-        <moz-accordion-item>
-          <div mozAccordionHeader>Header {{item}}</div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </moz-accordion-item>
+      <moz-accordion-item>
+        <div mozAccordionHeader>Header {{item}}</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
+        </p>
+      </moz-accordion-item>
       }
     </moz-accordion>
     <moz-accordion [multi]="true">
       <moz-accordion-item>
         <div mozAccordionHeader>Header 1</div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
         </p>
       </moz-accordion-item>
       <moz-accordion-item>
         <div mozAccordionHeader>Header 2</div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
         </p>
       </moz-accordion-item>
       <moz-accordion-item disabled>
         <div mozAccordionHeader>Header 3</div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
         </p>
       </moz-accordion-item>
     </moz-accordion>
   </div>
-  
+
   <h3>Select</h3>
   <div class="grid gap-2 w-full">
     <moz-select>
-      @for (item of ['1','2','3','4','5']; track $index) {
-        <moz-option [value]="item">{{item}}</moz-option>
+      @for (item of ['1','2','3','4','5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18',
+      '19', '20']; track $index) {
+      <moz-option [value]="item">{{item}}</moz-option>
       }
     </moz-select>
     <div class="flex gap-2">
       <moz-select model="outline">
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
       <moz-select model="fill">
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
       <moz-select model="outline" error="Error">
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
       <moz-select model="fill" error="Error">
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
     </div>
     <div class="flex gap-2">
       <moz-select label="Select">
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
       <moz-select model="fill" label="Select">
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
       <moz-select label="Select"></moz-select>
       <moz-select disabled>
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
     </div>
     <div class="flex gap-2 mb-2">
       <moz-select hint="Must">
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
       <moz-select placeholder="Anything">
         @for (item of ['1','2','3','4','5']; track $index) {
-          <moz-option [value]="item">{{item}}</moz-option>
+        <moz-option [value]="item">{{item}}</moz-option>
         }
       </moz-select>
       <moz-select placeholder="Anything">
@@ -337,7 +330,7 @@
       <moz-button-icon model="tonal" color="success">
         <moz-icon>home</moz-icon>
       </moz-button-icon>
-            <moz-button-icon model="tonal" color="warn">
+      <moz-button-icon model="tonal" color="warn">
         <moz-icon>home</moz-icon>
       </moz-button-icon>
       <moz-button-icon model="tonal" color="danger">
@@ -354,7 +347,7 @@
       <moz-button-icon model="text" color="success">
         <moz-icon>home</moz-icon>
       </moz-button-icon>
-            <moz-button-icon model="text" color="warn">
+      <moz-button-icon model="text" color="warn">
         <moz-icon>home</moz-icon>
       </moz-button-icon>
       <moz-button-icon model="text" color="danger">
@@ -372,7 +365,7 @@
       <moz-button-icon model="tonal" color="success" gap>
         <moz-icon>home</moz-icon>
       </moz-button-icon>
-            <moz-button-icon model="tonal" color="warn" gap>
+      <moz-button-icon model="tonal" color="warn" gap>
         <moz-icon>home</moz-icon>
       </moz-button-icon>
       <moz-button-icon model="tonal" color="danger" gap>
@@ -389,7 +382,7 @@
       <moz-button-icon model="text" color="success" gap>
         <moz-icon>home</moz-icon>
       </moz-button-icon>
-            <moz-button-icon model="text" color="warn" gap>
+      <moz-button-icon model="text" color="warn" gap>
         <moz-icon>home</moz-icon>
       </moz-button-icon>
       <moz-button-icon model="text" color="danger" gap>
@@ -448,28 +441,25 @@
   <h3>Pagination</h3>
   <div class="grid gap-2 w-full">
     @for (item of pagedItems; track $index) {
-      <moz-card>{{item}}</moz-card>
+    <moz-card>{{item}}</moz-card>
     }
-    <moz-pagination 
-      [length]="items.length"
-      [(pageIndex)]="pageIndex"
-      [pageSize]="pageSize"
-      (pageChange)="onPageChange($event)"
-    >
+    <moz-pagination [length]="items.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize"
+      (pageChange)="onPageChange($event)">
     </moz-pagination>
-    <moz-pagination 
-      color="secondary"
-      [length]="items.length"
-      [(pageIndex)]="pageIndex"
-      [pageSize]="pageSize"
-      (pageChange)="onPageChange($event)"
-    >
+    <moz-pagination color="secondary" [length]="items.length" [(pageIndex)]="pageIndex" [pageSize]="pageSize"
+      (pageChange)="onPageChange($event)">
     </moz-pagination>
   </div>
 
   <h3>Icon</h3>
   <div class="grid gap-2 w-full">
-    <moz-icon>home</moz-icon>
+    <div class="flex gap-2">
+      <moz-icon size="20">home</moz-icon>
+      <moz-icon>add</moz-icon>
+      <moz-icon size="24">minus</moz-icon>
+      <moz-icon size="24">close</moz-icon>
+      <moz-icon size="24">check</moz-icon>
+    </div>
     <div class="flex gap-2">
       <moz-icon color="primary">settings</moz-icon>
       <moz-icon color="secondary">atom</moz-icon>
@@ -502,8 +492,8 @@
     <div class="flex gap-2">
       <moz-input model="outline" label="Input" placeholder="Input"></moz-input>
       <moz-input model="fill" label="Input" placeholder="Input"></moz-input>
-      <moz-input model="outline" label="Input" placeholder="Input" helper="Key In"></moz-input>
-      <moz-input model="fill" label="Input" placeholder="Input" helper="Key In"></moz-input>
+      <moz-input model="outline" label="Input" placeholder="Input" hint="Key In"></moz-input>
+      <moz-input model="fill" label="Input" placeholder="Input" hint="Key In"></moz-input>
     </div>
     <div class="flex gap-2">
       <moz-input model="outline" label="Input" placeholder="Input" error="Error"></moz-input>
@@ -521,7 +511,7 @@
       <moz-input model="outline" label="Input" placeholder="Input" full></moz-input>
     </div>
     <div class="flex gap-2">
-      <moz-input model="outline" label="Input" type="password" placeholder="Input" ></moz-input>
+      <moz-input model="outline" label="Input" type="password" placeholder="Input"></moz-input>
     </div>
   </div>
 
@@ -587,10 +577,10 @@
       <moz-badge color="warn" icon="pending">Warn</moz-badge>
       <moz-badge color="danger" icon="check"></moz-badge>
     </div>
-     <div class="flex gap-2 scroll-x">
+    <div class="flex gap-2 scroll-x">
       <moz-badge color="primary" icon="check" dot>Primary</moz-badge>
       <moz-badge color="secondary" pulse>1</moz-badge>
-      <moz-badge color="success" icon="alert"pulse>Success</moz-badge>
+      <moz-badge color="success" icon="alert" pulse>Success</moz-badge>
       <moz-badge color="warn" icon="pending" pulse dot>Warn</moz-badge>
       <moz-button>
         Button
@@ -606,7 +596,8 @@
     <div class="flex gap-2 scroll-x">
       <moz-card model="fill" color="primary">
         <moz-card-media>
-          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+          <img
+            src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -614,7 +605,8 @@
       </moz-card>
       <moz-card model="fill" color="primary" advance>
         <moz-card-media>
-          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+          <img
+            src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -661,7 +653,8 @@
     <div class="flex gap-2 scroll-x">
       <moz-card model="outline" color="primary">
         <moz-card-media>
-          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+          <img
+            src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -669,7 +662,8 @@
       </moz-card>
       <moz-card model="outline" color="primary" advance>
         <moz-card-media>
-          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+          <img
+            src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -716,7 +710,8 @@
     <div class="flex gap-2 scroll-x">
       <moz-card model="elevated" color="primary">
         <moz-card-media>
-          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+          <img
+            src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -724,7 +719,8 @@
       </moz-card>
       <moz-card model="elevated" color="primary" advance>
         <moz-card-media>
-          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+          <img
+            src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -771,7 +767,8 @@
     <div class="flex gap-2 scroll-x">
       <moz-card model="flavor" color="primary">
         <moz-card-media>
-          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+          <img
+            src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -779,7 +776,8 @@
       </moz-card>
       <moz-card model="flavor" color="primary" advance>
         <moz-card-media>
-          <img src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
+          <img
+            src="https://www.klcc.com.my/investor-relations/reports/klccpstapledgroupiar2025.bitesite/img/hero-klcc-anim.jpg">
         </moz-card-media>
         <moz-card-body>
           Mozek Card Content
@@ -834,9 +832,9 @@
     </div>
 
     <moz-button>Default</moz-button>
-    <div class="grid gap-2 w-full">
-    <span #targetForTutor style="display: inline-block"><moz-button model="fill" color="primary">Primary Fill</moz-button></span>
-    <moz-button model="outline" color="primary">Primary Outline</moz-button>
+    <div class="flex gap-2 w-full">
+      <moz-button model="fill" color="primary">Primary</moz-button>
+      <moz-button model="fill" color="secondary">Secondary</moz-button>
       <moz-button model="fill" color="success">Success</moz-button>
       <moz-button model="fill" color="warn">Warn</moz-button>
       <moz-button model="fill" color="danger">Danger</moz-button>
@@ -911,7 +909,7 @@
     </div>
     <div class="flex gap-2">
       <moz-button>1 line</moz-button>
-      <moz-button >
+      <moz-button>
         1 line<br>
         1 line<br>
         1 line<br>

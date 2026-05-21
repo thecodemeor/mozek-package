@@ -30,9 +30,16 @@
 
     <!-- menu -->
     <div
-        id="dropdown"
+        id="{{id}}-panel"
         class="moz-select__panel"
         [class.dropdown]="open"
+        [class.moz-select__panel--top]="panelPlacement === 'top'"
+        [class.moz-select__panel--bottom]="panelPlacement === 'bottom'"
+        [style.left.px]="panelOffsetX"
+        [style.width.px]="panelWidth"
+        [style.top.px]="panelPlacement === 'bottom' ? panelOffsetY : null"
+        [style.bottom.px]="panelPlacement === 'top' ? panelOffsetY : null"
+        [style.max-height]="panelMaxHeight"
         tabindex="-1"
         role="listbox">
         @for (opt of options; track $index) {

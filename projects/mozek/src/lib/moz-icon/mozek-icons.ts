@@ -52,6 +52,8 @@
 // Version: 1.0
 // -----------------------------------------------------------------------------
 
+import id from "@angular/common/locales/id"
+
 
 export const mozek_OUTLINE_ICONS: Record<string, string> = {
     // User Interface Icons
@@ -137,7 +139,7 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 <circle opacity="0.5" cx="12" cy="12" r="10" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 <path d="M13.024 14.5601C10.7142 15.484 9.5593 15.946 8.89964 15.4977C8.74324 15.3914 8.60834 15.2565 8.50206 15.1001C8.0538 14.4405 8.51575 13.2856 9.43967 10.9758C9.63673 10.4831 9.73527 10.2368 9.90474 10.0435C9.94792 9.99429 9.99429 9.94792 10.0435 9.90474C10.2368 9.73527 10.4831 9.63673 10.9758 9.43966C13.2856 8.51575 14.4405 8.0538 15.1001 8.50206C15.2565 8.60834 15.3914 8.74324 15.4977 8.89964C15.946 9.5593 15.484 10.7142 14.5601 13.024C14.363 13.5166 14.2645 13.763 14.095 13.9562C14.0518 14.0055 14.0055 14.0518 13.9562 14.095C13.763 14.2645 13.5166 14.363 13.024 14.5601Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 </svg>`,
-    code:`<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    code: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M17 7.82959L18.6965 9.35641C20.239 10.7447 21.0103 11.4389 21.0103 12.3296C21.0103 13.2203 20.239 13.9145 18.6965 15.3028L17 16.8296" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 <path opacity="0.5" d="M13.9868 5L10.0132 19.8297" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 <path d="M7.00005 7.82959L5.30358 9.35641C3.76102 10.7447 2.98975 11.4389 2.98975 12.3296C2.98975 13.2203 3.76102 13.9145 5.30358 15.3028L7.00005 16.8296" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
@@ -769,7 +771,7 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 <path opacity="0.5" d="M22 12L12 12" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 <path d="M22 5L12 5" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>`,
-    
+
 
     // Device Icons
     battery: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1068,8 +1070,8 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 <ellipse cx="9" cy="17" rx="7" ry="4" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 <path opacity="0.5" d="M18 14C19.7542 14.3847 21 15.3589 21 16.5C21 17.5293 19.9863 18.4229 18.5 18.8704" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round"/>
 </svg>`,
-    
-    
+
+
     // Chart Icons
     chart_bar_1: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path opacity="0.5" d="M3 22H21" stroke="var(--moz-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1138,8 +1140,31 @@ export const mozek_OUTLINE_ICONS: Record<string, string> = {
 <path d="M14.9577 9.07107L12 12L9.0423 9.07107L9.0423 9.07107C6.11981 6.177 4.65857 4.72997 5.06765 3.48149C5.10282 3.37417 5.14649 3.26977 5.19825 3.16926C5.80046 2 7.86697 2 12 2C16.133 2 18.1995 2 18.8017 3.16926C18.8535 3.26977 18.8972 3.37417 18.9323 3.48149C19.3414 4.72997 17.8802 6.177 14.9577 9.07107Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 <path d="M9.0423 14.9289L12 12L14.9577 14.9289C17.8802 17.823 19.3414 19.27 18.9323 20.5185C18.8972 20.6258 18.8535 20.7302 18.8017 20.8307C18.1995 22 16.133 22 12 22C7.86697 22 5.80046 22 5.19825 20.8307C5.14649 20.7302 5.10282 20.6258 5.06765 20.5185C4.65857 19.27 6.11981 17.823 9.04229 14.9289L9.0423 14.9289Z" stroke="var(--moz-icon-color)" stroke-width="1.5"/>
 </svg>`,
+
+
+    add: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Edit / Add_Plus">
+<path id="Vector" d="M6 12H12M12 12H18M12 12V18M12 12V6" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>`,
+    check: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Interface / Check_Big">
+<path id="Vector" d="M4 12L8.94975 16.9497L19.5572 6.34326" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>`,
+    close: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Menu / Close_SM">
+<path id="Vector" d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>`,
+    minus: `<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Edit / Remove_Minus">
+<path id="Vector" d="M6 12H18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>`,
+
 };
 
 export const mozek_DUOTONE_ICONS: Record<string, string> = {
-    
+
 };

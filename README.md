@@ -55,6 +55,14 @@ import { MozButton, MozInput } from "mozek-angular"; // 1. Import it
 })
 export class AppComponent {}
 ```
+### 4. Add global styles
+
+In your global SCSS file (e.g., `styles.scss`), import Mozek's styles:
+
+```scss
+@use "mozek-angular/src/styles" as moz;
+```
+
 
 ### 3. Use it in your HTML
 

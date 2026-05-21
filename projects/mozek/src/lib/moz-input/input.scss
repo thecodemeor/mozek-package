@@ -8,7 +8,10 @@
     width: 15rem;
     padding: 0 var(--moz-input-outline-size);
     flex-direction: column;
-    &.readonly { pointer-events: none;}
+
+    &.readonly {
+        pointer-events: none;
+    }
 }
 
 /* Root */
@@ -55,16 +58,19 @@
             color: color-mix(in srgb, var(--moz-color-primary) 80%, white);
             opacity: 0.8;
         }
+
         .moz-input__control {
             border: none !important;
             background: color-mix(in srgb, var(--moz-color-primary) 10%, white);
         }
     }
+
     &.moz-input--outline {
         .moz-input__native::placeholder {
-            color: color-mix(in srgb, var(--moz-color-text)  var(--moz-fade-placeholder), white);
+            color: color-mix(in srgb, var(--moz-color-text) var(--moz-fade-placeholder), white);
             opacity: 0.8;
         }
+
         .moz-input__control {
             @include moz.root-border();
             background: var(--moz-color-surface);
@@ -72,20 +78,24 @@
     }
 
     &.is-errored .moz-input__control {
-        border: solid calc(var(--moz-input-border-size) + 0.05rem) var(--moz-color-danger);
+        border: solid calc(var(--moz-input-border-size) + 0.05rem) var(--moz-color-danger) !important;
         outline: solid var(--moz-input-outline-size) color-mix(in srgb, var(--moz-color-danger) 30%, white);
         background: color-mix(in srgb, var(--moz-color-danger) 10%, white);
     }
 
     /* focus ring */
-    &__native:focus-visible + .moz-input__clear,
-    &__native:focus-visible ~ .moz-input__toggle { visibility: visible;}
+    &__native:focus-visible+.moz-input__clear,
+    &__native:focus-visible~.moz-input__toggle {
+        visibility: visible;
+    }
+
     &__native:focus-visible {
         visibility: visible;
     }
+
     &__control:focus-within {
         border: solid var(--moz-input-border-size) var(--moz-color-primary) !important;
-        outline: solid var(--moz-input-outline-size) color-mix(in srgb, var(--moz-color-primary)  var(--moz-fade-outline), white);
+        outline: solid var(--moz-input-outline-size) color-mix(in srgb, var(--moz-color-primary) var(--moz-fade-outline), white);
     }
 
     /* input */
@@ -117,10 +127,12 @@
         @include moz.root-button();
 
         svg {
-            width: 1.25rem; height: 1.25rem;
+            width: 1.25rem;
+            height: 1.25rem;
             max-width: unset;
         }
     }
+
     &__clear:hover,
     &__toggle:hover {
         background: color-mix(in srgb, var(--moz-color-text) 8%, transparent);
@@ -129,13 +141,17 @@
     /* helper line */
     &__help {
         position: absolute;
-        bottom: calc((1rem + 0.2rem) * -1); left: var(--moz-space-3);
+        bottom: calc((1rem + 0.2rem) * -1);
+        left: var(--moz-space-3);
         min-height: 1rem;
         color: color-mix(in srgb, var(--moz-color-text) 70%, white);
         @include moz.moz-typography('footer');
     }
+
     &.is-errored {
-        &__help { color: var(--moz-color-danger);}
+        .moz-input__help {
+            color: var(--moz-color-danger);
+        }
 
         &.moz-input--fill {
             .moz-input__native::placeholder {

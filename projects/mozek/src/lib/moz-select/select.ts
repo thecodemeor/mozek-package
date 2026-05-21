@@ -87,6 +87,12 @@ export class MozSelect<T = unknown> implements ControlValueAccessor, AfterConten
     open = false;
     activeIndex = -1;
 
+    panelPlacement: 'top' | 'bottom' = 'bottom';
+    panelMaxHeight: string | null = null;
+    panelOffsetX = 0;
+    panelOffsetY = 0;
+    panelWidth = 0;
+
     private host = inject(ElementRef<HTMLElement>);
     private cdr = inject(ChangeDetectorRef);
     private destroyRef = inject(DestroyRef);
@@ -180,9 +186,24 @@ export class MozSelect<T = unknown> implements ControlValueAccessor, AfterConten
         this.open ? this.closePanel() : this.openPanel();
     }
 
+    @HostListener('window:resize')
+    onWindowResize(): void {
+        if (this.open) {
+            this.updatePanelPosition();
+        }
+    }
+
+    @HostListener('window:scroll')
+    onWindowScroll(): void {
+        if (this.open) {
+            this.updatePanelPosition();
+        }
+    }
+
     openPanel(): void {
         this.open = true;
         this.activeIndex = Math.max(0, this.options.findIndex(o => this.equals(o.value, this.value)));
+        this.schedulePanelPositionUpdate();
         this.cdr.markForCheck();
     }
 
@@ -216,5 +237,41 @@ export class MozSelect<T = unknown> implements ControlValueAccessor, AfterConten
 
     equals(a: T | null, b: T | null): boolean {
         return this.compareWith(a, b);
+    }
+
+    private schedulePanelPositionUpdate(): void {
+        if (!this.open) return;
+        queueMicrotask(() => {
+            requestAnimationFrame(() => this.updatePanelPosition());
+        });
+    }
+
+    private updatePanelPosition(): void {
+        const triggerEl = this.triggerRef?.nativeElement;
+        // we can't reliably get panel height if it has max-height transitively applied, but we can assume an arbitrary height or calculate scrollHeight.
+        const panelEl = document.getElementById(this.id + '-panel'); 
+        
+        if (!this.open || !triggerEl) return;
+
+        const viewportPadding = 12;
+        const panelGap = 8;
+        const triggerRect = triggerEl.getBoundingClientRect();
+        const panelHeight = panelEl ? panelEl.scrollHeight : 224; // 14rem fallback
+
+        const spaceBelow = window.innerHeight - triggerRect.bottom - viewportPadding - panelGap;
+        const spaceAbove = triggerRect.top - viewportPadding - panelGap;
+
+        const shouldOpenTop = panelHeight > spaceBelow && spaceAbove > spaceBelow;
+        const availableSpace = shouldOpenTop ? spaceAbove : spaceBelow;
+
+        this.panelPlacement = shouldOpenTop ? 'top' : 'bottom';
+        this.panelMaxHeight = `${Math.max(160, Math.floor(availableSpace))}px`;
+        this.panelOffsetX = Math.round(triggerRect.left);
+        this.panelWidth = Math.round(triggerRect.width);
+        this.panelOffsetY = Math.round(shouldOpenTop 
+            ? window.innerHeight - triggerRect.top + panelGap
+            : triggerRect.bottom + panelGap
+        );
+        this.cdr.markForCheck();
     }
 }

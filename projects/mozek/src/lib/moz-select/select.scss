@@ -51,8 +51,7 @@
 
         &.focus {
             border-color: var(--moz-select-accent);
-            outline: solid var(--moz-select-outline-size)
-                color-mix(in srgb, var(--moz-select-accent) var(--moz-fade-outline), white);
+            outline: solid var(--moz-select-outline-size) color-mix(in srgb, var(--moz-select-accent) var(--moz-fade-outline), white);
         }
 
         moz-icon {
@@ -91,17 +90,16 @@
     &__panel {
         @include moz.root-shadow(2);
         @include moz.root-border();
-        position: absolute;
+        position: fixed;
         display: flex;
         width: 100%;
         max-height: 14rem;
-        margin-top: .5rem;
         padding: var(--moz-space-1);
         background: var(--moz-color-surface);
         border-radius: var(--moz-select-corner);
         border-width: 1px;
         overflow-y: auto;
-        z-index: 10;
+        z-index: 9999;
         transform-origin: 50% -5%;
         transform: scaleY(0);
         flex-direction: column;
@@ -110,6 +108,14 @@
 
         &.dropdown {
             transform: scaleY(1);
+        }
+
+        &--top {
+            transform-origin: 50% 105%;
+        }
+
+        &--bottom {
+            transform-origin: 50% -5%;
         }
     }
 
@@ -124,10 +130,12 @@
         &:hover {
             background: color-mix(in srgb, var(--moz-color-text) 6%, transparent);
         }
+
         &.is-selected {
             color: var(--moz-select-accent);
             font-weight: var(--moz-font-weight-semibold);
         }
+
         &.is-disabled {
             opacity: .5;
             background-color: var(--moz-color-surface) !important;
@@ -144,8 +152,7 @@
         &.moz-select--outline {
             .moz-select__trigger {
                 border: solid calc(var(--moz-select-border-size) + 0.05rem) var(--moz-color-danger);
-                outline: solid var(--moz-select-outline-size)
-                    color-mix(in srgb, var(--moz-color-danger) 30%, white);
+                outline: solid var(--moz-select-outline-size) color-mix(in srgb, var(--moz-color-danger) 30%, white);
                 background: color-mix(in srgb, var(--moz-color-danger) 10%, white);
             }
 
@@ -157,8 +164,7 @@
         &.moz-select--fill {
             .moz-select__trigger {
                 border: none;
-                outline: solid var(--moz-select-outline-size)
-                    color-mix(in srgb, var(--moz-color-danger) 30%, white);
+                outline: solid var(--moz-select-outline-size) color-mix(in srgb, var(--moz-color-danger) 30%, white);
                 background: color-mix(in srgb, var(--moz-color-danger) 10%, white);
             }
 
@@ -171,6 +177,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     .moz-select {
+
         &__trigger,
         &__trigger moz-icon,
         &__panel,

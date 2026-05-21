@@ -126,19 +126,36 @@ export class MozMenuTrigger implements OnDestroy {
     left = Math.max(8, Math.min(left, window.innerWidth - panelW - 8));
     
     // Auto flip top/bottom if it goes out of screen
+    let isTop = false;
     if (this.menu.yPosition === 'below' && top + panelH > window.innerHeight && host.top - panelH - 8 > 0) {
         top = host.top - panelH - 8;
         this.panelEl.style.transformOrigin = 'bottom left';
+        isTop = true;
     } else if (this.menu.yPosition === 'above' && top < 0 && host.bottom + panelH + 8 < window.innerHeight) {
         top = host.bottom + 8;
         this.panelEl.style.transformOrigin = 'top left';
+        isTop = false;
     } else {
-        this.panelEl.style.transformOrigin = this.menu.yPosition === 'above' ? 'bottom left' : 'top left';
+        isTop = this.menu.yPosition === 'above';
+        this.panelEl.style.transformOrigin = isTop ? 'bottom left' : 'top left';
     }
 
+    const spaceBelow = window.innerHeight - host.bottom - 8 - 12;
+    const spaceAbove = host.top - 8 - 12;
+    const availableSpace = isTop ? spaceAbove : spaceBelow;
+
     this.panelEl.style.left = `${left}px`;
-    this.panelEl.style.top = `${top}px`;
+    if (isTop) {
+        this.panelEl.style.top = '';
+        this.panelEl.style.bottom = `${window.innerHeight - host.top + 8}px`;
+    } else {
+        this.panelEl.style.top = `${host.bottom + 8}px`;
+        this.panelEl.style.bottom = '';
+    }
+    
     this.panelEl.style.minWidth = `${host.width}px`;
+    this.panelEl.style.maxHeight = `${Math.max(160, Math.floor(availableSpace))}px`;
+    this.panelEl.style.overflowY = 'auto';
   }
 
   private destroy(): void {

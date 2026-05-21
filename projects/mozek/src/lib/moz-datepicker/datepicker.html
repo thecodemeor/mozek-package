@@ -33,6 +33,8 @@
         [class.moz-datepicker__panel--top]="panelPlacement === 'top'"
         [class.moz-datepicker__panel--bottom]="panelPlacement === 'bottom'"
         [style.left.px]="panelOffsetX"
+        [style.top.px]="panelPlacement === 'bottom' ? panelOffsetY : null"
+        [style.bottom.px]="panelPlacement === 'top' ? panelOffsetY : null"
         [style.max-height]="panelMaxHeight"
         tabindex="-1">
         <div class="moz-calendar">
