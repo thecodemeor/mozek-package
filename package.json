@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "mozek-package",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "scripts": {
     "ng": "ng",
     "new-[component]": "ng g component moz-[new component] --project=mozek --standalone --inline-template=false --inline-style=false",
