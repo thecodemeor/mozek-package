@@ -4,6 +4,7 @@ $cell-size: 40px;
 $opacity: 0.15;
 
 .demo-shell {
+  position: relative;
   width: 100vw;
   padding: 2rem 0 2rem 2rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;

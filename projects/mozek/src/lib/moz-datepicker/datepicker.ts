@@ -454,15 +454,15 @@ export class MozDatepicker implements OnInit, OnDestroy {
     private updatePanelPosition(): void {
         const triggerEl = this.triggerRef?.nativeElement;
         const panelEl = this.panelRef?.nativeElement;
+        const hostEl = this.host.nativeElement;
 
         if (!this.open || !triggerEl || !panelEl) return;
 
         const viewportPadding = 12;
         const panelGap = 8;
         const triggerRect = triggerEl.getBoundingClientRect();
-        const hostRect = this.host.nativeElement.getBoundingClientRect();
+
         const panelHeight = panelEl.scrollHeight;
-        const panelWidth = panelEl.offsetWidth;
 
         const spaceBelow = window.innerHeight - triggerRect.bottom - viewportPadding - panelGap;
         const spaceAbove = triggerRect.top - viewportPadding - panelGap;
@@ -470,17 +470,14 @@ export class MozDatepicker implements OnInit, OnDestroy {
         const shouldOpenTop = panelHeight > spaceBelow && spaceAbove > spaceBelow;
         const availableSpace = shouldOpenTop ? spaceAbove : spaceBelow;
 
-        const minLeft = viewportPadding;
-        const maxLeft = window.innerWidth - viewportPadding - panelWidth;
-        const desiredLeft = triggerRect.left;
-        const clippedLeft = Math.min(Math.max(desiredLeft, minLeft), Math.max(minLeft, maxLeft));
-
         this.panelPlacement = shouldOpenTop ? 'top' : 'bottom';
         this.panelMaxHeight = `${Math.max(160, Math.floor(availableSpace))}px`;
-        this.panelOffsetX = Math.round(clippedLeft);
-        this.panelOffsetY = Math.round(shouldOpenTop 
-            ? window.innerHeight - triggerRect.top + panelGap
-            : triggerRect.bottom + panelGap
+        
+        // Use relative coordinates for position: absolute
+        this.panelOffsetX = triggerEl.offsetLeft;
+        this.panelOffsetY = Math.round(shouldOpenTop
+            ? hostEl.offsetHeight - triggerEl.offsetTop + panelGap
+            : triggerEl.offsetTop + triggerEl.offsetHeight + panelGap
         );
         this.cdr.markForCheck();
     }

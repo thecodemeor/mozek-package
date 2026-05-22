@@ -100,8 +100,8 @@ export class MozSelect<T = unknown> implements ControlValueAccessor, AfterConten
     private _value: T | null = null;
 
     // CVA callbacks
-    onChange: (v: T | null) => void = () => {};
-    onTouched: () => void = () => {};
+    onChange: (v: T | null) => void = () => { };
+    onTouched: () => void = () => { };
 
     // ---------------------------------------------------------------------------
     // Lifecycle
@@ -174,7 +174,7 @@ export class MozSelect<T = unknown> implements ControlValueAccessor, AfterConten
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
         if (isDisabled && this.open) {
-        this.closePanel();
+            this.closePanel();
         }
     }
 
@@ -249,8 +249,9 @@ export class MozSelect<T = unknown> implements ControlValueAccessor, AfterConten
     private updatePanelPosition(): void {
         const triggerEl = this.triggerRef?.nativeElement;
         // we can't reliably get panel height if it has max-height transitively applied, but we can assume an arbitrary height or calculate scrollHeight.
-        const panelEl = document.getElementById(this.id + '-panel'); 
-        
+        const panelEl = document.getElementById(this.id + '-panel');
+        const hostEl = this.host.nativeElement;
+
         if (!this.open || !triggerEl) return;
 
         const viewportPadding = 12;
@@ -266,11 +267,13 @@ export class MozSelect<T = unknown> implements ControlValueAccessor, AfterConten
 
         this.panelPlacement = shouldOpenTop ? 'top' : 'bottom';
         this.panelMaxHeight = `${Math.max(160, Math.floor(availableSpace))}px`;
-        this.panelOffsetX = Math.round(triggerRect.left);
+        
+        // Use relative coordinates for position: absolute
+        this.panelOffsetX = triggerEl.offsetLeft;
         this.panelWidth = Math.round(triggerRect.width);
-        this.panelOffsetY = Math.round(shouldOpenTop 
-            ? window.innerHeight - triggerRect.top + panelGap
-            : triggerRect.bottom + panelGap
+        this.panelOffsetY = Math.round(shouldOpenTop
+            ? hostEl.offsetHeight - triggerEl.offsetTop + panelGap
+            : triggerEl.offsetTop + triggerEl.offsetHeight + panelGap
         );
         this.cdr.markForCheck();
     }

@@ -7,7 +7,7 @@
 [![npm](https://img.shields.io/badge/Mozek_Angular-v1.0.3-blue.svg)](https://www.npmjs.com/package/mozek-angular)
 [![Github](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-[**Live Demo Playground**](https://thecodemeor.github.io/mozek-website/showcase) • [**Easy Documentation**](https://thecodemeor.github.io/mozek-website)
+[**Live Showcase**](https://thecodemeor.github.io/mozek-website) • [**Easy Documentation**](CHANGELOG)
 
 </div>
 

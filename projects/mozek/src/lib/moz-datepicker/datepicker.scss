@@ -12,6 +12,7 @@
 }
 
 .moz-datepicker {
+    position: relative;
     --moz-datepicker-gap: var(--moz-space-1);
     --moz-datepicker-px: var(--moz-space-3);
     --moz-datepicker-corner: var(--moz-radius-default);
@@ -64,22 +65,25 @@
     &__panel {
         @include moz.root-shadow(2);
         @include moz.root-border();
-        position: fixed;
+        position: absolute;
         display: flex;
         padding: var(--moz-space-1);
         background: var(--moz-color-surface);
         border-radius: var(--moz-datepicker-corner);
         border-width: 1px;
         overflow-y: auto;
-        z-index: 9999;
+        z-index: 1;
         transform-origin: 50% -5%;
         transform: scaleY(0);
         flex-direction: column;
         gap: var(--moz-space-1);
-        transition: transform var(--moz-duration-fast, 0.2s) var(--moz-ease);
+        // Closing animation: fast and ease-in
+        transition: transform 0.15s ease-in;
 
         &.dropdown {
             transform: scaleY(1);
+            // Opening animation: original speed
+            transition: transform var(--moz-duration-fast, 0.2s) var(--moz-ease);
         }
 
         &--top {

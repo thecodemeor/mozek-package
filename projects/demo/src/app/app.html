@@ -211,12 +211,14 @@
 
   <h3>Select</h3>
   <div class="grid gap-2 w-full">
-    <moz-select>
-      @for (item of ['1','2','3','4','5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18',
-      '19', '20']; track $index) {
-      <moz-option [value]="item">{{item}}</moz-option>
-      }
-    </moz-select>
+    <div class="flex" style="position: relative;">
+      <moz-select>
+        @for (item of ['1','2','3','4','5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18',
+        '19', '20']; track $index) {
+        <moz-option [value]="item">{{item}}</moz-option>
+        }
+      </moz-select>
+    </div>
     <div class="flex gap-2">
       <moz-select model="outline">
         @for (item of ['1','2','3','4','5']; track $index) {
